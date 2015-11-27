@@ -2,7 +2,7 @@ package com.lfk.justweengine.Utils.logger;
 
 import android.util.Log;
 
-public class AndroidLogTool implements com.orhanobut.logger.LogTool {
+public class AndroidLogTool implements LogTool {
   @Override public void d(String tag, String message) {
     Log.d(tag, message);
   }

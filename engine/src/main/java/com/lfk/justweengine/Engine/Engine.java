@@ -10,14 +10,15 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.renderscript.Float2;
 import android.renderscript.Float3;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 
-import com.lfk.justweengine.Utils.logger.Logger;
-
 import java.math.BigDecimal;
+
+//import com.lfk.justweengine.Utils.logger.Logger;
 
 /**
  * Engine 核心类
@@ -46,7 +47,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      * engine constructor
      */
     public Engine() {
-        Logger.d("Engine constructor");
+        Log.d("Engine", " constructor");
         e_surfaceView = null;
         e_canvas = null;
         e_thread = null;
@@ -60,8 +61,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_sleepTime = 1000;
         e_typeface = null;
         e_touchModesAble = true;
-        e_touchNum = 1;
-        e_isFrameOpen = false;
+        e_touchNum = 5;
+        e_isFrameOpen = true;
         e_backgroundColor = Color.BLACK;
     }
 
@@ -81,7 +82,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.d("engine onCreate");
+        Log.d("engine", "onCreate start");
         // disable title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // default landscape
@@ -105,6 +106,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                 e_touchPoints[i] = new Point(0, 0);
             }
         }
+
         // draw paint
         e_paintDraw = new Paint();
         e_paintDraw.setColor(Color.WHITE);
@@ -117,10 +119,10 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
 
         // init thread
         e_running = true;
-        e_thread = new Thread();
+        e_thread = new Thread(this);
         e_thread.start();
 
-        Logger.d("engine onCreate end");
+        Log.d("engine", " onCreate end");
     }
 
     /**
@@ -129,7 +131,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onResume() {
         super.onResume();
-        Logger.d("engine onResume");
+        Log.d("engine", " onResume");
         e_paused = false;
         // need add...
     }
@@ -140,7 +142,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onPause() {
         super.onPause();
-        Logger.d("engine onPause");
+        Log.d("engine", "onPause");
         e_paused = true;
         e_pauseCount++;
         // need add...
@@ -160,22 +162,23 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             e_numPoints = e_touchNum;
         }
 
-        for (int n = 0; n < e_touchNum; n++) {
+        for (int n = 0; n < e_numPoints; n++) {
+            Log.e("engine", e_touchNum + ":" + e_numPoints);
             e_touchPoints[n].x = (int) event.getX(n);
-            e_touchPoints[n].x = (int) event.getY(n);
+            e_touchPoints[n].y = (int) event.getY(n);
         }
         return true;
     }
 
     @Override
     public void run() {
-        Logger.d("engine run start");
+        Log.d("engine", " run start");
         GameTimer frameTimer = new GameTimer();
 
         int frameCount = 0;
         int frameRate = 0;
-        long startTime = 0;
-        long timeDiff = 0;
+        long startTime;
+        long timeDiff;
 
         while (e_running) {
             if (e_paused) continue;
@@ -221,11 +224,11 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                 try {
                     Thread.sleep(updatePeriod);
                 } catch (InterruptedException e) {
-                    Logger.e("engine run start error:" + e);
+//                    Logger.e("engine run start error:" + e);
                 }
             }
         }
-        Logger.d("engine run end");
+        Log.d("engine", " run end");
         System.exit(RESULT_OK);
     }
 
@@ -236,9 +239,11 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     private boolean beginDrawing() {
         if (!e_surfaceView.getHolder().getSurface().isValid()) {
+            Log.e("engine", "canvas error");
             return false;
         }
         e_canvas = e_surfaceView.getHolder().lockCanvas();
+//        Log.e("engine", "canvas create");
         return true;
     }
 
@@ -310,7 +315,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      * @param msg
      */
     public void fatalError(String msg) {
-        Logger.e("engine fatal error:" + msg);
+        Log.e("engine", " fatal error:" + msg);
         System.exit(0);
     }
 
@@ -374,7 +379,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     public Point getTouchPoint(int n) {
         if (n < 0) {
-            Logger.e("error without point" + n);
+            Log.e("error", "without point" + n);
             n = 0;
         }
         if (n > e_touchNum) {
@@ -456,9 +461,9 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             BigDecimal rounded = bd.setScale(precision, BigDecimal.ROUND_HALF_UP);
             return rounded.doubleValue();
         } catch (Exception e) {
-            Logger.e("engine round error:" + e);
+            Log.e("engine", " round error:" + e);
         }
-        Logger.e("engine round D:" + 0);
+        Log.e("engine", " round D:" + 0);
         return 0;
     }
 

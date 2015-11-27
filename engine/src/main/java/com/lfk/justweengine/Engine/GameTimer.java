@@ -11,11 +11,11 @@ import com.lfk.justweengine.Utils.logger.Logger;
  */
 public class GameTimer {
     private long e_start;
-    private long e_stop;
+    private long e_stopWatchStart;
 
     public GameTimer() {
         e_start = System.currentTimeMillis();
-        e_stop = 0;
+        e_stopWatchStart = 0;
     }
 
     /**
@@ -44,12 +44,12 @@ public class GameTimer {
     }
 
     public void resetStop() {
-        e_stop = getElapsed();
+        e_stopWatchStart = getElapsed();
     }
 
 
     public boolean stopWatch(long ms) {
-        if (getElapsed() > e_stop + ms) {
+        if (getElapsed() > e_stopWatchStart + ms) {
             resetStop();
             return true;
         } else
