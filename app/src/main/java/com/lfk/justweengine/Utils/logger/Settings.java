@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.lfk.justweengine.Utils.logger;
 
 public final class Settings {
 

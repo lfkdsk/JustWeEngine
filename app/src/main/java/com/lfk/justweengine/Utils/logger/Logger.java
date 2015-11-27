@@ -1,4 +1,5 @@
-package com.orhanobut.logger;
+package com.lfk.justweengine.Utils.logger;
+
 
 /**
  * Logger is a wrapper of {@link android.util.Log}

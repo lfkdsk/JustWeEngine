@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.lfk.justweengine.Utils.logger;
 
 public interface LogTool {
   void d(String tag, String message);
