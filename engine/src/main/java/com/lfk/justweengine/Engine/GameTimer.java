@@ -1,7 +1,5 @@
 package com.lfk.justweengine.Engine;
 
-import com.lfk.justweengine.Utils.logger.Logger;
-
 /**
  * 计时器
  *
@@ -38,7 +36,7 @@ public class GameTimer {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
-                Logger.e("engine gameTimer error:" + e);
+//                Logger.e("engine gameTimer error:" + e);
             }
         }
     }

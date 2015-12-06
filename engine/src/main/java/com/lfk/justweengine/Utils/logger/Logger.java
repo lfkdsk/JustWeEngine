@@ -12,6 +12,7 @@ public final class Logger {
 
   //no instance
   private Logger() {
+
   }
 
   /**

@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.renderscript.Float2;
@@ -16,12 +18,15 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 
-import java.math.BigDecimal;
+import com.lfk.justweengine.Utils.logger.LogLevel;
+import com.lfk.justweengine.Utils.logger.Logger;
 
-//import com.lfk.justweengine.Utils.logger.Logger;
+import java.math.BigDecimal;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 
 /**
- * Engine 核心类
+ * Engine nucleus
  *
  * @author liufengkai
  *         Created by liufengkai on 15/11/26.
@@ -29,7 +34,9 @@ import java.math.BigDecimal;
 public abstract class Engine extends Activity implements Runnable, View.OnTouchListener {
     private SurfaceView e_surfaceView;
     private Canvas e_canvas;
+    // 主循环
     private Thread e_thread;
+    // 循环控制
     private boolean e_running, e_paused;
     private int e_pauseCount;
     private Paint e_paintDraw, e_paintFont;
@@ -42,12 +49,30 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private int e_touchNum;
     private int e_backgroundColor;
     private boolean e_isFrameOpen;
+    //    private boolean isOpenDebug = false;
+    private TouchMode e_touch_Mode;
+    private CopyOnWriteArrayList<BaseSub> e_sprite_group;
+    private CopyOnWriteArrayList<BaseSub> e_spirte_recycle_group;
 
     /**
      * engine constructor
      */
     public Engine() {
-        Log.d("Engine", " constructor");
+        // init logger
+        Logger.init().logLevel(LogLevel.NONE);
+        Engine();
+    }
+
+    public Engine(boolean isOpenDebug) {
+        if (!isOpenDebug) {
+            Logger.init().logLevel(LogLevel.NONE);
+        } else {
+            Logger.init();
+        }
+        Engine();
+    }
+
+    private void Engine() {
         e_surfaceView = null;
         e_canvas = null;
         e_thread = null;
@@ -58,12 +83,16 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_paintFont = null;
         e_numPoints = 0;
         e_prefferredFrameRate = 40;
-        e_sleepTime = 1000;
+        e_sleepTime = 1000 / e_prefferredFrameRate;
         e_typeface = null;
         e_touchModesAble = true;
         e_touchNum = 5;
         e_isFrameOpen = true;
+        e_touch_Mode = TouchMode.SINGLE;
         e_backgroundColor = Color.BLACK;
+        e_sprite_group = new CopyOnWriteArrayList<>();
+        e_spirte_recycle_group = new CopyOnWriteArrayList<>();
+        Logger.d("Engine constructor");
     }
 
     public abstract void init();
@@ -74,6 +103,10 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
 
     public abstract void update();
 
+    public abstract void touch(MotionEvent event);
+
+    public abstract void collision(BaseSub baseSub);
+
     /**
      * engine onCreate
      *
@@ -82,11 +115,11 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("engine", "onCreate start");
+        Logger.d("engine onCreate start");
         // disable title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // default landscape
-        setScreenOrientation(ScreenMode.LANDSCAPE);
+//        setScreenOrientation(ScreenMode.LANDSCAPE);
 
         init();
 
@@ -100,12 +133,12 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_surfaceView.setOnTouchListener(this);
 
         // init touch mode
-        if (e_touchModesAble) {
-            e_touchPoints = new Point[e_touchNum];
-            for (int i = 0; i < e_touchNum; i++) {
-                e_touchPoints[i] = new Point(0, 0);
-            }
-        }
+//        if (e_touchModesAble) {
+//            e_touchPoints = new Point[e_touchNum];
+//            for (int i = 0; i < e_touchNum; i++) {
+//                e_touchPoints[i] = new Point(0, 0);
+//            }
+//        }
 
         // draw paint
         e_paintDraw = new Paint();
@@ -122,7 +155,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_thread = new Thread(this);
         e_thread.start();
 
-        Log.d("engine", " onCreate end");
+        Logger.d("engine onCreate end");
     }
 
     /**
@@ -131,7 +164,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("engine", " onResume");
+        Logger.d("engine onResume");
         e_paused = false;
         // need add...
     }
@@ -142,7 +175,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("engine", "onPause");
+        Logger.d("engine onPause");
         e_paused = true;
         e_pauseCount++;
         // need add...
@@ -157,24 +190,27 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        e_numPoints = event.getPointerCount();
-        if (e_numPoints > e_touchNum) {
-            e_numPoints = e_touchNum;
-        }
+        if (e_touch_Mode == TouchMode.SINGLE) {
+            touch(event);
+        } else if (e_touch_Mode == TouchMode.FULL) {
+            e_numPoints = event.getPointerCount();
+            if (e_numPoints > e_touchNum) {
+                e_numPoints = e_touchNum;
+            }
 
-        for (int n = 0; n < e_numPoints; n++) {
-            Log.e("engine", e_touchNum + ":" + e_numPoints);
-            e_touchPoints[n].x = (int) event.getX(n);
-            e_touchPoints[n].y = (int) event.getY(n);
+            for (int n = 0; n < e_numPoints; n++) {
+                Logger.v("engine", e_touchNum + ":" + e_numPoints);
+                e_touchPoints[n].x = (int) event.getX(n);
+                e_touchPoints[n].y = (int) event.getY(n);
+            }
         }
         return true;
     }
 
     @Override
     public void run() {
-        Log.d("engine", " run start");
+        Logger.d("engine run start");
         GameTimer frameTimer = new GameTimer();
-
         int frameCount = 0;
         int frameRate = 0;
         long startTime;
@@ -188,6 +224,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
 
             // frame rate
             if (frameTimer.stopWatch(1000)) {
+
                 frameRate = frameCount;
 
                 frameCount = 0;
@@ -197,15 +234,57 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             }
 
             // update
-
             update();
+
+            for (BaseSub A : e_sprite_group) {
+                if (!A.getAlive()) continue;
+
+                if (!A.isCollidable()) continue;
+
+                if (A.isCollided()) continue;
+
+                for (BaseSub B : e_sprite_group) {
+                    if (!B.getAlive()) continue;
+
+                    if (!B.isCollidable()) continue;
+
+                    if (B.isCollided()) continue;
+
+                    if (A == B) continue;
+
+                    if (A.getIdentifier() ==
+                            B.getIdentifier())
+                        continue;
+
+                    if (collisionCheck(A, B)) {
+                        A.setCollided(true);
+                        A.setOffender(B);
+                        B.setCollided(true);
+                        B.setOffender(A);
+                        break;
+                    }
+                }
+            }
 
             // lock canvas
             if (beginDrawing()) {
                 e_canvas.drawColor(e_backgroundColor);
 
                 // draw
+                // ahead of draw concrete sub
                 draw();
+
+                for (BaseSub baseSub : e_sprite_group) {
+                    if (baseSub.getAlive()) {
+                        baseSub.animation();
+                        baseSub.draw();
+                    }
+                    if (baseSub.isCollidable() && baseSub.isCollided()) {
+                        e_paintDraw.setColor(Color.RED);
+                        e_paintDraw.setStyle(Paint.Style.STROKE);
+                        e_canvas.drawRect(baseSub.getBounds(), e_paintDraw);
+                    }
+                }
 
                 if (e_isFrameOpen) {
                     int x = e_canvas.getWidth() - 150;
@@ -218,8 +297,34 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                 endDrawing();
             }
 
+            // new collision
+            for (BaseSub baseSub : e_sprite_group) {
+                if (!baseSub.getAlive()) {
+                    e_spirte_recycle_group.add(baseSub);
+                    e_sprite_group.remove(baseSub);
+                    continue;
+                }
+
+                if (baseSub.isCollidable()) {
+                    if (baseSub.isCollided()) {
+                        // Is it a valid object ?
+                        if (baseSub.getOffender() != null) {
+                            // collision
+                            collision(baseSub);
+                            // reset offender
+                            baseSub.setOffender(null);
+                        }
+                        baseSub.setCollided(false);
+                    }
+                }
+
+                baseSub.setCollided(false);
+            }
+
+            // lock frame
             timeDiff = frameTimer.getElapsed() - startTime;
             long updatePeriod = e_sleepTime - timeDiff;
+            Logger.v("period", updatePeriod);
             if (updatePeriod > 0) {
                 try {
                     Thread.sleep(updatePeriod);
@@ -228,7 +333,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                 }
             }
         }
-        Log.d("engine", " run end");
+        Logger.d("engine run end");
         System.exit(RESULT_OK);
     }
 
@@ -239,11 +344,9 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     private boolean beginDrawing() {
         if (!e_surfaceView.getHolder().getSurface().isValid()) {
-            Log.e("engine", "canvas error");
             return false;
         }
         e_canvas = e_surfaceView.getHolder().lockCanvas();
-//        Log.e("engine", "canvas create");
         return true;
     }
 
@@ -296,7 +399,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         int value;
 
         ScreenMode(int mode) {
-            this.value = value;
+            this.value = mode;
         }
     }
 
@@ -315,7 +418,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      * @param msg
      */
     public void fatalError(String msg) {
-        Log.e("engine", " fatal error:" + msg);
+        Logger.e("engine fatal error:" + msg);
         System.exit(0);
     }
 
@@ -379,7 +482,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     public Point getTouchPoint(int n) {
         if (n < 0) {
-            Log.e("error", "without point" + n);
+            Logger.e("error", "without point" + n);
             n = 0;
         }
         if (n > e_touchNum) {
@@ -461,10 +564,14 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             BigDecimal rounded = bd.setScale(precision, BigDecimal.ROUND_HALF_UP);
             return rounded.doubleValue();
         } catch (Exception e) {
-            Log.e("engine", " round error:" + e);
+            Logger.e("engine", " round error:" + e);
         }
-        Log.e("engine", " round D:" + 0);
+        Logger.e("engine", " round D:" + 0);
         return 0;
+    }
+
+    private boolean collisionCheck(BaseSub A, BaseSub B) {
+        return RectF.intersects(A.getBounds(), B.getBounds());
     }
 
     /**
@@ -492,5 +599,88 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     public String toString(Float3 value) {
         return "X:" + round(value.x) + "," + "Y:" + round(value.y)
                 + "Z:" + round(value.z);
+    }
+
+    public String toString(Rect value) {
+        RectF rectF = new RectF(value.left, value.top, value.right, value.bottom);
+        return toString(rectF);
+    }
+
+    public String toString(RectF value) {
+        return "{" + round(value.left) + "," +
+                round(value.top) + "," +
+                round(value.right) + "," +
+                round(value.bottom) + "}";
+    }
+
+    /**
+     * add BaseSub to group
+     *
+     * @param sprite
+     */
+    protected void addToSpriteGroup(BaseSub sprite) {
+        e_sprite_group.add(sprite);
+    }
+
+    /**
+     * remove from group
+     *
+     * @param sprite
+     */
+    protected void removeFromSpriteGroup(BaseSub sprite) {
+        e_sprite_group.remove(sprite);
+    }
+
+    protected void removeFromSpriteGroup(int index) {
+        e_sprite_group.remove(index);
+    }
+
+    /**
+     * get size
+     *
+     * @return size
+     */
+    protected int getSpriteGroupSize() {
+        return e_sprite_group.size();
+    }
+
+    protected int getRecycleGroupSize() {
+        return e_spirte_recycle_group.size();
+    }
+
+    protected void addToRecycleGroup(BaseSub baseSub) {
+        e_spirte_recycle_group.add(baseSub);
+    }
+
+    protected void removeFromRecycleGroup(int index) {
+        e_spirte_recycle_group.remove(index);
+    }
+
+    protected void removeFromRecycleGroup(BaseSub baseSub) {
+        e_spirte_recycle_group.remove(baseSub);
+    }
+
+    protected boolean isRecycleGroupEmpty() {
+        return e_spirte_recycle_group.isEmpty();
+    }
+
+    protected BaseSub recycleSubFromGroup(int id) {
+        for (BaseSub baseSub : e_spirte_recycle_group) {
+            if (baseSub.getIdentifier() == id) {
+                return baseSub;
+            }
+        }
+        return null;
+    }
+
+    protected int getTypeSizeFromRecycleGroup(int id) {
+        int num = 0;
+        for (BaseSub baseSub : e_spirte_recycle_group) {
+            if (baseSub.getIdentifier() == id) {
+                num++;
+            }
+        }
+        Log.e("num" + num, "id" + id);
+        return num;
     }
 }

@@ -3,6 +3,8 @@ package com.lfk.justweengine.Utils.tools;
 import android.content.Context;
 import android.util.TypedValue;
 
+import com.lfk.justweengine.Info.UIdefaultData;
+
 /**
  * Created by liufengkai on 15/11/8.
  */
@@ -30,6 +32,10 @@ public class DisplayUtils {
     public static int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static int dip2px(float dipValue) {
+        return (int) (dipValue * UIdefaultData.scale + 0.5f);
     }
 
     /**
@@ -72,6 +78,7 @@ public class DisplayUtils {
 
     /**
      * sp to px
+     *
      * @param context
      * @param px
      * @return
