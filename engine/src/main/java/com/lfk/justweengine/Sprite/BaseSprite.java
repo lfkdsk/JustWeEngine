@@ -8,7 +8,6 @@ import android.renderscript.Float2;
 
 import com.lfk.justweengine.Anim.BaseAnim;
 import com.lfk.justweengine.Anim.DoAfterAnimation;
-import com.lfk.justweengine.Engine.BaseSub;
 import com.lfk.justweengine.Engine.Engine;
 import com.lfk.justweengine.Engine.GameTexture;
 import com.lfk.justweengine.Info.UIdefaultData;
@@ -477,7 +476,7 @@ public class BaseSprite extends BaseSub {
     }
 
     /**
-     * stop Animation
+     * stop / clear / replace Animation
      */
     public void clearAllAnimation() {
         if (animList != null)
@@ -497,6 +496,21 @@ public class BaseSprite extends BaseSub {
     public void clearFixedAnimation(String name) {
         if (animMap != null)
             animMap.remove(name);
+    }
+
+    public void removeAnimFromList(int index) {
+        if (animList != null && !animList.isEmpty())
+            animList.remove(index);
+    }
+
+    public void removeFixedAnimFromMap(String name) {
+        if (animMap != null && !animMap.isEmpty())
+            animMap.remove(name);
+    }
+
+    public void replaceFixedAnimFromMap(String name, BaseAnim anim) {
+        if (animMap != null && !animMap.isEmpty())
+            animMap.replace(name, anim);
     }
 
     /**
@@ -689,6 +703,12 @@ public class BaseSprite extends BaseSub {
         this.afterAnimation = afterAnimation;
     }
 
+    /**
+     * 获取固定动画动作
+     *
+     * @param name
+     * @return
+     */
     public BaseAnim getFixedAnimation(String name) {
         return animMap.get(name);
     }
