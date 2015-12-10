@@ -5,7 +5,9 @@ package com.lfk.justweengine.Engine;
  */
 public enum TouchMode {
     SINGLE(0),
-    FULL(5);
+    BUTTON(2),
+    FULL(4),
+    SINGLE_BUTTON(6);
     int mode;
 
     TouchMode(int type) {

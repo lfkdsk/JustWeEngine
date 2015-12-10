@@ -10,10 +10,11 @@ import android.graphics.Paint;
  *         Created by liufengkai on 15/11/27.
  */
 public class GameTextPrinter {
-    private Canvas e_canvas;
+    protected Canvas e_canvas;
     private Paint e_paint;
-    private float e_x, e_y;
+    protected float e_x, e_y;
     private float e_spaceing;
+    private String text;
 
     public GameTextPrinter() {
         this(null);
@@ -24,13 +25,11 @@ public class GameTextPrinter {
         e_paint = new Paint();
         e_x = e_y = 0;
         e_spaceing = 22;
-
     }
 
     public void setCanvas(Canvas e_canvas) {
         this.e_canvas = e_canvas;
     }
-
 
     public void setLineSpaceing(float e_spaceing) {
         this.e_spaceing = e_spaceing;
@@ -53,5 +52,27 @@ public class GameTextPrinter {
     public void drawText(String text) {
         e_canvas.drawText(text, e_x, e_y, e_paint);
         e_y += e_spaceing;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void draw() {
+        if (text != null)
+            drawText(text);
+    }
+
+    public void setX(float e_x) {
+        this.e_x = e_x;
+    }
+
+    public void setY(float e_y) {
+        this.e_y = e_y;
+    }
+
+    public void setTextPosition(float e_x, float e_y) {
+        this.e_x = e_x;
+        this.e_y = e_y;
     }
 }

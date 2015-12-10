@@ -33,17 +33,14 @@ public class TextureButton extends BaseButton {
 
     private void init() {
         b_alpha = 255;
-        b_canvas = null;
         texture = new GameTexture(b_engine);
         b_position = new Point(0, 0);
         b_scale = new Float2(1.0f, 1.0f);
-
     }
 
     @Override
     public void draw() {
-        b_canvas = b_engine.getCanvas();
-
+        e_canvas = b_engine.getCanvas();
         if (b_width == 0 || b_height == 0) {
             b_width = texture.getBitmap().getWidth();
             b_height = texture.getBitmap().getHeight();
@@ -56,9 +53,9 @@ public class TextureButton extends BaseButton {
         int w = (int) (b_width * b_scale.x);
         int h = (int) (b_height * b_scale.y);
 
-        b_rect = new Rect(x, y, w, h);
-
-        b_canvas.drawBitmap(texture.getBitmap(), src, b_rect, paint);
+        b_rect = new Rect(x, y, x + w, y + h);
+        paint.setAlpha(b_alpha);
+        e_canvas.drawBitmap(texture.getBitmap(), src, b_rect, paint);
     }
 
     @Override
@@ -73,5 +70,9 @@ public class TextureButton extends BaseButton {
     public void setPosition(int x, int y) {
         b_position.x = x;
         b_position.y = y;
+    }
+
+    public void setTexture(GameTexture texture) {
+        this.texture = texture;
     }
 }

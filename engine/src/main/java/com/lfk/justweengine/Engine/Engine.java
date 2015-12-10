@@ -18,11 +18,13 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 
+import com.lfk.justweengine.Drawable.Button.BaseButton;
 import com.lfk.justweengine.Sprite.BaseSub;
 import com.lfk.justweengine.Utils.logger.LogLevel;
 import com.lfk.justweengine.Utils.logger.Logger;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -54,6 +56,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private TouchMode e_touch_Mode;
     private CopyOnWriteArrayList<BaseSub> e_sprite_group;
     private CopyOnWriteArrayList<BaseSub> e_spirte_recycle_group;
+    private HashMap<String, BaseButton> e_button_group;
 
     /**
      * engine constructor
@@ -93,6 +96,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_backgroundColor = Color.BLACK;
         e_sprite_group = new CopyOnWriteArrayList<>();
         e_spirte_recycle_group = new CopyOnWriteArrayList<>();
+        e_button_group = new HashMap<>();
         Logger.d("Engine constructor");
     }
 
@@ -191,19 +195,20 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (e_touch_Mode == TouchMode.SINGLE) {
-            touch(event);
-        } else if (e_touch_Mode == TouchMode.FULL) {
-            e_numPoints = event.getPointerCount();
-            if (e_numPoints > e_touchNum) {
-                e_numPoints = e_touchNum;
-            }
-
-            for (int n = 0; n < e_numPoints; n++) {
-                Logger.v("engine", e_touchNum + ":" + e_numPoints);
-                e_touchPoints[n].x = (int) event.getX(n);
-                e_touchPoints[n].y = (int) event.getY(n);
-            }
+        switch (e_touch_Mode) {
+            case SINGLE:
+                touch(event);
+                break;
+            case FULL:
+                stuffTouchPoints(event);
+                break;
+            case BUTTON:
+                findTouchButton(event);
+                break;
+            case SINGLE_BUTTON:
+                if (!findTouchButton(event))
+                    touch(event);
+                break;
         }
         return true;
     }
@@ -683,5 +688,43 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         }
         Log.e("num" + num, "id" + id);
         return num;
+    }
+
+    protected void addToButtonGroup(BaseButton button) {
+        e_button_group.put(button.getName(), button);
+    }
+
+    protected void removeButtonFromGroup(String name) {
+        e_button_group.remove(name);
+    }
+
+    private void stuffTouchPoints(MotionEvent event) {
+        e_numPoints = event.getPointerCount();
+        if (e_numPoints > e_touchNum) {
+            e_numPoints = e_touchNum;
+        }
+
+        for (int n = 0; n < e_numPoints; n++) {
+            Logger.v("engine", e_touchNum + ":" + e_numPoints);
+            e_touchPoints[n].x = (int) event.getX(n);
+            e_touchPoints[n].y = (int) event.getY(n);
+        }
+    }
+
+    private boolean findTouchButton(MotionEvent event) {
+        for (String o : e_button_group.keySet()) {
+            BaseButton button = e_button_group.get(o);
+            if (button.getRect().contains((int) event.getX(),
+                    (int) event.getY()) &&
+                    event.getAction() == MotionEvent.ACTION_UP) {
+                button.onClick(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setTouchMode(TouchMode e_touch_Mode) {
+        this.e_touch_Mode = e_touch_Mode;
     }
 }
