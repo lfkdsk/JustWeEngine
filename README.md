@@ -5,7 +5,7 @@ An easy open source Android game engine.
 
 ## 快速入门  
   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
-  
+### 基础功能  
 * 继承引擎核心类： 
  
 ``` java
@@ -124,7 +124,22 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
   ```
-
-
+  1. 一些重要的其他设定：  
+  ``` java  
+  	  // 图片资源
+  	  ship.setTexture(texture);
+  	  // 大图取帧模式
+  	  ship.addRectFrame(0, 100, 100, 124);
+  	  // 设定位置
+  	  ship.setPosition(x, y);
+  	  // 设置dp大小
+      ship.setDipScale(96, 96);
+      // 设定dp位置
+	  ship.setDipPosition(x, y);
+	  // 设定透明度
+	  ship.setAlpha(...);
+	  ...
+  ``` 
+  
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
