@@ -143,3 +143,27 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
+
+##有问题反馈
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+
+* 邮件:lfk_dsk@hotmail.com  
+* weibo: [@亦狂亦侠_亦温文](http://www.weibo.com/u/2443510260)  
+* 博客:  [刘丰恺](http://www.cnblogs.com/lfk-dsk/)  
+
+## License
+
+    Copyright 2015 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
