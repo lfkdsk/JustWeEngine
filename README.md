@@ -109,8 +109,8 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 * 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用。  
   1. 简单初始化:  
-  1. 初始化连续帧动画：  
-  1. 使用从大图取出的多帧图片： 
+  2. 初始化连续帧动画：  
+  3. 使用从大图取出的多帧图片： 
   ``` java  
   
     	// 新建图片资源（此图为上图的大图）
@@ -124,7 +124,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
   ```
-  1. 一些重要的其他设定：  
+  4. 一些重要的其他设定：  
   ``` java  
   	  // 图片资源
   	  ship.setTexture(texture);
@@ -138,9 +138,46 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  ship.setDipPosition(x, y);
 	  // 设定透明度
 	  ship.setAlpha(...);
+	  // 只有将精灵添加到SpriteGroup中框架才会自行绘制，否则需要手动调用
+	  addToSpriteGroup(ship);
 	  ...
   ``` 
-  
+
+* 使用按钮：  
+  使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。
+  1. TextureButton:  
+  ``` java  
+      TextureButton button;
+      // 初始化并设定名字
+      button = new TextureButton(this, "logo");
+	  texture = new GameTexture(this);
+      texture.loadFromAsset("pic/logo.jpg");
+      // 添加图片资源
+      button.setTexture(texture);
+      // button的接口回调
+      button.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick() {
+              Log.e("button", "onClick");
+          }
+        });
+      button.setPosition(200, 300);
+      button.setDipScale(100, 150);
+      // 添加到ButtonGroup进行绘制和处理
+      addToButtonGroup(button);
+
+  ``` 
+   
+  2. TextButton:  
+  ``` java  
+  	  
+      TextButton button;  
+      button = new TextButton(this, "logo");
+      button.setText("刘丰恺");
+      // 余略见源码
+	  ...
+  ```
+
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 
