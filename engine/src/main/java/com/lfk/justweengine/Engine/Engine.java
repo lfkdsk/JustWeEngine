@@ -60,6 +60,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private HashMap<String, BaseButton> e_button_group;
     private boolean e_is_hit_button;
     private BaseButton e_hit_button = null;
+    private boolean isOpenDebug;
 
     /**
      * engine constructor
@@ -71,6 +72,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     }
 
     public Engine(boolean isOpenDebug) {
+        this.isOpenDebug = isOpenDebug;
         if (!isOpenDebug) {
             Logger.init().logLevel(LogLevel.NONE);
         } else {
@@ -303,7 +305,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                     }
                 }
 
-                if (e_isFrameOpen) {
+                if (e_isFrameOpen && isOpenDebug) {
                     int x = e_canvas.getWidth() - 150;
                     e_canvas.drawText("engine", x, 20, e_paintFont);
                     e_canvas.drawText(toString(frameRate) + "fps", x, 40, e_paintFont);

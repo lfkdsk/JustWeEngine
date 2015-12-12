@@ -4,8 +4,8 @@ An easy open source Android game engine.
 ## 引擎核心类流程图  
 
 ## 快速入门  
-  由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生空间，所以首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
-* 继承引擎核心类   
+  由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
+* 继承引擎核心类：  
 ``` java
 
 	public class Game extends Engine {
@@ -53,10 +53,22 @@ An easy open source Android game engine.
     public void collision(BaseSub baseSub) {
 
     }
-}
+    }
 
 ```   
+* 绘制文字：  
+  使用GamePrinter进行文字绘制:  
+  
+``` java
 
+    @Override
+    public void draw() {
+        Canvas canvas = getCanvas();
+        GameTextPrinter printer = new GameTextPrinter(canvas);
+        printer.drawText("哈哈哈", 100, 100);
+    }
+    
+``` 
    
    
 ## 引擎初步封装完毕  
