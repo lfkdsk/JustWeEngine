@@ -83,8 +83,8 @@ An easy open source Android game engine.
 	texture.loadFromAsset("pic/logo.jpg")
 	texture.draw(canvas, 100, 100);
 ```  
-效果图：  
-
+效果图：    
+![pic](https://github.com/lfkdsk/JustWeEngine/blob/master/art/pic.png)  
 另外也可使用`loadFromAssetStripFrame`从一个大的图片中取出对应位置的图片。  
 
 ``` java
@@ -103,13 +103,13 @@ An easy open source Android game engine.
                                            int width, int height)
 ```  
 比如可以通过这四个参数把这个小飞机取出来： 
-   
+![back](https://github.com/lfkdsk/JustWeEngine/blob/master/art/back.png)  
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
 * 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用。
   1.简单初始化
   2.初始化连续帧动画：
-  2.使用从大图取出的多帧图片：
+  2.使用从大图取出的多帧图片：  
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
