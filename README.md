@@ -145,8 +145,10 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
 * 使用按钮：  
   使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。
-  1. TextureButton:  
+  1. TextureButton: 
+   
   ``` java  
+  
       TextureButton button;
       // 初始化并设定名字
       button = new TextureButton(this, "logo");
@@ -169,6 +171,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ``` 
    
   2. TextButton:  
+  
   ``` java  
   	  
       TextButton button;  
@@ -176,6 +179,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
       button.setText("刘丰恺");
       // 余略见源码
 	  ...
+	  
   ```
 
 ## 引擎初步封装完毕  
