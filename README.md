@@ -111,5 +111,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   1.简单初始化
   2.初始化连续帧动画：
   2.使用从大图取出的多帧图片：  
+
+
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
