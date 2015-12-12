@@ -110,7 +110,20 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用。  
   1. 简单初始化:  
   1. 初始化连续帧动画：  
-  1. 使用从大图取出的多帧图片：  
+  1. 使用从大图取出的多帧图片： 
+  ``` java  
+  
+    	// 新建图片资源（此图为上图的大图）
+        GameTexture texture = new GameTexture(this);
+        texture.loadFromAsset("pic/shoot.png");
+        // 初始化设定模式和长宽
+  		ship = new BaseSprite(this, 100, 124, FrameType.COMMON);
+  		// 设定资源
+        ship.setTexture(texture);
+        // 从大图中取出两帧
+        ship.addRectFrame(0, 100, 100, 124);
+        ship.addRectFrame(167, 361, 100, 124);
+  ```
 
 
 ## 引擎初步封装完毕  
