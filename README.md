@@ -108,9 +108,9 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
 * 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用。  
-  1. 简单初始化:  
-  2. 初始化连续帧动画：  
-  3. 使用从大图取出的多帧图片： 
+  1.简单初始化:  
+  2.初始化连续帧动画：  
+  3.使用从大图取出的多帧图片： 
   ``` java  
   
     	// 新建图片资源（此图为上图的大图）
@@ -124,8 +124,10 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
   ```
-  4. 一些重要的其他设定：  
+  4.一些重要的其他设定：
+    
   ``` java  
+  
   	  // 图片资源
   	  ship.setTexture(texture);
   	  // 大图取帧模式
@@ -141,11 +143,12 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  // 只有将精灵添加到SpriteGroup中框架才会自行绘制，否则需要手动调用
 	  addToSpriteGroup(ship);
 	  ...
+	  
   ``` 
 
 * 使用按钮：  
   使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。
-  1. TextureButton: 
+  1.TextureButton: 
    
   ``` java  
   
@@ -170,7 +173,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
   ``` 
    
-  2. TextButton:  
+  2.TextButton:  
   
   ``` java  
   	  
