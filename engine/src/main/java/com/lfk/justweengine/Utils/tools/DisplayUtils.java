@@ -34,8 +34,8 @@ public class DisplayUtils {
         return (int) (dipValue * scale + 0.5f);
     }
 
-    public static int dip2px(float dipValue) {
-        return (int) (dipValue * UIdefaultData.scale + 0.5f);
+    public static float dip2px(float dipValue) {
+        return (dipValue * UIdefaultData.scale + 0.5f);
     }
 
     /**
@@ -59,9 +59,9 @@ public class DisplayUtils {
      * @param pxValue
      * @return
      */
-    public static int px2sp(Context context, float pxValue) {
+    public static float px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (pxValue / fontScale + 0.5f);
+        return (pxValue / fontScale + 0.5f);
     }
 
     /**

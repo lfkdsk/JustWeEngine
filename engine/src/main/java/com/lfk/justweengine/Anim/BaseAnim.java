@@ -1,5 +1,6 @@
 package com.lfk.justweengine.Anim;
 
+import android.graphics.Rect;
 import android.renderscript.Float2;
 
 /**
@@ -41,6 +42,14 @@ public class BaseAnim {
     }
 
     public boolean adjustAlive(boolean ori) {
+        return ori;
+    }
+
+    public Rect adjustScale(Rect ori) {
+        return ori;
+    }
+
+    public float adjustTag(float ori) {
         return ori;
     }
 }

@@ -55,8 +55,11 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     //    private boolean isOpenDebug = false;
     private TouchMode e_touch_Mode;
     private CopyOnWriteArrayList<BaseSub> e_sprite_group;
-    private CopyOnWriteArrayList<BaseSub> e_spirte_recycle_group;
+    private CopyOnWriteArrayList<BaseSub> e_sprite_recycle_group;
+    // for buttons
     private HashMap<String, BaseButton> e_button_group;
+    private boolean e_is_hit_button;
+    private BaseButton e_hit_button = null;
 
     /**
      * engine constructor
@@ -95,8 +98,10 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_touch_Mode = TouchMode.SINGLE;
         e_backgroundColor = Color.BLACK;
         e_sprite_group = new CopyOnWriteArrayList<>();
-        e_spirte_recycle_group = new CopyOnWriteArrayList<>();
+        e_sprite_recycle_group = new CopyOnWriteArrayList<>();
         e_button_group = new HashMap<>();
+        e_is_hit_button = false;
+        e_hit_button = null;
         Logger.d("Engine constructor");
     }
 
@@ -276,9 +281,15 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             if (beginDrawing()) {
                 e_canvas.drawColor(e_backgroundColor);
 
+                for (String o : e_button_group.keySet()) {
+                    BaseButton button = e_button_group.get(o);
+                    button.animation();
+                    button.draw();
+                }
                 // draw
                 // ahead of draw concrete sub
                 draw();
+
 
                 for (BaseSub baseSub : e_sprite_group) {
                     if (baseSub.getAlive()) {
@@ -306,7 +317,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             // new collision
             for (BaseSub baseSub : e_sprite_group) {
                 if (!baseSub.getAlive()) {
-                    e_spirte_recycle_group.add(baseSub);
+                    e_sprite_recycle_group.add(baseSub);
                     e_sprite_group.remove(baseSub);
                     continue;
                 }
@@ -330,7 +341,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             // lock frame
             timeDiff = frameTimer.getElapsed() - startTime;
             long updatePeriod = e_sleepTime - timeDiff;
-            Logger.v("period", updatePeriod);
+//            Logger.v("period", updatePeriod);
             if (updatePeriod > 0) {
                 try {
                     Thread.sleep(updatePeriod);
@@ -651,27 +662,27 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     }
 
     protected int getRecycleGroupSize() {
-        return e_spirte_recycle_group.size();
+        return e_sprite_recycle_group.size();
     }
 
     protected void addToRecycleGroup(BaseSub baseSub) {
-        e_spirte_recycle_group.add(baseSub);
+        e_sprite_recycle_group.add(baseSub);
     }
 
     protected void removeFromRecycleGroup(int index) {
-        e_spirte_recycle_group.remove(index);
+        e_sprite_recycle_group.remove(index);
     }
 
     protected void removeFromRecycleGroup(BaseSub baseSub) {
-        e_spirte_recycle_group.remove(baseSub);
+        e_sprite_recycle_group.remove(baseSub);
     }
 
     protected boolean isRecycleGroupEmpty() {
-        return e_spirte_recycle_group.isEmpty();
+        return e_sprite_recycle_group.isEmpty();
     }
 
     protected BaseSub recycleSubFromGroup(int id) {
-        for (BaseSub baseSub : e_spirte_recycle_group) {
+        for (BaseSub baseSub : e_sprite_recycle_group) {
             if (baseSub.getIdentifier() == id) {
                 return baseSub;
             }
@@ -681,7 +692,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
 
     protected int getTypeSizeFromRecycleGroup(int id) {
         int num = 0;
-        for (BaseSub baseSub : e_spirte_recycle_group) {
+        for (BaseSub baseSub : e_sprite_recycle_group) {
             if (baseSub.getIdentifier() == id) {
                 num++;
             }
@@ -712,16 +723,42 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     }
 
     private boolean findTouchButton(MotionEvent event) {
-        for (String o : e_button_group.keySet()) {
-            BaseButton button = e_button_group.get(o);
-            if (button.getRect().contains((int) event.getX(),
-                    (int) event.getY()) &&
-                    event.getAction() == MotionEvent.ACTION_UP) {
-                button.onClick(true);
-                return true;
-            }
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                for (String name : e_button_group.keySet()) {
+                    BaseButton button = e_button_group.get(name);
+                    if (button.getRect().contains((int) event.getX(),
+                            (int) event.getY())) {
+                        button.setNormal(false);
+                        e_is_hit_button = true;
+                        e_hit_button = button;
+                    }
+                    return true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (e_hit_button != null && e_is_hit_button &&
+                        e_hit_button.getRect().contains((int) event.getX(),
+                                (int) event.getY())) {
+                    e_hit_button.setNormal(true);
+                    e_hit_button.onClick(true);
+                    resetHitButton();
+                    return true;
+                } else if (e_is_hit_button) {
+                    if (e_hit_button != null) {
+                        e_hit_button.setNormal(true);
+                        resetHitButton();
+                    }
+                    return true;
+                }
+                break;
         }
         return false;
+    }
+
+    private void resetHitButton() {
+        e_is_hit_button = false;
+        e_hit_button = null;
     }
 
     public void setTouchMode(TouchMode e_touch_Mode) {

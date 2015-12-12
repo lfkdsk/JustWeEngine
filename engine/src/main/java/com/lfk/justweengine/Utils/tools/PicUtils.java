@@ -443,8 +443,6 @@ public class PicUtils {
 
         Canvas canvas = new Canvas(bitmapWithReflection);
         canvas.drawBitmap(bitmap, 0, 0, null);
-        Paint defaultPaint = new Paint();
-        canvas.drawRect(0, h, w, h + reflectionGap, defaultPaint);
 
         canvas.drawBitmap(reflectionImage, 0, h + reflectionGap, null);
 
@@ -545,5 +543,12 @@ public class PicUtils {
                 Math.min(rect.getWidth(), rect.getHeight()) / 2
                 , paint);
         return output;
+    }
+
+    public static Bitmap getMaskBitmap(int w, int h) {
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(Color.BLACK);
+        return bitmap;
     }
 }

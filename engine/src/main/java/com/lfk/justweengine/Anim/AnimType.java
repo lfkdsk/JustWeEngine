@@ -24,5 +24,13 @@ public enum AnimType {
 
     SHOOT,
 
+    ZOOM,
+
+    ZOOM_CENTER,
+
+    MASK,
+
+    COLOR,
+
     NULL
 }
