@@ -149,9 +149,12 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         // 从大图中取出两帧
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
-        
+        ship.addAnimation(new FrameAnimation(0, 1, 1));
+
   ```
-  // tu  
+  效果图(两帧图片不断切换):  
+  ![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/ship.gif)  
+
   4.一些重要的其他设定：
     
   ``` java  
