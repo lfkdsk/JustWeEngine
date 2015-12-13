@@ -191,10 +191,11 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
       addToButtonGroup(button);
 
   ``` 
+  效果图:  
   ![texturebutton](https://github.com/lfkdsk/JustWeEngine/blob/master/art/Texturebutton.png)  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
   ![buttons](https://github.com/lfkdsk/JustWeEngine/blob/master/art/buttons.jpg)  
-    // 图  
+  
   2.TextButton:  
   
   ``` java  
@@ -208,8 +209,8 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  
   ```
   效果图：  
-![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/singlebutton.png)
-	
+![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/singlebutton.png)  
+
 ### 动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
 #### 绑定在`BaseSub`（物品及精灵基类）上的动画类：  
@@ -239,7 +240,29 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 | ColorAnimation|adjustButtonBackGround(int ori,boolean type)| TextButton点击变色 |
 | 待续 | ... | ... |
 
+为Button设定放缩动画:  
+``` java
 
+	// 设定中心放缩
+    button.setZoomCenter(true);
+    // 三个参数 初始值／放大值／帧数
+    button.setAnimation(new ZoomCenterButtonAnim(10, 30, 3));
+	
+```
+效果图:  
+
+为Button设定颜色动画:  
+
+``` java
+
+	// 初始颜色 ／ 按下颜色
+	button.setAnimation(
+       new ColorAnimation(UIdefaultData.colorAccent,
+       UIdefaultData.colorPressed));
+
+```
+效果图:  
+![color](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)    
 
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
