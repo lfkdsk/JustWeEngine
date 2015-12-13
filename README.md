@@ -250,6 +250,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	
 ```
 效果图:  
+![zoom](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zoom.gif)    
 
 为Button设定颜色动画:  
 
