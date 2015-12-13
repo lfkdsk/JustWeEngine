@@ -104,15 +104,15 @@ An easy open source Android game engine.
 ```  
 比如可以通过这四个参数把这个小飞机取出来： 
 ![back](https://github.com/lfkdsk/JustWeEngine/blob/master/art/back.png)  
-// tu
+// tu  
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
 * 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用，这些功能很多都是需要结合动画系统来使用的，动画系统会在后面介绍。  
   1.简单初始化:  
-  // tu
+  // tu  
   2.初始化连续帧动画：  
-  // tu
+  // tu  
   3.使用从大图取出的多帧图片： 
   ``` java  
   
@@ -127,7 +127,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
   ```
-  // tu
+  // tu  
   4.一些重要的其他设定：
     
   ``` java  
@@ -176,9 +176,9 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
       addToButtonGroup(button);
 
   ``` 
-  	// 图
+  	// 图  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
-    // 图
+    // 图  
   2.TextButton:  
   
   ``` java  
@@ -191,7 +191,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  ...
 	  
   ```
-	// tu
+	// tu  
 	
 ### 动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
