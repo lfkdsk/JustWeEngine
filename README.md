@@ -330,9 +330,23 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 ```
 
 其中`getOffender()`获得与之碰撞的对象，通过`getIdentifier()`获取设定的对象分组，实行逻辑判断。
-开启Debug模式会看见碰撞线。
+开启Debug模式会看见碰撞线。  
 效果图:  
 ![debug](https://github.com/lfkdsk/JustWeEngine/blob/master/art/co.png)
+### 屏幕扫描模式  
+屏幕扫描模式是用来优先响应屏幕点击、Button点击、和多点触控而设的，放置在不同情况下都能优化屏幕的刷新。  
+``` java
+
+  	// 检测单一移动
+  	SINGLE,
+  	// 检测Button
+    BUTTON,
+    // 多点检测
+    FULL,
+    // 单击＋Button
+    SINGLE_BUTTON
+  
+```
 
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
