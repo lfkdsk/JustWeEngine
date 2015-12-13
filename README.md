@@ -21,7 +21,7 @@ An easy open source Android game engine.
 * [4.屏幕扫描模式](https://github.com/lfkdsk/JustWeEngine#4.屏幕扫描模式)
 * [5.工具类](https://github.com/lfkdsk/JustWeEngine#5.工具类)
 
-### 1.基础功能  
+### 1.基础功能
 #### 1.1继承引擎核心类： 
  
 ``` java
