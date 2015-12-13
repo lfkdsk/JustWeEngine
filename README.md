@@ -114,7 +114,11 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用，这些功能很多都是需要结合动画系统来使用的，动画系统会在后面介绍。  
 ##### 新建精灵：
   1.简单初始化:  
-  // tu  
+  ``` java
+  
+          sprite = new BaseSprite(this);
+          
+  ```
   2.初始化连续帧动画：  
   连续帧的初始化需要这样的连续帧图片:  
   ![zombie](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.png)
@@ -253,6 +257,21 @@ AnimType中保存了Animation的应用类型。
 | WrapMoveAnimation | adjustPosition(Float2 ori) | 围栏动画防止出界 |
 | ZoomAnimation | adjustScale(Float2 ori) | 放大缩小动画 |
 | 待续 | ... | ... |
+
+绑定动画分为两类，ListAnimation和FixedAnimation,ListAnimation将动画存储到固定的一个List中，用于重复更新的动画，
+而FixedAnimation存储在Map中，使用名字进行调用，用于点击或者非自动更新的动画。
+比如前面精灵类动画的就是添加到ListAnimation。
+下面的这种写法就是FixedAnimation，这个动画是小飞机入场，因为只使用了一次，所以使用了FixedAnimation。
+``` java
+
+        ship.addfixedAnimation("start",
+                new MoveAnimation(UIdefaultData.centerInHorizontalX -   ship.getWidthWithScale() / 2,
+                        UIdefaultData.screenHeight - 2 * ship.getHeightWidthScale(), new Float2(10, 10)));
+           
+```
+
+效果图:  
+![fly](https://github.com/lfkdsk/JustWeEngine/blob/master/art/fly.gif)  
 
 #### 绑定在`Button`上的动画类：  
 BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
