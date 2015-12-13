@@ -195,9 +195,24 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	
 ### 动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
-  1.绑定在`BaseSub`（物品及精灵基类）上的动画类：  
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+1.绑定在`BaseSub`（物品及精灵基类）上的动画类：  
+AnimType中保存了Animation的应用类型。
+
+| Animation     | method        |function|
+| ------------- |:-------------:|-------:|
+| AliveAnimation|adjustAlive(boolean ori) | 碰撞检测的时候进行判断存活状态 |
+| AlphaAnimation|adjustAlpha(int ori)     | 修改物体透明度              |
+| CircleMoveAnimation | adjustPosition(Float2 ori)| 沿某一圆心进行圆周运动 |
+| FenceAnimation | adjustPosition(Float2 ori)| 使用围栏动画防止出界 |
+| FrameAnimation | adjustFrame(int ori) | 逐帧动画 |
+| MoveAnimation | adjustPosition(Float2 ori) | 位移动画 |
+| SpinAnimation | adjustRotation(float ori) | 旋转动画 |
+| ThrobAnimation | adjustScale(Float2 ori) | 跳跃动画 |
+| VelocityAnimation | adjustPosition/adjustAlive | 线性加速度计 |
+| WrapMoveAnimation | adjustPosition(Float2 ori) | 围栏动画防止出界 |
+| ZoomAnimation | adjustScale(Float2 ori) | 放大缩小动画 |
+ 
+2.绑定在Button上的动画类：  
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 
