@@ -8,8 +8,8 @@ An easy open source Android game engine.
 ## 快速入门  
   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
 
-* [1.基础功能](#1.基础功能)
-	* [1.1继承引擎核心类](https://github.com/lfkdsk/JustWeEngine#1.1继承引擎核心类)
+* [1.基础功能](#1基础功能)
+	* [1.1继承引擎核心类](https://github.com/lfkdsk/JustWeEngine#11继承引擎核心类)
 	* [1.2绘制文字](https://github.com/lfkdsk/JustWeEngine#1.2绘制文字)
 	* [1.3绘制图片](https://github.com/lfkdsk/JustWeEngine#1.3绘制图片)
 	* [1.4使用精灵](https://github.com/lfkdsk/JustWeEngine#1.4使用精灵)
