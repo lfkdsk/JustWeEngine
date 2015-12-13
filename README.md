@@ -8,18 +8,18 @@ An easy open source Android game engine.
 ## 快速入门  
   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
 
-* [1.基础功能](https://github.com/lfkdsk/JustWeEngine###1.基础功能)
-	* [1.1继承引擎核心类](https://github.com/lfkdsk/JustWeEngine#####1.1继承引擎核心类)
-	* [1.2绘制文字](https://github.com/lfkdsk/JustWeEngine####1.2绘制文字)
-	* [1.3绘制图片](https://github.com/lfkdsk/JustWeEngine####1.3绘制图片)
-	* [1.4使用精灵](https://github.com/lfkdsk/JustWeEngine####1.4使用精灵)
-	* [1.5使用按钮](https://github.com/lfkdsk/JustWeEngine####1.5使用按钮)
-* [2.动画系统](###2.动画系统)
-	* [2.1绑定在`BaseSub`（物品及精灵基类）上的动画类](https://github.com/lfkdsk/JustWeEngine####2.1绑定在`BaseSub`（物品及精灵基类)
-	* [2.2绑定在`Button`上的动画类](https://github.com/lfkdsk/JustWeEngine####2.2绑定在`Button`上的动画类)
-* [3.碰撞检测和死亡判定](https://github.com/lfkdsk/JustWeEngine###3.碰撞检测和死亡判定)
-* [4.屏幕扫描模式](https://github.com/lfkdsk/JustWeEngine###4.屏幕扫描模式)
-* [5.工具类](https://github.com/lfkdsk/JustWeEngine###5.工具类)
+* [1.基础功能](https://github.com/lfkdsk/JustWeEngine#1.基础功能)
+	* [1.1继承引擎核心类](https://github.com/lfkdsk/JustWeEngine#1.1继承引擎核心类)
+	* [1.2绘制文字](https://github.com/lfkdsk/JustWeEngine#1.2绘制文字)
+	* [1.3绘制图片](https://github.com/lfkdsk/JustWeEngine#1.3绘制图片)
+	* [1.4使用精灵](https://github.com/lfkdsk/JustWeEngine#1.4使用精灵)
+	* [1.5使用按钮](https://github.com/lfkdsk/JustWeEngine#1.5使用按钮)
+* [2.动画系统](#2.动画系统)
+	* [2.1绑定在`BaseSub`（物品及精灵基类）上的动画类](https://github.com/lfkdsk/JustWeEngine#2.1绑定在`BaseSub`（物品及精灵基类)
+	* [2.2绑定在`Button`上的动画类](https://github.com/lfkdsk/JustWeEngine#2.2绑定在`Button`上的动画类)
+* [3.碰撞检测和死亡判定](https://github.com/lfkdsk/JustWeEngine#3.碰撞检测和死亡判定)
+* [4.屏幕扫描模式](https://github.com/lfkdsk/JustWeEngine#4.屏幕扫描模式)
+* [5.工具类](https://github.com/lfkdsk/JustWeEngine#5.工具类)
 
 ### 1.基础功能  
 #### 1.1继承引擎核心类： 
