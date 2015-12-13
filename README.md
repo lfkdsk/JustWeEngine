@@ -1,8 +1,9 @@
-# JustWeEngine
+# JustWeEngine - 轻量级游戏框架
 An easy open source Android game engine.  
 ![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
 ## 引擎核心类流程图  
-
+## 使用方法  
+	引入Engine作为Library进行使用。
 ## 快速入门  
   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
 ### 基础功能  
