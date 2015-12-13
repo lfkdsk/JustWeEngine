@@ -194,7 +194,8 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  ...
 	  
   ```
-	// tu  
+  效果图：  
+![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)
 	
 ### 动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
