@@ -6,7 +6,7 @@ An easy open source Android game engine.
 ## 快速入门  
   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
 ### 基础功能  
-* 继承引擎核心类： 
+#### 继承引擎核心类： 
  
 ``` java
 
@@ -59,7 +59,7 @@ An easy open source Android game engine.
 
 ```   
   
-* 绘制文字：
+#### 绘制文字：
     
 使用GamePrinter进行文字绘制,除此以外还有多种方法绘制:  
   
@@ -76,7 +76,7 @@ An easy open source Android game engine.
 效果图：  
 ![text](https://github.com/lfkdsk/JustWeEngine/blob/master/art/printer.png)  
 
-* 绘制图片：
+#### 绘制图片：
 建议图片存放在Asset中：  
 ``` java  
 	GameTexture texture = new GameTexture(this);
@@ -107,7 +107,7 @@ An easy open source Android game engine.
 // tu  
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
-* 使用精灵：
+#### 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用，这些功能很多都是需要结合动画系统来使用的，动画系统会在后面介绍。  
   1.简单初始化:  
   // tu  
@@ -150,7 +150,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  
   ``` 
 
-* 使用按钮：  
+#### 使用按钮：  
   使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。  
   1.TextureButton: 
    
