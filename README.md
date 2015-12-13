@@ -116,7 +116,26 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   1.简单初始化:  
   // tu  
   2.初始化连续帧动画：  
-  // tu  
+  连续帧的初始化需要这样的连续帧图片:  
+  ![zombie](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.png)
+  
+  ``` java 
+  
+        GameTexture texture = new GameTexture(this);
+        texture.loadFromAsset("pic/zombie.png");
+        // 长宽以及列数
+        sprite = new BaseSprite(this, 96, 96, 8);
+        sprite.setTexture(texture);
+        sprite.setPosition(100, 100);
+        sprite.setDipScale(100, 100);
+        // 帧切换动画是关键
+        sprite.addAnimation(new FrameAnimation(0, 63, 1));
+        addToSpriteGroup(sprite);
+        
+  ```
+  
+  效果图:  
+  ![zombiegif](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.gif)  
   3.使用从大图取出的多帧图片： 
   ``` java  
   
@@ -130,6 +149,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         // 从大图中取出两帧
         ship.addRectFrame(0, 100, 100, 124);
         ship.addRectFrame(167, 361, 100, 124);
+        
   ```
   // tu  
   4.一些重要的其他设定：
