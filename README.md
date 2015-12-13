@@ -147,7 +147,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ``` 
 
 * 使用按钮：  
-  使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。
+  使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。  
   1.TextureButton: 
    
   ``` java  
