@@ -104,7 +104,7 @@ An easy open source Android game engine.
 ```  
 比如可以通过这四个参数把这个小飞机取出来： 
 ![back](https://github.com/lfkdsk/JustWeEngine/blob/master/art/back.png)  
-// tu  
+![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/pic.png)
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
 #### 使用精灵：
