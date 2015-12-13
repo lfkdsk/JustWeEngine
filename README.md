@@ -212,7 +212,18 @@ AnimType中保存了Animation的应用类型。
 | WrapMoveAnimation | adjustPosition(Float2 ori) | 围栏动画防止出界 |
 | ZoomAnimation | adjustScale(Float2 ori) | 放大缩小动画 |
  
-2.绑定在Button上的动画类：  
+
+2.绑定在`Button`上的动画类：  
+BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
+
+| Animation        | method           | function  |
+| ------------- |:-------------:| -----:|
+| ZoomCenterButtonAnim |adjustButtonRect(Rect ori,boolean touchType) | 按钮放缩动画 |
+| ColorAnimation|adjustButtonBackGround(int ori,boolean type)| TextButton点击变色 |
+| 待续 | ... | ... |
+
+
+
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 
