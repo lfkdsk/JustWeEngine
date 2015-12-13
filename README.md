@@ -193,6 +193,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ``` 
   ![texturebutton](https://github.com/lfkdsk/JustWeEngine/blob/master/art/Texturebutton.png)  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
+  ![buttons](https://github.com/lfkdsk/JustWeEngine/blob/master/art/buttons.jpg)  
     // 图  
   2.TextButton:  
   
