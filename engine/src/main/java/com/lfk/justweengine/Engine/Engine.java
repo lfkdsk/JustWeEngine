@@ -298,7 +298,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                         baseSub.animation();
                         baseSub.draw();
                     }
-                    if (baseSub.isCollidable() && baseSub.isCollided()) {
+                    if (isOpenDebug && baseSub.isCollidable() && baseSub.isCollided()) {
                         e_paintDraw.setColor(Color.RED);
                         e_paintDraw.setStyle(Paint.Style.STROKE);
                         e_canvas.drawRect(baseSub.getBounds(), e_paintDraw);

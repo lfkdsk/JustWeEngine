@@ -307,6 +307,33 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 效果图:  
 ![color](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)    
 
+### 碰撞检测和死亡判定
+只要使用了`addToSpriteGroup(sprite)`的精灵对象就会自动进行碰撞检测，而对碰撞检测的结果会从
+`collision`中进行发回。
+``` java
+
+    @Override
+    public void collision(BaseSub baseSub) {
+    	// 获取与之碰撞的对象
+        BaseSprite other = (BaseSprite) baseSub.getOffender();
+        // 获取ID分组处理
+        if (baseSub.getIdentifier() == BULLET &&
+                other.getIdentifier() == ENEMY) {
+            // 设定死亡
+            other.setAlive(false);
+            // 回收
+            removeFromSpriteGroup(other);
+            addToRecycleGroup(other);
+        }
+    }
+    
+```
+
+其中`getOffender()`获得与之碰撞的对象，通过`getIdentifier()`获取设定的对象分组，实行逻辑判断。
+开启Debug模式会看见碰撞线。
+效果图:  
+![debug](https://github.com/lfkdsk/JustWeEngine/blob/master/art/co.png)
+
 ## 引擎初步封装完毕  
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 
