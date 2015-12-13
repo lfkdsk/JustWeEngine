@@ -89,7 +89,8 @@ An easy open source Android game engine.
 另外也可使用`loadFromAssetStripFrame`从一个大的图片中取出对应位置的图片。  
 
 ``` java
-	    /**
+
+	/**
      * get bitmap from a big bitmap
      *
      * @param filename
@@ -110,6 +111,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
 #### 使用精灵：
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用，这些功能很多都是需要结合动画系统来使用的，动画系统会在后面介绍。  
+##### 新建精灵：
   1.简单初始化:  
   // tu  
   2.初始化连续帧动画：  
