@@ -255,7 +255,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
 ### 2.动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
-#### 2.1绑定在BaseSub（物品及精灵基类）上的动画类：  
+#### 2.1绑定在BaseSub（物品及精灵基类）上的动画类  
 AnimType中保存了Animation的应用类型。
 
 | Animation     | method        |function|
@@ -288,7 +288,7 @@ AnimType中保存了Animation的应用类型。
 效果图:  
 ![fly](/blob/master/art/fly.gif)  
 
-#### 2.2绑定在Button上的动画类：  
+#### 2.2绑定在Button上的动画类  
 BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
 
 | Animation        | method           | function  |
