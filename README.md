@@ -2,6 +2,7 @@
 An easy open source Android game engine.  
 ![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
 ## 引擎核心类流程图  
+![engine](https://github.com/lfkdsk/JustWeTools/blob/master/picture/engine.jpg)
 ## 使用方法  
 	引入Engine作为Library进行使用。
 ## 快速入门  
