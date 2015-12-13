@@ -155,6 +155,17 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
 #### 使用按钮：  
   使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。  
+  Button设定功能的方式和原生一样，通过设定接口回调的方式进行：
+  ``` java  
+  
+  		button.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick() {
+              Log.e("button", "onClick");
+          }
+        });
+        
+  ```
   1.TextureButton: 
    
   ``` java  
@@ -195,7 +206,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  
   ```
   效果图：  
-![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)
+![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/singlebutton.png)
 	
 ### 动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
