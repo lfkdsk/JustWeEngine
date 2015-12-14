@@ -5,6 +5,11 @@ An easy open source Android game engine.
 ![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
 ## 使用方法  
 	引入Engine作为Library进行使用。
+	
+## 引擎初步封装完毕  
+
+以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
+
 ## 快速入门  
 
 * [1.基础功能](#1基础功能)
@@ -370,9 +375,6 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
    * `DisplayUtils` 数据转换类
    * `SpUtils` Sp简化工具类（`可存储list和map`）
    * `ValidatorsUtils` 正则表达式处理类  
-
-## 引擎初步封装完毕  
-以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
