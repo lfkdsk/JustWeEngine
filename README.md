@@ -6,7 +6,6 @@ An easy open source Android game engine.
 ## 使用方法  
 	引入Engine作为Library进行使用。
 ## 快速入门  
-  由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
 
 * [1.基础功能](#1基础功能)
 	* [1.1继承引擎核心类](#11继承引擎核心类)
@@ -23,7 +22,8 @@ An easy open source Android game engine.
 
 ### 1.基础功能
 #### 1.1继承引擎核心类： 
- 
+   由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
+   
 ``` java
 
 	public class Game extends Engine {
