@@ -2,7 +2,7 @@
 An easy open source Android game engine.  
 ![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
 ## 引擎核心类流程图  
-![engine](/blob/master/art/engine.jpg)  
+![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
 ## 使用方法  
 	引入Engine作为Library进行使用。
 ## 快速入门  
@@ -21,7 +21,6 @@ An easy open source Android game engine.
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 
-<span id = "#1.基础功能"></span>
 ### 1.基础功能
 #### 1.1继承引擎核心类： 
  
@@ -91,7 +90,7 @@ An easy open source Android game engine.
     
 ```  
 效果图：  
-![text](/blob/master/art/printer.png)  
+![text](https://github.com/lfkdsk/JustWeEngine/blob/master/art/printer.png)  
 
 #### 1.3绘制图片：
 建议图片存放在Asset中：  
@@ -101,7 +100,7 @@ An easy open source Android game engine.
 	texture.draw(canvas, 100, 100);
 ```  
 效果图：    
-![pic](/blob/master/art/pic.png)  
+![pic](https://github.com/lfkdsk/JustWeEngine/blob/master/art/pic.png)  
 另外也可使用`loadFromAssetStripFrame`从一个大的图片中取出对应位置的图片。  
 
 ``` java
@@ -121,8 +120,8 @@ An easy open source Android game engine.
                                            int width, int height)
 ```  
 比如可以通过这四个参数把这个小飞机取出来： 
-![back](/blob/master/art/back.png)  
-![ship](/blob/master/art/ship.png)  
+![back](https://github.com/lfkdsk/JustWeEngine/blob/master/art/back.png)  
+![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/ship.png)  
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
 #### 1.4使用精灵：
@@ -136,7 +135,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ```
   2.初始化连续帧动画：  
   连续帧的初始化需要这样的连续帧图片:  
-  ![zombie](/blob/master/art/zombie.png)
+  ![zombie](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.png)
   
   ``` java 
   
@@ -154,7 +153,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ```
   
   效果图:  
-  ![zombiegif](/blob/master/art/zombie.gif)  
+  ![zombiegif](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.gif)  
   3.使用从大图取出的多帧图片： 
   ``` java  
   
@@ -172,7 +171,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
   ```
   效果图(两帧图片不断切换):  
-  ![ship](/blob/master/art/ship.gif)  
+  ![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/ship.gif)  
 
   4.一些重要的其他设定：
     
@@ -234,9 +233,9 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
   ``` 
   效果图:  
-  ![texturebutton](/blob/master/art/Texturebutton.png)  
+  ![texturebutton](https://github.com/lfkdsk/JustWeEngine/blob/master/art/Texturebutton.png)  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
-  ![buttons](/blob/master/art/buttons.jpg)  
+  ![buttons](https://github.com/lfkdsk/JustWeEngine/blob/master/art/buttons.jpg)  
   
   2.TextButton:  
   
@@ -251,7 +250,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  
   ```
   效果图：  
-![button](/blob/master/art/singlebutton.png)  
+![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/singlebutton.png)  
 
 ### 2.动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
@@ -286,7 +285,7 @@ AnimType中保存了Animation的应用类型。
 ```
 
 效果图:  
-![fly](/blob/master/art/fly.gif)  
+![fly](https://github.com/lfkdsk/JustWeEngine/blob/master/art/fly.gif)  
 
 #### 2.2绑定在Button上的动画类  
 BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
@@ -307,7 +306,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	
 ```
 效果图:  
-![zoom](/blob/master/art/zoom.gif)    
+![zoom](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zoom.gif)    
 
 为Button设定颜色动画:  
 
@@ -320,7 +319,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 
 ```
 效果图:  
-![color](/blob/master/art/button.gif)    
+![color](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)    
 
 ### 3.碰撞检测和死亡判定
 只要使用了`addToSpriteGroup(sprite)`的精灵对象就会自动进行碰撞检测，而对碰撞检测的结果会从
@@ -347,7 +346,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 其中`getOffender()`获得与之碰撞的对象，通过`getIdentifier()`获取设定的对象分组，实行逻辑判断。
 开启Debug模式会看见碰撞线。  
 效果图:  
-![debug](/blob/master/art/co.png)
+![debug](https://github.com/lfkdsk/JustWeEngine/blob/master/art/co.png)
 ### 4.屏幕扫描模式  
 屏幕扫描模式是用来优先响应屏幕点击、Button点击、和多点触控而设的，放置在不同情况下都能优化屏幕的刷新。  
 ``` java
