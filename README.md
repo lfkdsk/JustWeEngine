@@ -22,7 +22,7 @@ An easy open source Android game engine.
 * [2.动画系统](#2动画系统)
 	* [2.1绑定在BaseSub物品及精灵基类上的动画类](#21绑定在basesub物品及精灵基类上的动画类)
 	* [2.2绑定在Button上的动画类](#22绑定在button上的动画类)
-* [3.碰撞检测和死亡判定](#3碰撞检测和死亡判定)
+* [3.物体分组碰撞检测和死亡判定](#3物体分组碰撞检测和死亡判定)
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 
@@ -327,7 +327,16 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 效果图:  
 ![color](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)    
 
-### 3.碰撞检测和死亡判定
+### 3.物体分组碰撞检测和死亡判定
+使用设置ID和Name进行物体分组，通过物体分组，框架核心类会对对象进行分类处理。
+``` java
+
+	final int SHIP = 0;
+	ship.setName("SHIP");
+    ship.setIdentifier(SHIP);
+
+```
+
 只要使用了`addToSpriteGroup(sprite)`的精灵对象就会自动进行碰撞检测，而对碰撞检测的结果会从
 `collision`中进行发回。
 ``` java
