@@ -1,6 +1,7 @@
 # JustWeEngine - 轻量级游戏框架
 An easy open source Android game engine.  
-![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
+![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)  
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)  
 ## 引擎核心类流程图  
 ![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
 ## 使用方法  
