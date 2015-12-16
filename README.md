@@ -424,6 +424,13 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
     SINGLE_BUTTON
   
 ```
+并且通过如下方式进行设置:  
+
+``` java
+	
+	super.setTouchMode(TouchMode.BUTTON);
+
+``` 
 
 ### 5.工具类  
    * `NetUtils` 网络状态工具类
