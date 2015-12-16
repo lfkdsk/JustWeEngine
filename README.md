@@ -9,7 +9,7 @@ An easy open source Android game engine.
 * 使用Gradle构建:  
   * Step 1. Add the JitPack repository to your build file  
   Add it in your root build.gradle at the end of repositories:  
-``` java  
+  ``` java  
   
     	allprojects {
 			repositories {
@@ -17,22 +17,22 @@ An easy open source Android game engine.
 				maven { url "https://jitpack.io" }
 			}
 		}
-	
-```
+   	
+  ```
   
   * Step 2. Add the dependency  
   
-``` java
+  ``` java
   
-    dependencies {
+      dependencies {
 	        	compile 'com.github.lfkdsk:JustWeEngine:v1.0'
-	}
+	  }
 		
-```
+  ```
 * 使用Maven构建:  
   * Step 1. Add the JitPack repository to your build file  
   
-``` xml
+  ``` xml
   
     <repositories>
 		<repository>
@@ -41,10 +41,11 @@ An easy open source Android game engine.
 		</repository>
 	</repositories>
   
-```
+  ```
+  
   * Step 2. Add the dependency  
   
-``` java
+  ``` xml
   	
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
@@ -52,7 +53,7 @@ An easy open source Android game engine.
 	    <version>v1.0</version>
 	</dependency>
 	
-```
+  ```
 
 ## 引擎初步封装完毕  
 
