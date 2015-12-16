@@ -5,8 +5,55 @@ An easy open source Android game engine.
 ## 引擎核心类流程图  
 ![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
 ## 使用方法  
-	引入Engine作为Library进行使用。
+* 引入Engine作为Library进行使用。
+* 使用Gradle构建:  
+  * Step 1. Add the JitPack repository to your build file  
+  Add it in your root build.gradle at the end of repositories:  
+``` java  
+  
+    	allprojects {
+			repositories {
+				...
+				maven { url "https://jitpack.io" }
+			}
+		}
 	
+```
+  
+  * Step 2. Add the dependency  
+  
+``` java
+  
+    dependencies {
+	        	compile 'com.github.lfkdsk:JustWeEngine:v1.0'
+	}
+		
+```
+* 使用Maven构建:  
+  * Step 1. Add the JitPack repository to your build file  
+  
+``` xml
+  
+    <repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+  
+```
+  * Step 2. Add the dependency  
+  
+``` java
+  	
+    <dependency>
+	    <groupId>com.github.lfkdsk</groupId>
+	    <artifactId>JustWeEngine</artifactId>
+	    <version>v1.0</version>
+	</dependency>
+	
+```
+
 ## 引擎初步封装完毕  
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
