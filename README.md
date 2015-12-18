@@ -6,6 +6,7 @@ An easy open source Android game engine.
 ![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
 ## 使用方法  
 * 引入Engine作为Library进行使用。
+* 引入"/jar"文件夹下的jar包。  
 * 使用Gradle构建:  
   * Step 1. Add the JitPack repository to your build file  
   Add it in your root build.gradle at the end of repositories:  
