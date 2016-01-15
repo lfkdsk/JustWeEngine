@@ -26,7 +26,7 @@ An easy open source Android game engine.
   ``` java
   
       dependencies {
-	        	compile 'com.github.lfkdsk:JustWeEngine:v1.0'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.01'
 	  }
 		
   ```
@@ -51,7 +51,7 @@ An easy open source Android game engine.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.0</version>
+	    <version>v1.01</version>
 	</dependency>
 	
   ```
