@@ -75,6 +75,7 @@ An easy open source Android game engine.
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 * [6.音频系统](#6音频系统)
+* [7.使用网络](#7使用网络)
 
 ### 1.基础功能
 #### 1.1继承引擎核心类： 
@@ -446,6 +447,25 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 ### 6.音频系统
 `可在引擎内进行编曲的音频系统，敬请期待!`
 
+### 7.使用网络
+网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
+按照介绍操作就可以通过：
+  
+        server.apply("/lfk", new OnWebStringResult() {
+            @Override
+            public String OnResult() {
+                return "=======";
+            }
+        });
+
+        server.apply("/main", new OnWebFileResult() {
+            @Override
+            public File returnFile() {
+                return new File(WebServerDefault.WebServerFiles+"/"+"welcome.html");
+            }
+        });
+        
+这样的简单方式绑定路由，而get／post数据可以直接使用http协议的get和post进行。
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
