@@ -9,10 +9,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 
-import com.lfk.justwe_webserver.WebServer.Interface.OnLogResult;
-import com.lfk.justwe_webserver.WebServer.Interface.OnPermissionFile;
-import com.lfk.justwe_webserver.WebServer.Interface.OnWebResult;
 import com.lfk.justweengine.Utils.logger.Logger;
+import com.lfk.justweengine.Utils.webServer.Interface.OnLogResult;
+import com.lfk.justweengine.Utils.webServer.Interface.OnPermissionFile;
+import com.lfk.justweengine.Utils.webServer.Interface.OnWebResult;
 
 import java.io.File;
 import java.util.HashMap;

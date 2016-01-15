@@ -12,7 +12,8 @@ import android.net.wifi.WifiManager;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.lfk.justwe_webserver.R;
+import com.lfk.justweengine.R;
+
 
 /**
  * Service for Android
