@@ -121,4 +121,9 @@ public class TextButton extends BaseButton {
     public void setText(String b_text) {
         this.b_text = b_text;
     }
+
+    public void setPosition(int x,int y){
+        this.b_position.x = x;
+        this.b_position.y = y;
+    }
 }
