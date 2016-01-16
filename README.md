@@ -77,7 +77,10 @@ An easy open source Android game engine.
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 * [6.音频系统](#6音频系统)
+
+## 进阶应用
 * [7.使用网络](#7使用网络)
+* [8.使用状态机精灵](#8使用状态机精灵)
 
 ### 1.基础功能
 #### 1.1继承引擎核心类： 
@@ -471,9 +474,30 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
             }
         });
         
-```
+```  
         
 这样的简单方式绑定路由，而get／post数据可以直接使用http协议的get和post进行。
+
+### 8.使用状态机精灵
+
+``` java
+
+    // 为状态机添加一个任务
+    sprite.addState(new StateFinder() {
+        @Override
+        public boolean isContent(BaseSub baseSub) {
+            return Math.abs(zom.s_position.x - baseSub.s_position.x) > 50;
+        }
+    }, new FrameAnimation(0, 63, 1));
+
+```
+  
+可以通过上述的addState方法为状态机精灵添加一个任务，只有当第一个参数接口回调的返回值为真的时候，
+才会去运行第二个参数提供的指令，如果返回为假则会运行第二项状态的判断。
+状态的优先级由加入顺序提供。
+
+效果图:  
+
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
