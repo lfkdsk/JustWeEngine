@@ -58,9 +58,11 @@ An easy open source Android game engine.
 	
   ```
 
-## 引擎初步封装完毕  
+## 引擎进入V1.01版本
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
+很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
+网络功能的Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
 
 ## 快速入门  
 
