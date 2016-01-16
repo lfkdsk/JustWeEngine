@@ -497,6 +497,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 状态的优先级由加入顺序提供。
 
 效果图:  
+![state](https://github.com/lfkdsk/JustWeEngine/blob/master/art/statesprite.gif)    
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
