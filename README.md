@@ -10,7 +10,8 @@ An easy open source Android game engine.
 * 使用Gradle构建:  
   * Step 1. Add the JitPack repository to your build file  
   Add it in your root build.gradle at the end of repositories:  
-  ``` java  
+  
+  ``` groovy  
   
     	allprojects {
 			repositories {
@@ -23,7 +24,8 @@ An easy open source Android game engine.
   
   * Step 2. Add the dependency  
   
-  ``` java
+  
+  ``` groovy
   
       dependencies {
 	        compile 'com.github.lfkdsk:JustWeEngine:v1.01'
@@ -435,6 +437,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 
 ``` 
 
+
 ### 5.工具类  
    * `NetUtils` 网络状态工具类
    * `PicUtils` 图片处理工具类
@@ -447,9 +450,12 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 ### 6.音频系统
 `可在引擎内进行编曲的音频系统，敬请期待!`
 
+
 ### 7.使用网络
 网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
 按照介绍操作就可以通过：
+ 
+``` java
   
         server.apply("/lfk", new OnWebStringResult() {
             @Override
@@ -464,6 +470,8 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
                 return new File(WebServerDefault.WebServerFiles+"/"+"welcome.html");
             }
         });
+        
+```
         
 这样的简单方式绑定路由，而get／post数据可以直接使用http协议的get和post进行。
 ##有问题反馈

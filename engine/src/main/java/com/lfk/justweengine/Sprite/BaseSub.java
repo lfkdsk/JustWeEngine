@@ -1,6 +1,7 @@
 package com.lfk.justweengine.Sprite;
 
 import android.graphics.RectF;
+import android.renderscript.Float2;
 
 /**
  * 游戏中的抽象基类
@@ -9,6 +10,8 @@ import android.graphics.RectF;
  *         Created by liufengkai on 15/12/4.
  */
 public abstract class BaseSub {
+    public Float2 s_position;
+
     public abstract boolean getAlive();
 
     public abstract void draw();

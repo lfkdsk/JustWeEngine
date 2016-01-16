@@ -42,7 +42,7 @@ public class BaseSprite extends BaseSub {
     // 画笔
     private Paint s_paint;
     // 位置 以左上角为准
-    public Float2 s_position;
+//    public Float2 s_position;
     // 宽度高度
     private int s_width, s_height;
     // 帧动画的列
@@ -627,7 +627,7 @@ public class BaseSprite extends BaseSub {
      *
      * @param anim
      */
-    private void doAnimation(BaseAnim anim) {
+    protected void doAnimation(BaseAnim anim) {
         switch (anim.animType) {
             case FRAME:
                 s_frame = anim.adjustFrame(s_frame);
