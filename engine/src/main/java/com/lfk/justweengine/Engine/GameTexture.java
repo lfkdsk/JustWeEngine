@@ -4,20 +4,26 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.lfk.justweengine.FrameWork.IO.GameIO;
+
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
  * 封装图片的获取
- * Created by liufengkai on 15/11/27.
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 15/11/27.
  */
 public class GameTexture {
     private Context e_context;
     private Bitmap e_bitmap;
+    private GameIO gameIO;
 
     public GameTexture(Context e_context) {
         this.e_context = e_context;
-        e_bitmap = null;
+        this.e_bitmap = null;
+        this.gameIO = new GameIO(e_context);
     }
 
     public Bitmap getBitmap() {
@@ -35,7 +41,7 @@ public class GameTexture {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         try {
-            inputStream = e_context.getAssets().open(filename);
+            inputStream = gameIO.readAsset(filename);
             e_bitmap = BitmapFactory.decodeStream(inputStream, null, options);
             inputStream.close();
         } catch (IOException e) {
@@ -62,7 +68,7 @@ public class GameTexture {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         try {
-            inputStream = e_context.getAssets().open(filename);
+            inputStream = gameIO.readAsset(filename);
             Bitmap temp = BitmapFactory.decodeStream(inputStream, null, options).copy(Bitmap.Config.ARGB_8888, true);
             inputStream.close();
             e_bitmap = Bitmap.createBitmap(temp, x, y, width, height);
