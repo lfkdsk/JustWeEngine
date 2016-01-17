@@ -28,7 +28,7 @@ An easy open source Android game engine.
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.01'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.02'
 	  }
 		
   ```
@@ -53,7 +53,7 @@ An easy open source Android game engine.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.01</version>
+	    <version>v1.02</version>
 	</dependency>
 	
   ```
@@ -66,7 +66,7 @@ An easy open source Android game engine.
 
 ## 详细使用文档
 
-[JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
+### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
