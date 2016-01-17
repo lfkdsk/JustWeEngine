@@ -41,7 +41,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private Class<?> Activity;
 
-    private String log;
+    private AfterCrashListener listener;
 
     /**
      * 获取单例
@@ -87,8 +87,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private boolean handleException(Throwable throwable) {
         if (throwable == null)
             return false;
+        if(listener != null)
+            listener.AfterCrash();
         collectDeviceInfo(context);
-        log = writeCrashInfoToFile(throwable);
+        writeCrashInfoToFile(throwable);
         restart(Activity);
         return true;
     }
@@ -121,7 +123,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
     }
 
-    private String writeCrashInfoToFile(Throwable ex) {
+    private void writeCrashInfoToFile(Throwable ex) {
         StringBuilder sb = new StringBuilder();
         sb.append("crash log by JustWeEngine \n");
         for (Map.Entry<String, String> entry : info.entrySet()) {
@@ -143,7 +145,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         String result = writer.toString();
         sb.append(result);
         writeLog(sb.toString());
-        return log;
     }
 
     private void writeLog(String log) {
@@ -175,5 +176,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,
                 restartIntent);
+    }
+
+    public void setAfterCrashListener(AfterCrashListener listener) {
+        this.listener = listener;
     }
 }
