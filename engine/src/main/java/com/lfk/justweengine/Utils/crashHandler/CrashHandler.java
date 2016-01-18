@@ -87,11 +87,12 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private boolean handleException(Throwable throwable) {
         if (throwable == null)
             return false;
-        if(listener != null)
+        if (listener != null)
             listener.AfterCrash();
         collectDeviceInfo(context);
         writeCrashInfoToFile(throwable);
-        restart(Activity);
+        if (Activity != null)
+            restart(Activity);
         return true;
     }
 
