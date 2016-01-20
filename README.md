@@ -60,9 +60,9 @@ An easy open source Android Native Game FrameWork.
 
 ## Engine in V1.02
 
-以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
-很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
-网络功能的Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
+A plane game Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
+Extra modules：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
+Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
 
 ## User Guidance 
 
