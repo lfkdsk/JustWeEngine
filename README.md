@@ -1,13 +1,13 @@
 # JustWeEngine - Android游戏框架
-An easy open source Android game engine.  
+An easy open source Android Native Game FrameWork.  
 ![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)  
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)  
-## 引擎核心类流程图  
+## Engine Flow Chart  
 ![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
-## 使用方法  
-* 引入Engine作为Library进行使用。
-* 引入"/jar"文件夹下的jar包。  
-* 使用Gradle构建:  
+## How To Use?  
+* Import Engine's module as Library.  
+* Import engine.jar in your project from "/jar".    
+* With Gradle:  
   * Step 1. Add the JitPack repository to your build file  
   Add it in your root build.gradle at the end of repositories:  
   
@@ -32,7 +32,7 @@ An easy open source Android game engine.
 	  }
 		
   ```
-* 使用Maven构建:  
+* With Maven:  
   * Step 1. Add the JitPack repository to your build file  
   
   ``` xml
@@ -58,22 +58,21 @@ An easy open source Android game engine.
 	
   ```
 
-## 引擎进入V1.02版本
+## Engine in V1.02
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
 网络功能的Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
 
-## 详细使用文档
+## User Guidence 
 
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
 
-##有问题反馈
-在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
-
-* 邮件:lfk_dsk@hotmail.com  
-* weibo: [@亦狂亦侠_亦温文](http://www.weibo.com/u/2443510260)  
-* 博客:  [刘丰恺](http://www.cnblogs.com/lfk-dsk/)  
+## Feedback    
+Please send your feedback as long as there occurs any inconvenience or problem. You can contact me with:
+* Email: lfk_dsk@hotmail.com  
+* Weibo: [@亦狂亦侠_亦温文](http://www.weibo.com/u/2443510260)  
+* Blog:  [刘丰恺](http://www.cnblogs.com/lfk-dsk/)  
 
 ## License
 
