@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Sprite;
+package com.lfk.justweengine.Drawable.Sprite;
 
 import com.lfk.justweengine.Anim.BaseAnim;
 import com.lfk.justweengine.Engine.Engine;
