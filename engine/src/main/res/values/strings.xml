@@ -1,3 +1,21 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">JustWeEngine</string>
+
+    <!--for BlueTooth-->
+    <string name="send">发送</string>
+    <string name="not_connected">未连接</string>
+    <string name="bt_not_enabled_leaving">未打开蓝牙</string>
+    <string name="title_connecting">连接中…</string>
+    <string name="title_connected_to">已连接<xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">未连接</string>
+    <string name="scanning">扫描设备</string>
+    <string name="select_device">选择设备连接</string>
+    <string name="none_paired">没有连接过设备</string>
+    <string name="none_found">找不到设备</string>
+    <string name="title_paired_devices">连接过的设备</string>
+    <string name="title_other_devices">其他可连接设备</string>
+    <string name="button_scan">搜索设备</string>
+    <string name="secure_connect">安全连接</string>
+    <string name="insecure_connect">非安全连接</string>
+    <string name="discoverable">允许他人扫描</string>
 </resources>
