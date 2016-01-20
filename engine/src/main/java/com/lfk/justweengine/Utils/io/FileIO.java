@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Engine.FrameWork.IO;
+package com.lfk.justweengine.Utils.io;
 
 import java.io.IOException;
 import java.io.InputStream;
