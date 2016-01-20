@@ -64,7 +64,7 @@ An easy open source Android Native Game FrameWork.
 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
 网络功能的Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
 
-## User Guidence 
+## User Guidance 
 
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
 
