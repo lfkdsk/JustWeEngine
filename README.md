@@ -68,6 +68,8 @@ Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer
 
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
 
+### [中文教程](info.md)
+
 ## Feedback    
 Please send your feedback as long as there occurs any inconvenience or problem. You can contact me with:
 * Email: lfk_dsk@hotmail.com  
