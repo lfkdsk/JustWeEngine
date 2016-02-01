@@ -62,6 +62,8 @@ public class BaseSprite extends BaseSub {
     // 动画结束的回调
     private DoAfterAnimation afterAnimation = null;
     private LinkedList<Rect> s_frame_rect;
+    private Rect s_dst;
+    private Rect src;
 
     /**
      * easy init
@@ -134,7 +136,8 @@ public class BaseSprite extends BaseSub {
             this.s_columns = 1;
         }
 
-//        s_dst = new Rect();
+        s_dst = new Rect();
+        src = new Rect();
 //        s_mat_translation = new Matrix();
 //        s_mat_scale = new Matrix();
 //        s_mat_rotate = new Matrix();
@@ -168,7 +171,7 @@ public class BaseSprite extends BaseSub {
         int v = (s_frame / s_columns) * s_height;
 
         // set rect
-        Rect src = new Rect(u, v, u + s_width, v + s_height);
+        src.set(u, v, u + s_width, v + s_height);
 
         // scale
         int x = (int) s_position.x;
@@ -176,7 +179,7 @@ public class BaseSprite extends BaseSub {
         int w = (int) (s_width * s_scale.x);
         int h = (int) (s_height * s_scale.y);
 
-        Rect s_dst = new Rect(x, y, x + w, y + h);
+        s_dst.set(x, y, x + w, y + h);
 
         // draw the frame
         s_paint.setAlpha(s_alpha);
@@ -228,7 +231,7 @@ public class BaseSprite extends BaseSub {
             int y = (int) s_position.y;
             int w = (int) (s_width * s_scale.x);
             int h = (int) (s_height * s_scale.y);
-            Rect s_dst = new Rect(x, y, x + w, y + h);
+            s_dst.set(x, y, x + w, y + h);
             s_paint.setAlpha(s_alpha);
             s_canvas.drawBitmap(s_texture.getBitmap(),
                     s_frame_rect.get(s_frame),
