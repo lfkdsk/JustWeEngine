@@ -81,7 +81,7 @@ An easy open source Android game engine.
 * [6.音频系统](#6音频系统)  
 * [7.使用网络](#7使用网络)  
 * [8.使用状态机精灵](#8使用状态机精灵)  
-* [9.CrashHandler崩溃守护](#9CrashHandler崩溃守护)
+* [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
 * [10.使用蓝牙](#10使用蓝牙)
 
 
