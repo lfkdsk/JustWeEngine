@@ -94,7 +94,7 @@ public class BlueToothServer {
         context.registerReceiver(mReceiver, filter);
     }
 
-    private void unBindService() {
+    public void unBindService() {
         if (mChatService != null) mChatService.stop();
 
         if (mBluetoothAdapter != null) {

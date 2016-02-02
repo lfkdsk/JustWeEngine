@@ -28,7 +28,7 @@ An easy open source Android game engine.
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.01'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.02'
 	  }
 		
   ```
@@ -53,12 +53,12 @@ An easy open source Android game engine.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.01</version>
+	    <version>v1.02</version>
 	</dependency>
 	
   ```
 
-## 引擎进入V1.01版本
+## 引擎进入V1.02版本
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
@@ -83,6 +83,7 @@ An easy open source Android game engine.
 * [8.使用状态机精灵](#8使用状态机精灵)  
 * [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
 * [10.使用蓝牙](#10使用蓝牙)
+  *[10.1.开启、关闭服务](#101开启、关闭服务)
 
 
 ## 进阶应用
@@ -535,6 +536,41 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
 
 ### 10.使用蓝牙
 
+#### 10.1开启、关闭服务
+使用蓝牙需要新建`BlueToothServer`对象，传入上下文和MessageBack接口。
+
+``` 
+
+        blueToothServer = new BlueToothServer(this, new OnMessageBack() {
+            @Override
+            public void getMessage(String msg) {
+                Log.e("L", msg);
+            }
+
+            @Override
+            public void sendMessage(String msg) {
+                Log.e("L", msg);
+            }
+
+            @Override
+            public void getDevice(ArrayList<String> msg) {
+                Log.e("L", msg.size() + "");
+            }
+        });
+		
+		// 使用如下语句进行初始化
+        blueToothServer.init();
+
+```  
+
+通过MessageBack接口可以接收到发送、接收、以及扫描设备信息，采取对应操作就可以获得数据。
+
+关闭服务时请使用
+#### 10.2扫描设备 
+使用`blueToothServer.doDiscovery();`进行设备扫描，返回结果在OnMessageBack()接口的
+getDevice()方法接收。
+使用`blueToothServer.ensureDiscoverable();`允许被扫描。
+使用`blueToothServer.getPairedDevices();`返回已配对的设备。
 
 ### 允许玩家绘制
 可接受用户的绘制输入，并以之生成精灵、背景、或其他对象：[如何使用？](https://github.com/lfkdsk/JustWeTools#paintview画图工具)  
