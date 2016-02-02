@@ -84,6 +84,8 @@ An easy open source Android game engine.
 * [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
 * [10.使用蓝牙](#10使用蓝牙)
   *[10.1.开启、关闭服务](#101开启、关闭服务)
+  *[10.2.扫描设备](#102扫描设备)
+  *[10.3.发送消息](#103发送消息)
 
 
 ## 进阶应用
@@ -562,15 +564,21 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
         blueToothServer.init();
 
 ```  
+服务初始化之后如未打开蓝牙，系统会自动提示应用要求蓝牙开启。
 
 通过MessageBack接口可以接收到发送、接收、以及扫描设备信息，采取对应操作就可以获得数据。
 
-关闭服务时请使用
+关闭服务时请使用`blueToothServer.unBindService();`关闭服务。
+
 #### 10.2扫描设备 
 使用`blueToothServer.doDiscovery();`进行设备扫描，返回结果在OnMessageBack()接口的
 getDevice()方法接收。
 使用`blueToothServer.ensureDiscoverable();`允许被扫描。
-使用`blueToothServer.getPairedDevices();`返回已配对的设备。
+使用`blueToothServer.getPairedDevices();`返回已配对的设备列表。
+
+#### 10.3发送消息
+在配对成功之后就可以使用`blueToothServer.sendMessage(String msg);`发送消息了。
+同时，消息的接收也可以从getMessage()接口中获得。
 
 ### 允许玩家绘制
 可接受用户的绘制输入，并以之生成精灵、背景、或其他对象：[如何使用？](https://github.com/lfkdsk/JustWeTools#paintview画图工具)  
