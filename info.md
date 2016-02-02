@@ -578,12 +578,11 @@ getDevice()方法接收。
 
 #### 10.3发送消息
 在配对成功之后就可以使用`blueToothServer.sendMessage(String msg);`发送消息了。
-同时，消息的接收也可以从getMessage()接口中获得。
+同时，消息的接收也可以从getMessage()接口中获得。  
+
 
 ### 允许玩家绘制
 可接受用户的绘制输入，并以之生成精灵、背景、或其他对象：[如何使用？](https://github.com/lfkdsk/JustWeTools#paintview画图工具)  
-
-![drawer](https://github.com/lfkdsk/JustWeTools/blob/master/picture/gif.gif)  
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
