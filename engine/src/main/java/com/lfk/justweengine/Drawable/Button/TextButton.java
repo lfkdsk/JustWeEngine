@@ -32,7 +32,7 @@ public class TextButton extends BaseButton {
     private void init() {
         b_text = "";
         b_text_Color = Color.WHITE;
-        b_button_Color = Color.BLACK;
+        b_button_Color = Color.TRANSPARENT;
         b_zoomCenter = false;
         b_firstInit = false;
         b_position = new Point(110, 110);
@@ -102,6 +102,7 @@ public class TextButton extends BaseButton {
 
     public void setButtonColor(int button_Color) {
         this.b_button_Color = button_Color;
+        this.paint.setColor(button_Color);
     }
 
 
@@ -122,7 +123,7 @@ public class TextButton extends BaseButton {
         this.b_text = b_text;
     }
 
-    public void setPosition(int x,int y){
+    public void setPosition(int x, int y) {
         this.b_position.x = x;
         this.b_position.y = y;
     }

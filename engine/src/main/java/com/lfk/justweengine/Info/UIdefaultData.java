@@ -36,4 +36,7 @@ public class UIdefaultData {
     public static float scale;
 
     public static Point center;
+
+    public static float defaultMusicVolume = 10;
+
 }
