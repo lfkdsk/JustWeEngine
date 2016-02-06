@@ -1,7 +1,8 @@
 # JustWeEngine - Android游戏框架
 An easy open source Android Native Game FrameWork.   
 ![logo](art/justwe.png)  
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)  
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)[ ![](https://jitpack.io/v/lfkdsk/JustWeEngine.svg)](https://jitpack.io/#lfkdsk/JustWeEngine)
+
 ## 引擎核心类流程图  
 ![engine](art/engine.jpg)  
 ## 使用方法  
@@ -527,6 +528,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 ```
 
 使用`player.play();`进行播放。
+
 
 ### 7.使用网络
 网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
