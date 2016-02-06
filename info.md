@@ -1,9 +1,9 @@
 # JustWeEngine - Android游戏框架
-An easy open source Android game engine.  
-![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)  
+An easy open source Android Native Game FrameWork.   
+![logo](art/justwe.png)  
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)  
 ## 引擎核心类流程图  
-![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
+![engine](art/engine.jpg)  
 ## 使用方法  
 * 引入Engine作为Library进行使用。
 * 引入"/jar"文件夹下的jar包。  
@@ -22,13 +22,13 @@ An easy open source Android game engine.
    	
   ```
   
-  * Step 2. Add the dependency  
+  * Step 2. Add the dependency  on
   
   
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.02'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.03'
 	  }
 		
   ```
@@ -53,12 +53,12 @@ An easy open source Android game engine.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.02</version>
+	    <version>v1.03</version>
 	</dependency>
 	
   ```
 
-## 引擎进入V1.02版本
+## 引擎进入V1.03版本
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
@@ -79,15 +79,18 @@ An easy open source Android game engine.
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 * [6.音频系统](#6音频系统)  
+	* [6.1播放短音效](#61播放短音效)
+	* [6.2播放音频](#62播放音频)
+	* [6.3通过短音效编曲](#63通过短音效编曲)
 
 ## 进阶应用
 * [7.使用网络](#7使用网络)  
 * [8.使用状态机精灵](#8使用状态机精灵)  
 * [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
 * [10.使用蓝牙](#10使用蓝牙)
-    * [10.1.开启、关闭服务](#101开启关闭服务)
-    * [10.2.扫描设备](#102扫描设备)
-    * [10.3.发送消息](#103发送消息)  
+    * [10.1开启、关闭服务](#101开启关闭服务)
+    * [10.2扫描设备](#102扫描设备)
+    * [10.3发送消息](#103发送消息)  
     
 ## 拓展功能
 * [允许玩家绘制](#允许玩家绘制)
@@ -162,7 +165,7 @@ An easy open source Android game engine.
     
 ```  
 效果图：  
-![text](https://github.com/lfkdsk/JustWeEngine/blob/master/art/printer.png)  
+![text](art/printer.png)  
 
 #### 1.3绘制图片：
 建议图片存放在Asset中：  
@@ -172,7 +175,7 @@ An easy open source Android game engine.
 	texture.draw(canvas, 100, 100);
 ```  
 效果图：    
-![pic](https://github.com/lfkdsk/JustWeEngine/blob/master/art/pic.png)  
+![pic](art/pic.png)  
 另外也可使用`loadFromAssetStripFrame`从一个大的图片中取出对应位置的图片。  
 
 ``` java
@@ -192,8 +195,8 @@ An easy open source Android game engine.
                                            int width, int height)
 ```  
 比如可以通过这四个参数把这个小飞机取出来： 
-![back](https://github.com/lfkdsk/JustWeEngine/blob/master/art/back.png)  
-![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/ship.png)  
+![back](art/back.png)  
+![ship](art/ship.png)  
 PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，大家可以一试。  
 
 #### 1.4使用精灵：
@@ -207,7 +210,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ```
   2.初始化连续帧动画：  
   连续帧的初始化需要这样的连续帧图片:  
-  ![zombie](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.png)
+  ![zombie](art/zombie.png)
   
   ``` java 
   
@@ -225,7 +228,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   ```
   
   效果图:  
-  ![zombiegif](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zombie.gif)  
+  ![zombiegif](art/zombie.gif)  
   3.使用从大图取出的多帧图片： 
   ``` java  
   
@@ -243,7 +246,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
   ```
   效果图(两帧图片不断切换):  
-  ![ship](https://github.com/lfkdsk/JustWeEngine/blob/master/art/ship.gif)  
+  ![ship](art/ship.gif)  
 
   4.一些重要的其他设定：
     
@@ -305,9 +308,9 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 
   ``` 
   效果图:  
-  ![texturebutton](https://github.com/lfkdsk/JustWeEngine/blob/master/art/Texturebutton.png)  
+  ![texturebutton](art/Texturebutton.png)  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
-  ![buttons](https://github.com/lfkdsk/JustWeEngine/blob/master/art/buttons.jpg)  
+  ![buttons](art/buttons.jpg)  
   
   2.TextButton:  
   
@@ -322,7 +325,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  
   ```
   效果图：  
-![button](https://github.com/lfkdsk/JustWeEngine/blob/master/art/singlebutton.png)  
+![button](art/singlebutton.png)  
 
 ### 2.动画系统  
   目前的动画系统可以使用已经封装好的继承了BaseAnimation的动画，也可以继承BaseAnim进行自我定义动画类进行使用。  
@@ -357,7 +360,7 @@ AnimType中保存了Animation的应用类型。
 ```
 
 效果图:  
-![fly](https://github.com/lfkdsk/JustWeEngine/blob/master/art/fly.gif)  
+![fly](art/fly.gif)  
 
 #### 2.2绑定在Button上的动画类  
 BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
@@ -378,7 +381,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	
 ```
 效果图:  
-![zoom](https://github.com/lfkdsk/JustWeEngine/blob/master/art/zoom.gif)    
+![zoom](art/zoom.gif)    
 
 为Button设定颜色动画:  
 
@@ -391,7 +394,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 
 ```
 效果图:  
-![color](https://github.com/lfkdsk/JustWeEngine/blob/master/art/button.gif)    
+![color](art/button.gif)    
 
 ### 3.物体分组碰撞检测和死亡判定
 使用设置ID和Name进行物体分组，通过物体分组，框架核心类会对对象进行分类处理。
@@ -427,7 +430,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 其中`getOffender()`获得与之碰撞的对象，通过`getIdentifier()`获取设定的对象分组，实行逻辑判断。
 开启Debug模式会看见碰撞线。  
 效果图:  
-![debug](https://github.com/lfkdsk/JustWeEngine/blob/master/art/co.png)
+![debug](art/co.png)
 ### 4.屏幕扫描模式  
 屏幕扫描模式是用来优先响应屏幕点击、Button点击、和多点触控而设的，放置在不同情况下都能优化屏幕的刷新。  
 ``` java
@@ -460,9 +463,70 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
    * `SpUtils` Sp简化工具类（`可存储list和map`）
    * `ValidatorsUtils` 正则表达式处理类  
 
-### 6.音频系统
-`可在引擎内进行编曲的音频系统，敬请期待!`
+### 6.音频系统  
+#### 6.1播放短音效 
+播放短音效，首先初始化`SoundManager`用以加载音效。  
+``` java
 
+	// 接收实例和Manager的尺寸
+    SoundManager manager = new SoundManager(this, 5);
+    // 从assets加载音频 同时加载路径也会作为音效名进行存储
+	manager.addSound("mic/open.mid");
+	// 通过加载名进行播放
+	manager.play("mic/open.mid");
+	
+	
+```
+
+完成以上步骤就可以播放了，当然尽量只向其中放置较短的音效，如背景音乐的长音频，请见播放音频。  
+
+``` java
+
+	public void removeSound(String musicName) // 移除
+	public void play(String musicName, float volume) // 播放 ＋ 音量
+	public boolean containSoundID(int soundID) // 判断音频是否存在
+	public int getSoundID(String soundName)  // 获取ID
+	...
+
+
+```  
+#### 6.2播放音频  
+播放音频适合例如背景音乐一样的音乐。  
+
+``` java  
+
+	// 传入两个参数 上下文和文件名
+	MusicPlayer player = new MusicPlayer(this, "mic/open.mp3");
+    player.play();
+
+```  
+以上的就能实现播放了，下面还有一些其他的方法。
+
+``` java  
+
+	public void dispose() // 清理
+	public void setLooping(boolean isLooping) // 是否循环
+	public void setVolume(float volume) // 设定音量
+	...
+	
+```  
+
+#### 6.3通过短音效编曲  
+从`SoundManager`中导入多段音频，快速播放达成音效的效果。
+
+``` java 
+
+    SoundManager manager = new SoundManager(this, 5);
+    manager.addSound("mic/1.mid");
+    manager.addSound("mic/2.mid");
+    SoundPlayer player = new SoundPlayer(manager, 500, 16);
+    player.addSound("mic/1.mid");
+    player.addSound("mic/2.mid");
+    ... 
+
+```
+
+使用`player.play();`进行播放。
 
 ### 7.使用网络
 网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
@@ -507,7 +571,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 状态的优先级由加入顺序提供。
 
 效果图:  
-![state](https://github.com/lfkdsk/JustWeEngine/blob/master/art/statesprite.gif)    
+![state](art/statesprite.gif)    
 
 ### 9.CrashHandler崩溃守护  
 CrashHandler用于处理游戏的意外崩溃事件，初始化推荐在Application中进行。

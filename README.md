@@ -28,7 +28,7 @@ An easy open source Android Native Game FrameWork.
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.02'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.03'
 	  }
 		
   ```
@@ -53,22 +53,22 @@ An easy open source Android Native Game FrameWork.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.02</version>
+	    <version>v1.03</version>
 	</dependency>
 	
   ```
 
-## Engine in V1.02
+## Engine in V1.03
 
 A plane game Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 Extra modules：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
 Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
 
-## User Guidance 
+## User Guidance  
+
+### [中文教程](info.md)  
 
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
-
-### [中文教程](info.md)
 
 ## Feedback    
 Please send your feedback as long as there occurs any inconvenience or problem. You can contact me with:
