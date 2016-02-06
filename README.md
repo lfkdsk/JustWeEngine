@@ -1,9 +1,10 @@
 # JustWeEngine - Android游戏框架
 An easy open source Android Native Game FrameWork.  
-![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)  
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903)  
+![logo](art/justwe.png)  
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903) [![](https://jitpack.io/v/lfkdsk/JustWeEngine.svg)](https://jitpack.io/#lfkdsk/JustWeEngine)
+
 ## Engine Flow Chart  
-![engine](https://github.com/lfkdsk/JustWeEngine/blob/master/art/engine.jpg)  
+![engine](art/engine.jpg)  
 ## How To Use?  
 * Import Engine's module as Library.  
 * Import engine.jar in your project from "/jar".    
