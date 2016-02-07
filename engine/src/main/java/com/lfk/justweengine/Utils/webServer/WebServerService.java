@@ -16,17 +16,21 @@ import com.lfk.justweengine.R;
 
 
 /**
- * Service for Android
+ * WebServerService for Android
  *
  * @author liufengkai
  *         Created by liufengkai on 16/1/6.
  */
 public class WebServerService extends Service {
+    // threads translate through this handler
     private WebServer.MessageHandler logResult;
+    // two follows about notification
     private NotificationManager notificationManager;
     private Notification notification;
     private final IBinder mBinder = new LocalBinder();
+    // socket thread object
     private Servers webServers;
+    // engine context
     private static Activity engine;
     private PendingIntent contentIntent;
     private boolean IsRunning;
@@ -51,6 +55,11 @@ public class WebServerService extends Service {
         return mBinder;
     }
 
+    /**
+     * update notification
+     *
+     * @param text update message on notification
+     */
     private void updateNotification(String text) {
         contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, engine.getClass()), 0);
         Notification.Builder builder = new Notification.Builder(engine)
@@ -75,14 +84,22 @@ public class WebServerService extends Service {
         }
     }
 
+    /**
+     * start server
+     *
+     * @param logResult handler to translate message
+     * @param port      port in socket
+     */
     public void startServer(WebServer.MessageHandler logResult, int port) {
         this.logResult = logResult;
         // running
         setIsRunning(true);
 
+        // get WifiManager
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
 
+        // set IP
         WebServerDefault.setWebServerIp(WebServerDefault.intToIp(wifiInfo.getIpAddress()));
         // if not in wifi
         if (wifiInfo.getSupplicantState() != SupplicantState.COMPLETED) {
@@ -94,6 +111,7 @@ public class WebServerService extends Service {
             }
         }
 
+        // Start socket thread
         webServers = new Servers(engine.getApplicationContext(), logResult, port);
         webServers.start();
 
@@ -103,13 +121,17 @@ public class WebServerService extends Service {
 
     public void stopServer() {
         setIsRunning(false);
-        if(webServers != null) {
+        if (webServers != null) {
             webServers.stopServer();
             webServers.interrupt();
         }
     }
 
     public void setIsRunning(boolean isRunning) {
-        IsRunning = isRunning;
+        this.IsRunning = isRunning;
+    }
+
+    public boolean isRunning() {
+        return IsRunning;
     }
 }

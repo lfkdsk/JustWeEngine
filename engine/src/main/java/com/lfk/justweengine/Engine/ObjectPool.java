@@ -28,6 +28,11 @@ public class ObjectPool<T> {
 
     private final int maxSize;
 
+    /**
+     * 新建对象
+     *
+     * @return object
+     */
     public T newObject() {
         T object = null;
         if (freeObjects.size() == 0) {
@@ -37,14 +42,21 @@ public class ObjectPool<T> {
         return object;
     }
 
+    /**
+     * 释放对象
+     *
+     * @param object
+     */
     public void free(T object) {
         if (freeObjects.size() < maxSize)
             freeObjects.add(object);
     }
 
+    /**
+     * 完全释放
+     */
     public void clear() {
         freeObjects.clear();
     }
-
 
 }

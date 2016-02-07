@@ -10,20 +10,40 @@ import com.lfk.justweengine.Engine.Engine;
 import com.lfk.justweengine.Utils.tools.DisplayUtils;
 
 /**
- * Created by liufengkai on 15/12/12.
+ * TextButton
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 15/12/12.
  */
 public class TextButton extends BaseButton {
+    // text color / button color
     private int b_text_Color, b_button_Color;
+    // text
     private String b_text;
+    // zoom in center
     private boolean b_zoomCenter, b_firstInit;
     private Paint b_textPaint;
     private float b_textWidth, b_singleWidth;
 
+    /**
+     * TextButton
+     *
+     * @param b_engine engine context
+     * @param name     textButton name
+     */
     public TextButton(Engine b_engine, String name) {
         super(b_engine, name);
         init();
     }
 
+    /**
+     * TextButton
+     *
+     * @param b_engine engine context
+     * @param b_width  w
+     * @param b_height h
+     * @param name     textButton name
+     */
     public TextButton(Engine b_engine, int b_width, int b_height, String name) {
         super(b_engine, b_width, b_height, name);
         init();

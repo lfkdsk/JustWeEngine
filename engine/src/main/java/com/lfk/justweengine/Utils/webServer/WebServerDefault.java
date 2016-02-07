@@ -6,16 +6,17 @@ import android.os.Environment;
 import java.io.File;
 
 /**
+ * WebServerDefault Default message about Web
  * Created by liufengkai on 16/1/6.
  */
 public class WebServerDefault {
-
+    // default file local
     public static final String WebServerFiles = Environment
             .getExternalStorageDirectory() + "/JustWeWebServer";
 
     public static final String WebServerServiceConnected = "Service connected";
 
-    public static final String WebServerServiecDisconnected = "Service disconnected";
+    public static final String WebServerServiceDisconnected = "Service disconnected";
 
     public static final int WebDefaultPort = 8080;
 
