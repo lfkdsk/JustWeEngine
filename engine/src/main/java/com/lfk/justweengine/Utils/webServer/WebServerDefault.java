@@ -7,7 +7,9 @@ import java.io.File;
 
 /**
  * WebServerDefault Default message about Web
- * Created by liufengkai on 16/1/6.
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/1/6.
  */
 public class WebServerDefault {
     // default file local
@@ -18,12 +20,14 @@ public class WebServerDefault {
 
     public static final String WebServerServiceDisconnected = "Service disconnected";
 
+    // default port
     public static final int WebDefaultPort = 8080;
 
     public static String getWebServerFiles() {
         return WebServerFiles;
     }
 
+    // get local IP
     public static String WebServerIp;
 
     public static Context context;
@@ -37,10 +41,10 @@ public class WebServerDefault {
     }
 
     /**
-     * 转换IP
+     * translate int to  IP
      *
-     * @param i Ip字符串
-     * @return 字符串
+     * @param i Ip int
+     * @return IP
      */
     public static String intToIp(int i) {
         return ((i) & 0xFF) + "." +

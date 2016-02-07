@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 public class Servers extends Thread {
     // listen to connect
     private ServerSocket serverSocket;
-    // log / error listener
+    // log / error handler listener
     private static WebServer.MessageHandler logResult;
     private Context context;
     private boolean IsRunning;

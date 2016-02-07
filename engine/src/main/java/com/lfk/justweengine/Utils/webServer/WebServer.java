@@ -68,7 +68,7 @@ public class WebServer {
             public void onServiceDisconnected(ComponentName name) {
                 webServerService = null;
                 if (logResult != null)
-                    logResult.OnResult(WebServerDefault.WebServerServiecDisconnected);
+                    logResult.OnResult(WebServerDefault.WebServerServiceDisconnected);
             }
         };
 
