@@ -29,7 +29,7 @@ public class ServiceUtils {
         }
 
         for (int i = 0; i < serviceList.size(); i++) {
-            if (serviceList.get(i).service.getClassName().equals(className) == true) {
+            if (serviceList.get(i).service.getClassName().equals(className)) {
                 isRunning = true;
                 break;
             }
@@ -43,7 +43,6 @@ public class ServiceUtils {
      *
      * @param context
      * @param clazz
-     * @param loginedUser
      */
     public static void startService(Context context, Class clazz, Intent intent) {
         if (!isServiceRunning(context, clazz.getName())) {
@@ -56,7 +55,6 @@ public class ServiceUtils {
      *
      * @param context
      * @param clazz
-     * @param loginedUser
      */
     public static void stopService(Context context, Class clazz) {
         if (isServiceRunning(context, clazz.getName())) {
