@@ -12,7 +12,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Created by liufengkai on 16/1/17.
+ * GameIO
+ * Read File
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/1/17.
  */
 public class GameIO implements FileIO {
     private Context context;
