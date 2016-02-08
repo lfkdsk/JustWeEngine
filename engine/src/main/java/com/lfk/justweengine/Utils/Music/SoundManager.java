@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * SoundManager
+ * SoundManager sound manger
  *
  * @author liufengkai
  *         Created by liufengkai on 16/2/5.
