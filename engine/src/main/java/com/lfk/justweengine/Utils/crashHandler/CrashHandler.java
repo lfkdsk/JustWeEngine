@@ -1,5 +1,6 @@
 package com.lfk.justweengine.Utils.crashHandler;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -24,7 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liufengkai on 16/1/16.
+ * CrashHandler
+ * Solve thread crash
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/1/16.
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private static final String TAG = "CrashHandler";
@@ -39,14 +44,15 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
 
+    // Restart activity
     private Class<?> Activity;
 
     private AfterCrashListener listener;
 
     /**
-     * 获取单例
+     * get CrashHandler Instance
      *
-     * @return
+     * @return CrashHandler
      */
     public static CrashHandler getInstance() {
         if (instance == null) {
@@ -64,6 +70,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      *
      * @param context
      */
+    @SuppressLint("SimpleDateFormat")
     public void init(Application context) {
         this.context = context;
         uncaughtExceptionHandler =
@@ -84,6 +91,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 .uncaughtException(thread, ex);
     }
 
+
     private boolean handleException(Throwable throwable) {
         if (throwable == null)
             return false;
@@ -96,6 +104,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         return true;
     }
 
+    /**
+     * Collect Device Info
+     *
+     * @param ctx context
+     */
     public void collectDeviceInfo(Context ctx) {
         try {
             PackageManager pm = ctx.getPackageManager();
@@ -124,12 +137,17 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
     }
 
+    /**
+     * Write crash info To File
+     *
+     * @param ex throwable message
+     */
     private void writeCrashInfoToFile(Throwable ex) {
         StringBuilder sb = new StringBuilder();
         sb.append("crash log by JustWeEngine \n");
         for (Map.Entry<String, String> entry : info.entrySet()) {
             sb.append(entry.getKey())
-                    .append("-->")
+                    .append("---------->")
                     .append(entry.getValue())
                     .append("\n");
         }
@@ -148,6 +166,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         writeLog(sb.toString());
     }
 
+    /**
+     * write log in file
+     *
+     * @param log log
+     */
     private void writeLog(String log) {
         File file = new File(CrashHandlerDefault.Log_Default_Path
                 + "/" + formatter.format(new Date()) + ".log");
@@ -161,6 +184,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
     }
 
+    /**
+     * restart Activity
+     *
+     * @param activity classZ
+     */
     private void restart(Class<?> activity) {
         try {
             Thread.sleep(1000);
