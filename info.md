@@ -604,7 +604,7 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
 #### 10.1开启、关闭服务
 使用蓝牙需要新建`BlueToothServer`对象，传入上下文和MessageBack接口。
 
-``` 
+``` java
 
         blueToothServer = new BlueToothServer(this, new OnMessageBack() {
             @Override
