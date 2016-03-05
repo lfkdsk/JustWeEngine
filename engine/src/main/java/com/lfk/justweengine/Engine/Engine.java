@@ -44,7 +44,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private int e_pauseCount;
     private Paint e_paintDraw, e_paintFont;
     private int e_numPoints;
-    private long e_prefferredFrameRate, e_sleepTime;
+    private long e_preferredFrameRate, e_sleepTime;
     private Typeface e_typeface;
     private Point[] e_touchPoints;
     private boolean e_touchModesAble;
@@ -91,8 +91,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_pauseCount = 0;
         e_paintFont = null;
         e_numPoints = 0;
-        e_prefferredFrameRate = 40;
-        e_sleepTime = 1000 / e_prefferredFrameRate;
+        e_preferredFrameRate = 40;
+        e_sleepTime = 1000 / e_preferredFrameRate;
         e_typeface = null;
         e_touchModesAble = true;
         e_touchNum = 5;
@@ -480,8 +480,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      * @param rate
      */
     public void setFrameRate(int rate) {
-        e_prefferredFrameRate = rate;
-        e_sleepTime = 1000 / e_prefferredFrameRate;
+        e_preferredFrameRate = rate;
+        e_sleepTime = 1000 / e_preferredFrameRate;
     }
 
     /**
