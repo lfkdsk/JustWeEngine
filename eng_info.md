@@ -94,7 +94,7 @@ Web Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)
     * [10.3Send Message](#103send-message)  
     
 ## Extend Method
-* [Draw by yourselves](#draw-by-your-selves)
+* [Draw by yourselves](#draw-by-yourselves)
 
 ### 1.Basic Function
 #### 1.1Extend Engine Class： 
