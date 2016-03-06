@@ -67,6 +67,8 @@ Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer
 
 ## User Guidance  
 
+### [English Guidance](eng_info.md)
+
 ### [中文教程](info.md)  
 
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
