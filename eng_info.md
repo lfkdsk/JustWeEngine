@@ -76,25 +76,25 @@ Web Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)
 * [2.Animation System](#2animation-system)
 	* [2.1Animation Bind on BaseSub](#21animation-bind-on-basesub)
 	* [2.2Animation Bind on Button](#22animation-bind-on-button)
-* [3.Object collision detection and death decision](#3Object-collision-detection-and-death-decision)
-* [4.Type of screen scan](#4Type-of-screenscan)
+* [3.Object collision detection and death decision](#3object-collision-detection-and-death-decision)
+* [4.Type of screen scan](#4type-of-screenscan)
 * [5.Tools](#5Tools)
-* [6.Music System](#6Music-System)  
-	* [6.1Play short Sound](#61Play-short-Sound)
-	* [6.2Play Music](#62PlayMusic)
-	* [6.3Compose with short sound](#63Compose-with-short-sound)
+* [6.Music System](#6music-system)  
+	* [6.1Play short Sound](#61play-short-sound)
+	* [6.2Play Music](#62play-music)
+	* [6.3Compose with short sound](#63compose-with-short-sound)
 
 ## Advanced Application
-* [7.Use Internet](#7Use-Internet)  
-* [8.Use State Machine Sprite](#8Use-State-Machine-Sprite)  
+* [7.Use Internet](#7use-internet)  
+* [8.Use State Machine Sprite](#8use-state-machine-sprite)  
 * [9.CrashHandler](#9crash-handler)
-* [10.Use BlueTooth](#10Use-BlueTooth)
-    * [10.1Open/Close Server](#101OpenClose-Server)
-    * [10.2Scan Devices](#102Scan-Devices)
-    * [10.3Send Message](#103Send-Message)  
+* [10.Use BlueTooth](#10use-bluetooth)
+    * [10.1Open/Close Server](#101openclose-server)
+    * [10.2Scan Devices](#102scan-devices)
+    * [10.3Send Message](#103send-message)  
     
 ## Extend Method
-* [Draw by yourselves](#Draw-by-your-selves)
+* [Draw by yourselves](#draw-by-your-selves)
 
 ### 1.Basic Function
 #### 1.1Extend Engine Class： 
