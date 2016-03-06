@@ -77,24 +77,24 @@ Web Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)
 	* [2.1Animation Bind on BaseSub](#21AnimationBindonBaseSub)
 	* [2.2Animation Bind on Button](#22AnimationBindonButton)
 * [3.Object collision detection and death decision](#3Objectcollisiondetectionanddeathdecision)
-* [4.Type of screen scan](#4Type of screen scan)
+* [4.Type of screen scan](#4Typeofscreenscan)
 * [5.Tools](#5Tools)
 * [6.Music System](#6Music System)  
-	* [6.1播放短音效](#61播放短音效)
-	* [6.2播放音频](#62播放音频)
-	* [6.3通过短音效编曲](#63通过短音效编曲)
+	* [6.1Play short Sound](#61PlayshortSound)
+	* [6.2Play Music](#62PlayMusic)
+	* [6.3Compose with short sound](#63Composewithshortsound)
 
-## 进阶应用
-* [7.使用网络](#7使用网络)  
-* [8.使用状态机精灵](#8使用状态机精灵)  
-* [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
-* [10.使用蓝牙](#10使用蓝牙)
-    * [10.1开启、关闭服务](#101开启关闭服务)
-    * [10.2扫描设备](#102扫描设备)
-    * [10.3发送消息](#103发送消息)  
+## Advanced Application
+* [7.Use Internet](#7UseInternet)  
+* [8.Use State Machine Sprite](#8UseStateMachineSprite)  
+* [9.CrashHandler](#9crashhandler)
+* [10.Use BlueTooth](#10UseBlueTooth)
+    * [10.1Open/Close Server](#101OpenCloseServer)
+    * [10.2Scan Devices](#102ScanDevices)
+    * [10.3Send Message](#103SendMessage)  
     
-## 拓展功能
-* [允许玩家绘制](#允许玩家绘制)
+## Extend Method
+* [Draw by yourselves](#Drawbyyourselves)
 
 ### 1.Basic Function
 #### 1.1Extend Engine Class： 
@@ -409,7 +409,7 @@ set ColorAnimation for Button:
 picture:  
 ![color](art/button.gif)    
 
-### 3.Object collision detection and death decision  
+### 3.Object collision detection and death decision:    
 Use ID and Name,we can make Sprites in different groups and have their own name,Engine core class will check different group.
 
 ``` java
@@ -420,46 +420,48 @@ Use ID and Name,we can make Sprites in different groups and have their own name,
 
 ```
 
-只要使用了`addToSpriteGroup(sprite)`的精灵对象就会自动进行碰撞检测，而对碰撞检测的结果会从
-`collision`中进行发回。
+If you use `addToSpriteGroup(sprite)` for a sprite, it will find collision automatically, and callback event at here.
+
 ``` java
 
     @Override
     public void collision(BaseSub baseSub) {
-    	// 获取与之碰撞的对象
+    	// get Sub collide with It.
         BaseSprite other = (BaseSprite) baseSub.getOffender();
-        // 获取ID分组处理
+        // get Group Name
         if (baseSub.getIdentifier() == BULLET &&
                 other.getIdentifier() == ENEMY) {
-            // 设定死亡
+            // set dead
             other.setAlive(false);
-            // 回收
+            // recycle or auto
             removeFromSpriteGroup(other);
             addToRecycleGroup(other);
         }
     }
     
 ```
-
-其中`getOffender()`获得与之碰撞的对象，通过`getIdentifier()`获取设定的对象分组，实行逻辑判断。
-开启Debug模式会看见碰撞线。  
-效果图:  
+ 
+You can use `getOffender()` get Sub collide with It,and use `getIdentifier()` get Group, then solve them.
+If you open Debug mode , you can see the collided line.  
+picture:  
 ![debug](art/co.png)
 ### 4.Type of screen scan  
-Type of screen scan是用来优先响应屏幕点击、Button点击、和多点触控而设的，放置在不同情况下都能优化屏幕的刷新。  
+It's used to give priority to the response of the screen, click, Button, and multi touch, and placed in different situations can optimize the screen refresh.  
+
 ``` java
 
-  	// 检测单一移动
+  	// find single touch
   	SINGLE,
-  	// 检测Button
+  	// find click button
     BUTTON,
-    // 多点检测
+    // find more than one touch
     FULL,
-    // 单击＋Button
+    // find single touch and click button
     SINGLE_BUTTON
   
-```
-并且通过如下方式进行设置:  
+```  
+
+set It like this:  
 
 ``` java
 	
@@ -478,55 +480,56 @@ Type of screen scan是用来优先响应屏幕点击、Button点击、和多点�
    * `ValidatorsUtils` Validators Tools  
 
 ### 6.Music System  
-#### 6.1播放短音效 
-播放短音效，首先初始化`SoundManager`用以加载音效。  
+#### 6.1Play short Sound 
+Play short Sound，Init `SoundManager` to load Sound .  
 ``` java
 
-	// 接收实例和Manager的尺寸
+	// Context and size of Manager
     SoundManager manager = new SoundManager(this, 5);
-    // 从assets加载音频 同时加载路径也会作为音效名进行存储
+    // get Sound from assets , and url will be save too.
 	manager.addSound("mic/open.mid");
-	// 通过加载名进行播放
+	// play with name
 	manager.play("mic/open.mid");
 	
 	
 ```
 
-完成以上步骤就可以播放了，当然尽量只向其中放置较短的音效，如背景音乐的长音频，请见播放音频。  
+You can play a sound like this, but please use short sound. If you want to play background music, please read following.
 
 ``` java
 
-	public void removeSound(String musicName) // 移除
-	public void play(String musicName, float volume) // 播放 ＋ 音量
-	public boolean containSoundID(int soundID) // 判断音频是否存在
-	public int getSoundID(String soundName)  // 获取ID
+	public void removeSound(String musicName) // remove
+	public void play(String musicName, float volume) // play with volume
+	public boolean containSoundID(int soundID) // find if exist
+	public int getSoundID(String soundName)  // get music ID
 	...
 
 
 ```  
-#### 6.2播放音频  
-播放音频适合例如背景音乐一样的音乐。  
+#### 6.2Play Music  
+Play Music fix play music such as background music.  
 
 ``` java  
 
-	// 传入两个参数 上下文和文件名
+	// context and url
 	MusicPlayer player = new MusicPlayer(this, "mic/open.mp3");
     player.play();
 
 ```  
-以上的就能实现播放了，下面还有一些其他的方法。
+
+some other methods.
 
 ``` java  
 
-	public void dispose() // 清理
-	public void setLooping(boolean isLooping) // 是否循环
-	public void setVolume(float volume) // 设定音量
+	public void dispose() // clear
+	public void setLooping(boolean isLooping) // is loop?
+	public void setVolume(float volume) // set volume
 	...
 	
 ```  
 
-#### 6.3通过短音效编曲  
-从`SoundManager`中导入多段音频，快速播放达成音效的效果。
+#### 6.3Compose with short sound  
+Set some sounds in `SoundManager` and play quickly to compose.
 
 ``` java 
 
@@ -540,12 +543,12 @@ Type of screen scan是用来优先响应屏幕点击、Button点击、和多点�
 
 ```
 
-使用`player.play();`进行播放。
+use `player.play();` to play.
 
 
-### 7.使用网络
-网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
-按照介绍操作就可以通过：
+### 7.Use Internet
+You can use Internet like this Demo.[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer).
+use like:
  
 ``` java
   
@@ -565,13 +568,13 @@ Type of screen scan是用来优先响应屏幕点击、Button点击、和多点�
         
 ```  
         
-这样的简单方式绑定路由，而get／post数据可以直接使用http协议的get和post进行。
+You can bind router like this way, if you want to send msg, you can straightly use HTTP Get/Post.
 
-### 8.使用状态机精灵
+### 8.Use State Machine Sprite
 
 ``` java
 
-    // 为状态机添加一个任务
+    // add a new state to sprite
     sprite.addState(new StateFinder() {
         @Override
         public boolean isContent(BaseSub baseSub) {
@@ -581,41 +584,41 @@ Type of screen scan是用来优先响应屏幕点击、Button点击、和多点�
 
 ```
   
-可以通过上述的addState方法为状态机精灵添加一个任务，只有当第一个参数接口回调的返回值为真的时候，
-才会去运行第二个参数提供的指令，如果返回为假则会运行第二项状态的判断。
-状态的优先级由加入顺序提供。
+You can add a task to the state machine wizard by the addState method above, and only when the return value of the first parameter interface callback is true,
+Will run second parameters to provide the instruction, if the return is false will run the second state of the judgment.
+The priority of the state is provided by the join order.
 
-效果图:  
+picture:  
 ![state](art/statesprite.gif)    
 
-### 9.CrashHandler崩溃守护  
-CrashHandler用于处理游戏的意外崩溃事件，初始化推荐在Application中进行。
-CrashHandler可以自动保存机型和异常日志，以便让开发者找到问题所在。
+### 9.CrashHandler  
+CrashHandler is used to deal with the unexpected crash event of the game, and the initialization is recommended in Application.
+CrashHandler can automatically save models and abnormal log in order to allow developers to find the problem.
 
 ``` java
 
     CrashHandler.getInstance().init(this);
 
 ```
-使用以上语句即可自动保存错误日志。
-还可以:
+You can use it like this.
+And:
 
 ``` java
         
-    CrashHandler.getInstance().setRestartActivity(MainActivity.class); // 重启的Activity
+    CrashHandler.getInstance().setRestartActivity(MainActivity.class); // restartActivity
     CrashHandler.getInstance().setAfterCrashListener(new AfterCrashListener() {
         @Override
-        public void AfterCrash() {  // 设定保存项目
+        public void AfterCrash() {  // set what to save
             ...
         }
     });    
 
 ```
 
-### 10.使用蓝牙
+### 10.Use BlueTooth
 
-#### 10.1开启、关闭服务
-使用蓝牙需要新建`BlueToothServer`对象，传入上下文和MessageBack接口。
+#### 10.1Open/Close Server
+BlueTooth Use requires a new `BlueToothServer` object, the incoming context and the MessageBack interface.
 
 ``` java
 
@@ -636,29 +639,27 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
             }
         });
 		
-		// 使用如下语句进行初始化
+		// init like this
         blueToothServer.init();
 
 ```  
-服务初始化之后如未打开蓝牙，系统会自动提示应用要求蓝牙开启。
+After the service is initialized, such as not to open the Bluetooth, the system will automatically prompt application of Bluetooth enabled.
+Through the MessageBack interface can be received to send, receive, and Devices Scan information, to take the corresponding operation can get data.
+When closing the service, please use `blueToothServer.unBindService (); ` off service.
 
-通过MessageBack接口可以接收到发送、接收、以及扫描设备信息，采取对应操作就可以获得数据。
+#### 10.2Scan Devices 
+Using `blueToothServer.doDiscovery (); ` device scan, return the results in the OnMessageBack () interface
+GetDevice () method to receive.
+Use `blueToothServer.ensureDiscoverable (); allow to be scanned.
+Use `blueToothServer.getPairedDevices (); return a list of paired devices.
 
-关闭服务时请使用`blueToothServer.unBindService();`关闭服务。
-
-#### 10.2扫描设备 
-使用`blueToothServer.doDiscovery();`进行设备扫描，返回结果在OnMessageBack()接口的
-getDevice()方法接收。
-使用`blueToothServer.ensureDiscoverable();`允许被扫描。
-使用`blueToothServer.getPairedDevices();`返回已配对的设备列表。
-
-#### 10.3发送消息
-在配对成功之后就可以使用`blueToothServer.sendMessage(String msg);`发送消息了。
-同时，消息的接收也可以从getMessage()接口中获得。  
+#### 10.3Send Message
+In the match after the success can be used `blueToothServer.sendMessage (String MSG);` Send Message.
+At the same time, the message received from the getMessage (Interface) can also be obtained.
 
 
-### 允许玩家绘制
-可接受用户的绘制输入，并以之生成精灵、背景、或其他对象：[如何使用？](https://github.com/lfkdsk/JustWeTools#paintview画图工具)  
+### Draw by yourselves
+Can accept the user's drawing input, and to generate the wizard, background, or other objects：[How To Use？](https://github.com/lfkdsk/JustWeTools#paintview画图工具)  
 
 ## Feedback    
 Please send your feedback as long as there occurs any inconvenience or problem. You can contact me with:
