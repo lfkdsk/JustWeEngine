@@ -59,7 +59,7 @@ An easy open source Android Native Game FrameWork.
 	
   ```
 
-## Engine come to V1.03
+## Engine come to V1.04
 
 PlaneGame Demo：[Demo](https://github.com/lfkdsk/EngineDemo)  
 OtherTools：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
@@ -92,6 +92,9 @@ Web Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)
     * [10.1Open/Close Server](#101openclose-server)
     * [10.2Scan Devices](#102scan-devices)
     * [10.3Send Message](#103send-message)  
+* [11.SQLite DataBase](#11SQLite-DataBase)
+	* [11.1Create Table](#111Create-Table)
+    * [11.2ADD,DELETE,FIND,UPDATE](#112ADD,DELETE,FIND,UPDATE)
     
 ## Extend Method
 * [Draw by yourselves](#draw-by-yourselves)
@@ -656,6 +659,88 @@ Use `blueToothServer.getPairedDevices (); return a list of paired devices.
 #### 10.3Send Message
 In the match after the success can be used `blueToothServer.sendMessage (String MSG);` Send Message.
 At the same time, the message received from the getMessage (Interface) can also be obtained.
+
+### 11.SQLite DataBase
+
+SQLite use IOC FrameWork。
+
+#### 11.1Create Table
+
+Create Table should new a Class extend Node。  
+
+``` java  
+	
+	// Table name
+	@TableName(tableName = "lfkdsk")
+	public class User extends Node {
+
+	// INTEGER
+    @LabelName(autoincrement = true,
+            type = LabelName.Type.INTEGER,
+            columnName = "name",
+            generatedId = true)
+    private int name;
+	
+	// TEXT user_name
+    @LabelName(type = LabelName.Type.TEXT,
+            columnName = "user_name")
+    private String user_name;
+
+    public User(String user_name) {
+        super(user_name);
+        this.user_name = user_name;
+    }
+
+    public User(int name, String user_name) {
+        super(name, user_name);
+        this.name = name;
+        this.user_name = user_name;
+    }
+
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.name = name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+	}
+
+```
+
+
+``` java  
+
+	// new a database with this class and name
+    private DataBase dataBase = DataBase.initAndOpen("user", User.class);
+
+
+```
+
+#### 11.2ADD,DELETE,FIND,UPDATE
+
+``` java  
+
+	// add
+	database.insert(User user);
+	// find
+	database.get(int position);
+	// delete
+	database.delete(int position);
+	// update
+	database.update(User user);
+	...
+
+```
+
 
 
 ### Draw by yourselves

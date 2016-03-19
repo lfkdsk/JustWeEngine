@@ -59,7 +59,7 @@ An easy open source Android Native Game FrameWork.
 	
   ```
 
-## 引擎进入V1.03版本
+## 引擎进入V1.04版本
 
 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
@@ -92,7 +92,9 @@ An easy open source Android Native Game FrameWork.
     * [10.1开启、关闭服务](#101开启关闭服务)
     * [10.2扫描设备](#102扫描设备)
     * [10.3发送消息](#103发送消息)  
-    
+* [11.SQLite数据库](#11SQLite数据库)
+	* [11.1创建表](#111创建表)
+    * [11.2增删查改](#112增删查改)
 ## 拓展功能
 * [允许玩家绘制](#允许玩家绘制)  
 * [流程脚本](#流程脚本)
@@ -644,6 +646,87 @@ getDevice()方法接收。
 在配对成功之后就可以使用`blueToothServer.sendMessage(String msg);`发送消息了。
 同时，消息的接收也可以从getMessage()接口中获得。  
 
+### 11.SQLite数据库  
+
+SQLite使用了IOC框架。
+
+#### 11.1创建表
+
+新建的创建表需要继承Node并且写出注解类。  
+
+``` java  
+	
+	// 表名
+	@TableName(tableName = "lfkdsk")
+	public class User extends Node {
+
+	// 主键自增 INTEGER型
+    @LabelName(autoincrement = true,
+            type = LabelName.Type.INTEGER,
+            columnName = "name",
+            generatedId = true)
+    private int name;
+	
+	// TEXT型 栏名为user_name
+    @LabelName(type = LabelName.Type.TEXT,
+            columnName = "user_name")
+    private String user_name;
+
+	// 自增主键所以只需要提供其他信息
+    public User(String user_name) {
+        super(user_name);
+        this.user_name = user_name;
+    }
+
+    public User(int name, String user_name) {
+        super(name, user_name);
+        this.name = name;
+        this.user_name = user_name;
+    }
+
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.name = name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+	}
+
+```
+
+
+``` java  
+
+	// 通过这种方式获取数据库   表名
+    private DataBase dataBase = DataBase.initAndOpen("user", User.class);
+
+
+```
+
+#### 11.2增删查改
+
+``` java  
+
+	// add
+	database.insert(User user);
+	// find
+	database.get(int position);
+	// delete
+	database.delete(int position);
+	// update
+	database.update(User user);
+	...
+
+```
 
 ## 扩展功能
 
