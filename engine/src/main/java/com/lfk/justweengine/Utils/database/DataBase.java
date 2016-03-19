@@ -283,7 +283,7 @@ public class DataBase {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL("DROP TABLE IF EXISTS " + mDBMessage.TABLE_NAME);
         }
     }
 
