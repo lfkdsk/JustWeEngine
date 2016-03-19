@@ -93,8 +93,8 @@ Web Demo：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)
     * [10.2Scan Devices](#102scan-devices)
     * [10.3Send Message](#103send-message)  
 * [11.SQLite DataBase](#11SQLite-DataBase)
-	* [11.1Create Table](#111Create-Table)
-    * [11.2ADD,DELETE,FIND,UPDATE](#112ADD,DELETE,FIND,UPDATE)
+	* [11.1Create Table](#111create-table)
+    * [11.2ADD,DELETE,FIND,UPDATE](#112adddeletefindupdate)
     
 ## Extend Method
 * [Draw by yourselves](#draw-by-yourselves)
