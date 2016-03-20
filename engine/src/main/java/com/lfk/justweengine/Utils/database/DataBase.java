@@ -323,11 +323,11 @@ public class DataBase {
 
         if (clazz.isAnnotationPresent(TableName.class)) {
             TableName t = clazz.getAnnotation(TableName.class);
+            if (t.ifNotExist())
+                builder.append(" ").append("IF NOT EXISTS ");
             builder.append(t.tableName());
             // table name
             msg.TABLE_NAME = t.tableName();
-            if (t.ifNotExist())
-                builder.append(" ").append("IF NOT EXIST");
         }
 
         builder.append(" (");
