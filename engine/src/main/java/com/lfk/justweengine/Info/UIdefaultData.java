@@ -2,6 +2,7 @@ package com.lfk.justweengine.Info;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.Log;
 
@@ -22,6 +23,11 @@ public class UIdefaultData {
         screenHeight = context.getResources().getDisplayMetrics().heightPixels;
         center = new Point(screenWidth / 2, screenHeight / 2);
         centerInHorizontalX = screenWidth / 2;
+        float[] widths = new float[1];
+        // 获取单个汉字的宽度
+        globalPaint = new Paint();
+        globalPaint.getTextWidths("蛤", widths);
+        singleLetterSize = widths[0];
         Log.e("h" + screenHeight, "w" + screenWidth);
     }
 
@@ -38,5 +44,9 @@ public class UIdefaultData {
     public static Point center;
 
     public static float defaultMusicVolume = 10;
+
+    public static float singleLetterSize;
+
+    public static Paint globalPaint;
 
 }
