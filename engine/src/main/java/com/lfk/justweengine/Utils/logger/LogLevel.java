@@ -10,5 +10,8 @@ public enum LogLevel {
     /**
      * No log will be printed
      */
-    NONE
+    NONE,
+
+    VERBOSE, DEBUG, INFO, WARN, ERROR, FATAL, ASSERT
+
 }
