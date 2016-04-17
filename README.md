@@ -61,9 +61,10 @@ An easy open source Android Native Game FrameWork.
 
 ## Engine in V1.04
 
-A plane game Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
-Extra modules：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
-Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
+* A plane game Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
+* Extra modules：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
+* Demo for network：[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)  
+* StudioVSEclipse from [ice1000](https://github.com/ice1000)：[StudioVSEclipse](https://github.com/ice1000/StudioVSEclipse)  
 
 ## User Guidance  
 
