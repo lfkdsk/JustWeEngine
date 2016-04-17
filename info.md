@@ -29,7 +29,7 @@ An easy open source Android Native Game FrameWork.
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.04'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.05bate'
 	  }
 		
   ```
@@ -54,12 +54,12 @@ An easy open source Android Native Game FrameWork.
     <dependency>
 	    <groupId>com.github.lfkdsk</groupId>
 	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.04</version>
+	    <version>v1.05bate</version>
 	</dependency>
 	
   ```
 
-## 引擎进入V1.04版本
+## 引擎进入V1.05版本
 
 * 以之开发的微信打飞机游戏Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 * 很多额外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
