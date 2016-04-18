@@ -20,6 +20,7 @@ import java.io.Writer;
 import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     // Restart activity
     private Class<?> Activity;
 
-    private AfterCrashListener listener;
+    private ArrayList<AfterCrashListener> listener;
 
     /**
      * get CrashHandler Instance
@@ -78,6 +79,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         Thread.setDefaultUncaughtExceptionHandler(this);
 
         info = new HashMap<>();
+        listener = new ArrayList<>();
         formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         CrashHandlerDefault.init();
@@ -95,8 +97,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private boolean handleException(Throwable throwable) {
         if (throwable == null)
             return false;
-        if (listener != null)
-            listener.AfterCrash();
+        if (listener != null) {
+            for (int i = 0; i < listener.size(); i++) {
+                listener.get(i).AfterCrash();
+            }
+        }
         collectDeviceInfo(context);
         writeCrashInfoToFile(throwable);
         if (Activity != null)
@@ -207,7 +212,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 restartIntent);
     }
 
-    public void setAfterCrashListener(AfterCrashListener listener) {
-        this.listener = listener;
+    public void addCrashListener(AfterCrashListener listener) {
+        this.listener.add(listener);
     }
 }
