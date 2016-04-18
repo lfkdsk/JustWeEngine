@@ -610,7 +610,8 @@ And:
 ``` java
         
     CrashHandler.getInstance().setRestartActivity(MainActivity.class); // restartActivity
-    CrashHandler.getInstance().setAfterCrashListener(new AfterCrashListener() {
+    // add crash handler
+    CrashHandler.getInstance().addCrashListener(new AfterCrashListener() {
         @Override
         public void AfterCrash() {  // set what to save
             ...

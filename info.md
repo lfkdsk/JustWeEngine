@@ -595,7 +595,8 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
 ``` java
         
     CrashHandler.getInstance().setRestartActivity(MainActivity.class); // 重启的Activity
-    CrashHandler.getInstance().setAfterCrashListener(new AfterCrashListener() {
+    // 添加崩溃回调
+    CrashHandler.getInstance().addCrashListener(new AfterCrashListener() {
         @Override
         public void AfterCrash() {  // 设定保存项目
             ...
@@ -650,7 +651,7 @@ getDevice()方法接收。
 
 ### 11.SQLite数据库  
 
-SQLite使用了IOC框架。
+SQLite使用了IOC的模式。
 
 #### 11.1创建表
 
