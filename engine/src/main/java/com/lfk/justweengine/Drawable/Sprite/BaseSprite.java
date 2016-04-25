@@ -25,8 +25,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *         Created by liufengkai on 15/11/27.
  */
 public class BaseSprite extends BaseSub {
-    // 名称
-    private String s_name;
     // 死或生
     private boolean s_alive;
     // 是否可碰撞 / 是否检测过

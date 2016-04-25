@@ -12,6 +12,8 @@ import android.renderscript.Float2;
 public abstract class BaseSub {
     public Float2 s_position;
 
+    public String s_name;
+
     public abstract boolean getAlive();
 
     public abstract void draw();
