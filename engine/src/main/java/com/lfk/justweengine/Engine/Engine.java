@@ -249,14 +249,16 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             // update
             update();
 
-            for (BaseSub A : e_sprite_group) {
+            for (int i = 0; i < e_sprite_group.size(); i++) {
+                BaseSub A = e_sprite_group.get(i);
                 if (!A.getAlive()) continue;
 
                 if (!A.isCollidable()) continue;
 
                 if (A.isCollided()) continue;
 
-                for (BaseSub B : e_sprite_group) {
+                for (int j = 0; i < e_sprite_group.size(); j++) {
+                    BaseSub B = e_sprite_group.get(j);
                     if (!B.getAlive()) continue;
 
                     if (!B.isCollidable()) continue;
@@ -293,7 +295,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                 draw();
 
 
-                for (BaseSub baseSub : e_sprite_group) {
+                for (int k = 0; k < e_sprite_group.size(); k++) {
+                    BaseSub baseSub = e_sprite_group.get(k);
                     if (baseSub.getAlive()) {
                         baseSub.animation();
                         baseSub.draw();
@@ -317,7 +320,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             }
 
             // new collision
-            for (BaseSub baseSub : e_sprite_group) {
+            for (int l = 0; l < e_sprite_group.size(); l++) {
+                BaseSub baseSub = e_sprite_group.get(l);
                 if (!baseSub.getAlive()) {
                     e_sprite_recycle_group.add(baseSub);
                     e_sprite_group.remove(baseSub);
