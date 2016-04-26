@@ -1,5 +1,6 @@
 package com.lfk.justweengine.Utils.blueTooth;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -117,6 +118,7 @@ public class BlueToothServer {
     /**
      * handler for message
      */
+    @SuppressLint("HandlerLeak")
     private class BlueToothMsgHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
