@@ -46,7 +46,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
 
     // Restart activity
-    private Class<?> Activity;
+    private Class<?> Activity = null;
+
+    private String ActivityName = null;
 
     private ArrayList<AfterCrashListener> listener;
 
@@ -64,6 +66,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     public void setRestartActivity(Class<?> activity) {
         this.Activity = activity;
+    }
+
+    public void setActivityName(String activityName) {
+        ActivityName = activityName;
     }
 
     /**
@@ -106,6 +112,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         writeCrashInfoToFile(throwable);
         if (Activity != null)
             restart(Activity);
+        else if (ActivityName != null) {
+            restart(ActivityName);
+        }
         return true;
     }
 
@@ -201,6 +210,26 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             Log.e(TAG, "error : ", e);
         }
         Intent intent = new Intent(context.getApplicationContext(), activity);
+        PendingIntent restartIntent = PendingIntent.getActivity(
+                context.getApplicationContext(), 0, intent,
+                Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // 使用PendingIntent重启
+        AlarmManager mgr =
+                (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,
+                restartIntent);
+    }
+
+
+    private void restart(String className) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "error : ", e);
+        }
+        Intent intent = new Intent();
+        intent.setClassName(context.getApplicationContext(), className);
         PendingIntent restartIntent = PendingIntent.getActivity(
                 context.getApplicationContext(), 0, intent,
                 Intent.FLAG_ACTIVITY_CLEAR_TASK);

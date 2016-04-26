@@ -1,7 +1,10 @@
 package com.lfk.justweengine.Utils.database;
 
 /**
- * Created by liufengkai on 16/3/18.
+ * Demo for DataBase
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/3/18.
  */
 @TableName(tableName = "lfkdsk", ifNotExist = true)
 public class User extends Node {
