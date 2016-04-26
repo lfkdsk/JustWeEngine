@@ -210,15 +210,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             Log.e(TAG, "error : ", e);
         }
         Intent intent = new Intent(context.getApplicationContext(), activity);
-        PendingIntent restartIntent = PendingIntent.getActivity(
-                context.getApplicationContext(), 0, intent,
-                Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        // 使用PendingIntent重启
-        AlarmManager mgr =
-                (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,
-                restartIntent);
+        restart(intent);
     }
 
 
@@ -230,6 +222,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
         Intent intent = new Intent();
         intent.setClassName(context.getApplicationContext(), className);
+        restart(intent);
+    }
+
+    private void restart(Intent intent) {
         PendingIntent restartIntent = PendingIntent.getActivity(
                 context.getApplicationContext(), 0, intent,
                 Intent.FLAG_ACTIVITY_CLEAR_TASK);
