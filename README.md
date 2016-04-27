@@ -72,6 +72,8 @@ An easy open source Android Native Game FrameWork.
 
 ### [中文教程](info.md)  
 
+### [繁體中文教程](tw_info.md)  
+
 ### [JustWeEngine's WiKi](https://github.com/lfkdsk/JustWeEngine/wiki)
 
 ## Feedback    
