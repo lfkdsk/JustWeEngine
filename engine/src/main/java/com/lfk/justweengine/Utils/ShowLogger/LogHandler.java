@@ -152,5 +152,4 @@ public class LogHandler {
         darningTime = time;
     }
 
-
 }
