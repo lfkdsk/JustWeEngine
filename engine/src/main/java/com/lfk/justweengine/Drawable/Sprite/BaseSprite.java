@@ -1,6 +1,9 @@
 package com.lfk.justweengine.Drawable.Sprite;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -58,6 +61,9 @@ public class BaseSprite extends BaseSub {
     private LinkedList<Rect> s_frame_rect;
     private Rect s_dst;
     private Rect src;
+    private Matrix s_matrix, s_mat_scale, s_mat_rotate, s_mat_translation;
+    private Bitmap s_frameBitmap;
+    private Canvas s_frameCanvas;
 
     /**
      * easy init
@@ -132,12 +138,12 @@ public class BaseSprite extends BaseSub {
 
         s_dst = new Rect();
         src = new Rect();
-//        s_mat_translation = new Matrix();
-//        s_mat_scale = new Matrix();
-//        s_mat_rotate = new Matrix();
-//        s_matrix = new Matrix();
-//        s_frameBitmap = null;
-//        s_frameCanvas = null;
+
+        s_mat_translation = new Matrix();
+        s_mat_scale = new Matrix();
+        s_mat_rotate = new Matrix();
+        s_matrix = new Matrix();
+
         s_paint.setColor(UIdefaultData.sprite_default_color_paint);
     }
 
@@ -154,11 +160,11 @@ public class BaseSprite extends BaseSub {
             s_width = s_texture.getBitmap().getWidth();
             s_height = s_texture.getBitmap().getHeight();
         }
-//        // scratch bitmap
-//        if (s_frameBitmap == null) {
-//            s_frameBitmap = Bitmap.createBitmap(s_width, s_height, Bitmap.Config.ARGB_8888);
-//            s_frameCanvas = new Canvas(s_frameBitmap);
-//        }
+        // scratch bitmap
+        if (s_frameBitmap == null) {
+            s_frameBitmap = Bitmap.createBitmap(s_width, s_height, Bitmap.Config.ARGB_8888);
+            s_frameCanvas = new Canvas(s_frameBitmap);
+        }
 
         // calculate w/h in each frame
         int u = (s_frame % s_columns) * s_width;
@@ -166,35 +172,32 @@ public class BaseSprite extends BaseSub {
 
         // set rect
         src.set(u, v, u + s_width, v + s_height);
-
         // scale
-        int x = (int) s_position.x;
-        int y = (int) s_position.y;
         int w = (int) (s_width * s_scale.x);
         int h = (int) (s_height * s_scale.y);
-
-        s_dst.set(x, y, x + w, y + h);
-
+        s_dst.set(0, 0, w, h);
         // draw the frame
         s_paint.setAlpha(s_alpha);
-        s_canvas.drawBitmap(s_texture.getBitmap(), src, s_dst, s_paint);
+        s_frameBitmap.eraseColor(Color.TRANSPARENT);
+
+        s_frameCanvas.drawBitmap(s_texture.getBitmap(), src, s_dst, s_paint);
+
+        s_matrix.reset();
+
+        s_mat_scale.reset();
+        s_mat_rotate.reset();
+        s_mat_translation.reset();
+
+        s_mat_scale.setScale(s_scale.x, s_scale.y);
+        s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
+        s_mat_translation.setTranslate(s_position.x, s_position.y);
+
+        s_matrix.postConcat(s_mat_scale);
+        s_matrix.postConcat(s_mat_rotate);
+        s_matrix.postConcat(s_mat_translation);
 
         // update transform
-//        s_mat_scale = new Matrix();
-//        s_mat_scale.setScale(s_scale.x, s_scale.y);
-//
-//        s_mat_rotate = new Matrix();
-//        s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
-//
-//        s_mat_translation = new Matrix();
-//        s_mat_translation.setTranslate(s_position.x, s_position.y);
-//
-//        s_matrix = new Matrix(); //set to identity
-//        s_matrix.postConcat(s_mat_scale);
-//        s_matrix.postConcat(s_mat_rotate);
-//        s_matrix.postConcat(s_mat_translation);
-
-//        s_canvas.drawBitmap(s_frameBitmap, s_matrix, s_paint);
+        s_canvas.drawBitmap(s_frameBitmap, s_matrix, s_paint);
     }
 
     /**
