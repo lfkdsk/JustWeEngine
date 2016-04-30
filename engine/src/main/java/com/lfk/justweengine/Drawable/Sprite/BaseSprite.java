@@ -195,7 +195,6 @@ public class BaseSprite extends BaseSub {
         s_matrix.postConcat(s_mat_scale);
         s_matrix.postConcat(s_mat_rotate);
         s_matrix.postConcat(s_mat_translation);
-
         // update transform
         s_canvas.drawBitmap(s_frameBitmap, s_matrix, s_paint);
     }
