@@ -641,7 +641,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
      *
      * @param sprite
      */
-    protected void addToSpriteGroup(BaseSub sprite) {
+    public void addToSpriteGroup(BaseSub sprite) {
         e_sprite_group.add(sprite);
     }
 

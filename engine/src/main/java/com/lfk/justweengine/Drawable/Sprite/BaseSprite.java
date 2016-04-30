@@ -37,8 +37,6 @@ public class BaseSprite extends BaseSub {
     private GameTexture s_texture;
     // 画笔
     private Paint s_paint;
-    // 位置 以左上角为准
-//    public Float2 s_position;
     // 宽度高度
     private int s_width, s_height;
     // 帧动画的列
