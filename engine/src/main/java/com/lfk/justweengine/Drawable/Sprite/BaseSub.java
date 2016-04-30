@@ -3,6 +3,8 @@ package com.lfk.justweengine.Drawable.Sprite;
 import android.graphics.RectF;
 import android.renderscript.Float2;
 
+import com.lfk.justweengine.Engine.Engine;
+
 /**
  * 游戏中的抽象基类
  *
@@ -10,6 +12,9 @@ import android.renderscript.Float2;
  *         Created by liufengkai on 15/12/4.
  */
 public abstract class BaseSub {
+    // 传入的engine
+    protected Engine s_engine;
+
     public Float2 s_position;
 
     public String s_name;

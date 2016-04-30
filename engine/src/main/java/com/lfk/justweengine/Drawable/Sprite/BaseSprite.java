@@ -32,8 +32,6 @@ public class BaseSprite extends BaseSub {
     private BaseSub e_offender;
     private int e_identifier;
     private FrameType frameType;
-    // 传入的engine
-    private Engine s_engine;
     private Canvas s_canvas;
     // 图片
     private GameTexture s_texture;
