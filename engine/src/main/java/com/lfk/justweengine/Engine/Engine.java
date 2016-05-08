@@ -53,7 +53,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private int e_touchNum;
     private int e_backgroundColor;
     private boolean e_isFrameOpen;
-    //    private boolean isOpenDebug = false;
+    private boolean isOpenDebug;
+    private boolean e_openAllDebug;
     private TouchMode e_touch_Mode;
     private CopyOnWriteArrayList<BaseSub> e_sprite_group;
     private CopyOnWriteArrayList<BaseSub> e_sprite_recycle_group;
@@ -61,7 +62,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
     private HashMap<String, BaseButton> e_button_group;
     private boolean e_is_hit_button;
     private BaseButton e_hit_button = null;
-    private boolean isOpenDebug;
+
 
     /**
      * engine constructor
@@ -97,6 +98,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         e_typeface = null;
         e_touchModesAble = true;
         e_touchNum = 5;
+        e_openAllDebug = false;
         e_isFrameOpen = true;
         e_touch_Mode = TouchMode.SINGLE;
         e_backgroundColor = Color.BLACK;
@@ -304,6 +306,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                         baseSub.draw();
                     }
                     if (isOpenDebug && baseSub.isCollidable() && baseSub.isCollided()) {
+                        drawDebugLine(baseSub.getBounds());
+                    } else if (e_openAllDebug) {
                         drawDebugLine(baseSub.getBounds());
                     }
                 }
@@ -790,5 +794,13 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
             e_paintDraw.setStyle(Paint.Style.STROKE);
             e_canvas.drawRect(bound, e_paintDraw);
         }
+    }
+
+    public boolean isOpenAllDebug() {
+        return e_openAllDebug;
+    }
+
+    public void setOpenAllDebug(boolean e_openAllDebug) {
+        this.e_openAllDebug = e_openAllDebug;
     }
 }
