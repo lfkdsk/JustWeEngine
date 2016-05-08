@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -132,6 +133,9 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // default landscape
 //        setScreenOrientation(ScreenMode.LANDSCAPE);
+
+        // without it, screen will be black when init
+        this.getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
         init();
 
@@ -290,10 +294,8 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                     button.animation();
                     button.draw();
                 }
-                // draw
-                // ahead of draw concrete sub
+                // draw ahead of draw concrete sub
                 draw();
-
 
                 for (int k = 0; k < e_sprite_group.size(); k++) {
                     BaseSub baseSub = e_sprite_group.get(k);
@@ -302,9 +304,7 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
                         baseSub.draw();
                     }
                     if (isOpenDebug && baseSub.isCollidable() && baseSub.isCollided()) {
-                        e_paintDraw.setColor(Color.RED);
-                        e_paintDraw.setStyle(Paint.Style.STROKE);
-                        e_canvas.drawRect(baseSub.getBounds(), e_paintDraw);
+                        drawDebugLine(baseSub.getBounds());
                     }
                 }
 
@@ -769,5 +769,26 @@ public abstract class Engine extends Activity implements Runnable, View.OnTouchL
 
     public void setTouchMode(TouchMode e_touch_Mode) {
         this.e_touch_Mode = e_touch_Mode;
+    }
+
+    public boolean isOpenDebug() {
+        return isOpenDebug;
+    }
+
+    public void setOpenDebug(boolean openDebug) {
+        isOpenDebug = openDebug;
+    }
+
+    /**
+     * 绘制debug模式下的边框
+     *
+     * @param bound RectF轮廓
+     */
+    public void drawDebugLine(RectF bound) {
+        if (isOpenDebug()) {
+            e_paintDraw.setColor(Color.RED);
+            e_paintDraw.setStyle(Paint.Style.STROKE);
+            e_canvas.drawRect(bound, e_paintDraw);
+        }
     }
 }

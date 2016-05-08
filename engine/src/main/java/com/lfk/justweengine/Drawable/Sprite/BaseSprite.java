@@ -214,7 +214,17 @@ public class BaseSprite extends BaseSub {
                 drawWithFrame();
                 break;
         }
+        debugDraw();
     }
+
+
+    /**
+     * 绘制debug模式下的轮廓线
+     */
+    public void debugDraw() {
+        s_engine.drawDebugLine(getBounds());
+    }
+
 
     public void drawWithFrame() {
         if (s_width == 0 || s_height == 0) {
