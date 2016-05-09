@@ -14,7 +14,9 @@ public enum TouchMode {
     // Touches
     FULL(4),
     // Single touch + button
-    SINGLE_BUTTON(6);
+    SINGLE_BUTTON(6),
+    // distribute Touch Event In Layer
+    SINGLE_LAYER(8);
     int mode;
 
     TouchMode(int type) {

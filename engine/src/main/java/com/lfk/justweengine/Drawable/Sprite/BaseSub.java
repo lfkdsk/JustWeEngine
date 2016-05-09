@@ -43,9 +43,5 @@ public abstract class BaseSub {
 
     public abstract void setAlive(boolean s_alive);
 
-    public void addToSpriteGroup() {
-        if (this.s_engine != null) {
-            s_engine.addToSpriteGroup(this);
-        }
-    }
+    public abstract void debugDraw();
 }

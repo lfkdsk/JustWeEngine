@@ -222,7 +222,7 @@ public class BaseSprite extends BaseSub {
      * 绘制debug模式下的轮廓线
      */
     public void debugDraw() {
-        s_engine.drawDebugLine(getBounds());
+        s_engine.debugDraw(getBounds());
     }
 
 
