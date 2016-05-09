@@ -59,7 +59,7 @@ An easy open source Android Native Game FrameWork.
 	
   ```
 
-## 引擎進入V1.05版本
+## 引擎進入V1.10版本
 
 * 以之開發的微信打飛機遊戲Demo：[Demo地址](https://github.com/lfkdsk/EngineDemo)  
 * 很多額外控件：[JustWeTools](https://github.com/lfkdsk/JustWeTools)  
