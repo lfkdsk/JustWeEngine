@@ -582,6 +582,7 @@ public class Screen extends SurfaceView implements Runnable, View.OnTouchListene
         this.e_layers.add(index, layer);
     }
 
+
     public void restart() {
         this.e_paused = false;
     }

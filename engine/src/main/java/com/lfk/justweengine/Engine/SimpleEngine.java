@@ -262,7 +262,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
 
                 if (A.isCollided()) continue;
 
-                for (int j = 0; i < e_sprite_group.size(); j++) {
+                for (int j = 0; j < e_sprite_group.size(); j++) {
                     BaseSub B = e_sprite_group.get(j);
                     if (!B.getAlive()) continue;
 
