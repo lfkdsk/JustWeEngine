@@ -10,53 +10,53 @@ An easy open source Android Native Game FrameWork.
 * 引入"/jar"文件夹下的jar包。  
 * 使用Gradle构建:  
   * Step 1. Add the JitPack repository to your build file  
-  Add it in your root build.gradle at the end of repositories:  
-  
+    Add it in your root build.gradle at the end of repositories:  
+
   ``` groovy  
-  
+
     	allprojects {
-			repositories {
-				...
-				maven { url "https://jitpack.io" }
-			}
-		}
+  		repositories {
+  			...
+  			maven { url "https://jitpack.io" }
+  		}
+  	}
    	
   ```
-  
+
   * Step 2. Add the dependency  on
-  
-  
+
+
   ``` groovy
-  
+
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.10'
-	  }
-		
+          compile 'com.github.lfkdsk:JustWeEngine:v1.10'
+    }
+  	
   ```
 * 使用Maven构建:  
   * Step 1. Add the JitPack repository to your build file  
-  
+
   ``` xml
-  
+
     <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-  
+  	<repository>
+  	    <id>jitpack.io</id>
+  	    <url>https://jitpack.io</url>
+  	</repository>
+  </repositories>
+
   ```
-  
+
   * Step 2. Add the dependency  
-  
+
   ``` xml
   	
     <dependency>
-	    <groupId>com.github.lfkdsk</groupId>
-	    <artifactId>JustWeEngine</artifactId>
-	    <version>v1.10</version>
-	</dependency>
-	
+      <groupId>com.github.lfkdsk</groupId>
+      <artifactId>JustWeEngine</artifactId>
+      <version>v1.10</version>
+  </dependency>
+
   ```
 
 ## 引擎进入V1.10版本
@@ -69,34 +69,34 @@ An easy open source Android Native Game FrameWork.
 ## 快速入门  
 
 * [1.基础功能](#1基础功能)
-	* [1.1继承引擎核心类](#11继承引擎核心类)
-	* [1.2绘制文字](#12绘制文字)
-	* [1.3绘制图片](#13绘制图片)
-	* [1.4使用精灵](#14使用精灵)
-	* [1.5使用按钮](#15使用按钮)
+  * [1.1继承引擎核心类](#11继承引擎核心类)
+  * [1.2绘制文字](#12绘制文字)
+  * [1.3绘制图片](#13绘制图片)
+  * [1.4使用精灵](#14使用精灵)
+  * [1.5使用按钮](#15使用按钮)
 * [2.动画系统](#2动画系统)
-	* [2.1绑定在BaseSub物品及精灵基类上的动画类](#21绑定在basesub物品及精灵基类上的动画类)
-	* [2.2绑定在Button上的动画类](#22绑定在button上的动画类)
+  * [2.1绑定在BaseSub物品及精灵基类上的动画类](#21绑定在basesub物品及精灵基类上的动画类)
+  * [2.2绑定在Button上的动画类](#22绑定在button上的动画类)
 * [3.物体分组碰撞检测和死亡判定](#3物体分组碰撞检测和死亡判定)
 * [4.屏幕扫描模式](#4屏幕扫描模式)
 * [5.工具类](#5工具类)
 * [6.音频系统](#6音频系统)  
-	* [6.1播放短音效](#61播放短音效)
-	* [6.2播放音频](#62播放音频)
-	* [6.3通过短音效编曲](#63通过短音效编曲)
+  * [6.1播放短音效](#61播放短音效)
+  * [6.2播放音频](#62播放音频)
+  * [6.3通过短音效编曲](#63通过短音效编曲)
 
 ## 进阶应用
 * [7.使用网络](#7使用网络)  
 * [8.使用状态机精灵](#8使用状态机精灵)  
 * [9.CrashHandler崩溃守护](#9crashhandler崩溃守护)
 * [10.使用蓝牙](#10使用蓝牙)
-    * [10.1开启、关闭服务](#101开启关闭服务)
-    * [10.2扫描设备](#102扫描设备)
-    * [10.3发送消息](#103发送消息)  
+  * [10.1开启、关闭服务](#101开启关闭服务)
+  * [10.2扫描设备](#102扫描设备)
+  * [10.3发送消息](#103发送消息)  
 * [11.SQLite数据库](#11SQLite数据库)
-	* [11.1创建表](#111创建表)
+  * [11.1创建表](#111创建表)
     * [11.2增删查改](#112增删查改)  
-    
+
 ## 拓展功能  
 * [允许玩家绘制](#允许玩家绘制)  
 * [流程脚本](#流程脚本)
@@ -104,7 +104,7 @@ An easy open source Android Native Game FrameWork.
 ### 1.基础功能
 #### 1.1继承引擎核心类： 
    由于框架全部使用SurfaceView进行绘制，不使用诸如Button、Layout等原生控件，所以应该首先新建类继承引擎核心类Engine，负责游戏的流程，注释中已有明确的标明功能。  
-   
+
 ``` java
 
 	public class Game extends SimpleEngine {
@@ -154,12 +154,12 @@ An easy open source Android Native Game FrameWork.
     }
     }
 
-```   
-  
+```
+
 #### 1.2绘制文字：
-    
+
 使用GamePrinter进行文字绘制,除此以外还有多种方法绘制:  
-  
+
 ``` java
 
     @Override
@@ -169,7 +169,7 @@ An easy open source Android Native Game FrameWork.
         printer.drawText("哈哈哈", 100, 100);
     }
     
-```  
+```
 效果图：  
 ![text](art/printer.png)  
 
@@ -179,7 +179,7 @@ An easy open source Android Native Game FrameWork.
 	GameTexture texture = new GameTexture(this);
 	texture.loadFromAsset("pic/logo.jpg")
 	texture.draw(canvas, 100, 100);
-```  
+```
 效果图：    
 ![pic](art/pic.png)  
 另外也可使用`loadFromAssetStripFrame`从一个大的图片中取出对应位置的图片。  
@@ -199,7 +199,7 @@ An easy open source Android Native Game FrameWork.
     public boolean loadFromAssetStripFrame(String filename,
                                            int x, int y,
                                            int width, int height)
-```  
+```
 比如可以通过这四个参数把这个小飞机取出来： 
 ![back](art/back.png)  
 ![ship](art/ship.png)  
@@ -209,16 +209,16 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
   使用精灵可以使用BaseSprite也可以继承该类使用，BaseSprite封装了很多方法供各种动画使用，这些功能很多都是需要结合动画系统来使用的，动画系统会在后面介绍。  
 ##### 新建精灵：
   1.简单初始化:  
-  ``` java
+``` java
   
           sprite = new BaseSprite(this);
           
-  ```
+```
   2.初始化连续帧动画：  
   连续帧的初始化需要这样的连续帧图片:  
   ![zombie](art/zombie.png)
-  
-  ``` java 
+
+``` java 
   
         GameTexture texture = new GameTexture(this);
         texture.loadFromAsset("pic/zombie.png");
@@ -231,12 +231,12 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         sprite.addAnimation(new FrameAnimation(0, 63, 1));
         addToSpriteGroup(sprite);
         
-  ```
-  
+```
+
   效果图:  
   ![zombiegif](art/zombie.gif)  
   3.使用从大图取出的多帧图片： 
-  ``` java  
+``` java  
   
     	// 新建图片资源（此图为上图的大图）
         GameTexture texture = new GameTexture(this);
@@ -250,13 +250,13 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
         ship.addRectFrame(167, 361, 100, 124);
         ship.addAnimation(new FrameAnimation(0, 1, 1));
 
-  ```
+```
   效果图(两帧图片不断切换):  
   ![ship](art/ship.gif)  
 
   4.一些重要的其他设定：
-    
-  ``` java  
+​    
+``` java  
   
   	  // 图片资源
   	  ship.setTexture(texture);
@@ -274,12 +274,12 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 	  addToSpriteGroup(ship);
 	  ...
 	  
-  ``` 
+```
 
 #### 1.5使用按钮：  
   使用的按钮可以继承BaseButton进行拓展，也可以直接使用TextureButton和TextButton进行使用。  
   Button设定功能的方式和原生一样，通过设定接口回调的方式进行：
-  ``` java  
+``` java  
   
   		button.setOnClickListener(new OnClickListener() {
           @Override
@@ -288,10 +288,10 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
           }
         });
         
-  ```
+```
   1.TextureButton: 
-   
-  ``` java  
+
+``` java  
   
       TextureButton button;
       // 初始化并设定名字
@@ -311,16 +311,15 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
       button.setDipScale(100, 150);
       // 添加到ButtonGroup进行绘制和处理
       addToButtonGroup(button);
-
-  ``` 
+```
   效果图:  
   ![texturebutton](art/Texturebutton.png)  
     结合PicUtil中的各种Bitmap处理方法可以很容易的做出各种样式的Button：  
   ![buttons](art/buttons.jpg)  
-  
+
   2.TextButton:  
-  
-  ``` java  
+
+``` java  
   	  
       TextButton button;  
       button = new TextButton(this, "logo");
@@ -329,7 +328,7 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
       // 余略见源码
 	  ...
 	  
-  ```
+```
   效果图：  
 ![button](art/singlebutton.png)  
 
@@ -338,20 +337,20 @@ PicUtils中提供了在Bitmap处理中很有用的各种特效和压缩方法，
 #### 2.1绑定在BaseSub物品及精灵基类上的动画类  
 AnimType中保存了Animation的应用类型。
 
-| Animation     | method        |function|
-| ------------- |:-------------:|-------:|
-| AliveAnimation|adjustAlive(boolean ori) | 碰撞检测的时候进行判断存活状态 |
-| AlphaAnimation|adjustAlpha(int ori)     | 修改物体透明度              |
-| CircleMoveAnimation | adjustPosition(Float2 ori)| 沿某一圆心进行圆周运动 |
-| FenceAnimation | adjustPosition(Float2 ori)| 使用围栏动画防止出界 |
-| FrameAnimation | adjustFrame(int ori) | 逐帧动画 |
-| MoveAnimation | adjustPosition(Float2 ori) | 位移动画 |
-| SpinAnimation | adjustRotation(float ori) | 旋转动画 |
-| ThrobAnimation | adjustScale(Float2 ori) | 跳跃动画 |
-| VelocityAnimation | adjustPosition/adjustAlive | 线性加速度计 |
-| WrapMoveAnimation | adjustPosition(Float2 ori) | 围栏动画防止出界 |
-| ZoomAnimation | adjustScale(Float2 ori) | 放大缩小动画 |
-| 待续 | ... | ... |
+| Animation           |           method           |        function |
+| ------------------- | :------------------------: | --------------: |
+| AliveAnimation      |  adjustAlive(boolean ori)  | 碰撞检测的时候进行判断存活状态 |
+| AlphaAnimation      |    adjustAlpha(int ori)    |         修改物体透明度 |
+| CircleMoveAnimation | adjustPosition(Float2 ori) |     沿某一圆心进行圆周运动 |
+| FenceAnimation      | adjustPosition(Float2 ori) |      使用围栏动画防止出界 |
+| FrameAnimation      |    adjustFrame(int ori)    |            逐帧动画 |
+| MoveAnimation       | adjustPosition(Float2 ori) |            位移动画 |
+| SpinAnimation       | adjustRotation(float ori)  |            旋转动画 |
+| ThrobAnimation      |  adjustScale(Float2 ori)   |            跳跃动画 |
+| VelocityAnimation   | adjustPosition/adjustAlive |          线性加速度计 |
+| WrapMoveAnimation   | adjustPosition(Float2 ori) |        围栏动画防止出界 |
+| ZoomAnimation       |  adjustScale(Float2 ori)   |          放大缩小动画 |
+| 待续                  |            ...             |             ... |
 
 绑定动画分为两类，ListAnimation和FixedAnimation,ListAnimation将动画存储到固定的一个List中，用于重复更新的动画，
 而FixedAnimation存储在Map中，使用名字进行调用，用于点击或者非自动更新的动画。
@@ -371,11 +370,11 @@ AnimType中保存了Animation的应用类型。
 #### 2.2绑定在Button上的动画类  
 BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，通过提供Button的状态，设定Button的动画。
 
-| Animation        | method           | function  |
-| ------------- |:-------------:| -----:|
-| ZoomCenterButtonAnim |adjustButtonRect(Rect ori,boolean touchType) | 按钮放缩动画 |
-| ColorAnimation|adjustButtonBackGround(int ori,boolean type)| TextButton点击变色 |
-| 待续 | ... | ... |
+| Animation            |                  method                  |       function |
+| -------------------- | :--------------------------------------: | -------------: |
+| ZoomCenterButtonAnim | adjustButtonRect(Rect ori,boolean touchType) |         按钮放缩动画 |
+| ColorAnimation       | adjustButtonBackGround(int ori,boolean type) | TextButton点击变色 |
+| 待续                   |                   ...                    |            ... |
 
 为Button设定放缩动画:  
 ``` java
@@ -457,17 +456,17 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	
 	super.setTouchMode(TouchMode.BUTTON);
 
-``` 
+```
 
 
 ### 5.工具类  
-   * `NetUtils` 网络状态工具类
-   * `PicUtils` 图片处理工具类
-   * `ServiceUtils` 服务工具类
-   * `ImageHelper` 图型处理类  
-   * `DisplayUtils` 数据转换类
-   * `SpUtils` Sp简化工具类（`可存储list和map`）
-   * `ValidatorsUtils` 正则表达式处理类  
+* `NetUtils` 网络状态工具类
+* `PicUtils` 图片处理工具类
+* `ServiceUtils` 服务工具类
+* `ImageHelper` 图型处理类  
+* `DisplayUtils` 数据转换类
+* `SpUtils` Sp简化工具类（`可存储list和map`）
+* `ValidatorsUtils` 正则表达式处理类  
 
 ### 6.音频系统  
 #### 6.1播放短音效 
@@ -495,7 +494,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	...
 
 
-```  
+```
 #### 6.2播放音频  
 播放音频适合例如背景音乐一样的音乐。  
 
@@ -505,7 +504,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	MusicPlayer player = new MusicPlayer(this, "mic/open.mp3");
     player.play();
 
-```  
+```
 以上的就能实现播放了，下面还有一些其他的方法。
 
 ``` java  
@@ -515,7 +514,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 	public void setVolume(float volume) // 设定音量
 	...
 	
-```  
+```
 
 #### 6.3通过短音效编曲  
 从`SoundManager`中导入多段音频，快速播放达成音效的效果。
@@ -538,7 +537,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
 ### 7.使用网络
 网络的使用可参考[JustWe-WebServer](https://github.com/lfkdsk/JustWe-WebServer)中的介绍。
 按照介绍操作就可以通过：
- 
+
 ``` java
   
         server.apply("/lfk", new OnWebStringResult() {
@@ -555,8 +554,8 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
             }
         });
         
-```  
-        
+```
+
 这样的简单方式绑定路由，而get／post数据可以直接使用http协议的get和post进行。
 
 ### 8.使用状态机精灵
@@ -572,7 +571,7 @@ BaseButtonAnimation是BaseButton的动画类继承了BaseAnim的动画基类，�
     }, new FrameAnimation(0, 63, 1));
 
 ```
-  
+
 可以通过上述的addState方法为状态机精灵添加一个任务，只有当第一个参数接口回调的返回值为真的时候，
 才会去运行第二个参数提供的指令，如果返回为假则会运行第二项状态的判断。
 状态的优先级由加入顺序提供。
@@ -632,7 +631,7 @@ CrashHandler可以自动保存机型和异常日志，以便让开发者找到�
 		// 使用如下语句进行初始化
         blueToothServer.init();
 
-```  
+```
 服务初始化之后如未打开蓝牙，系统会自动提示应用要求蓝牙开启。
 
 通过MessageBack接口可以接收到发送、接收、以及扫描设备信息，采取对应操作就可以获得数据。
@@ -760,9 +759,9 @@ SQLite使用了IOC的模式。
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
+    
        http://www.apache.org/licenses/LICENSE-2.0
-
+    
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
