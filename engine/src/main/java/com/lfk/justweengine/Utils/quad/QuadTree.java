@@ -15,7 +15,7 @@ public class QuadTree {
 
     private int level;
 
-    private List objects;
+    private List<RectF> objects;
 
     private RectF bounds;
 
@@ -23,7 +23,7 @@ public class QuadTree {
 
     public QuadTree(int level, RectF bounds) {
         this.level = level;
-        this.objects = new ArrayList();
+        this.objects = new ArrayList<>();
         this.bounds = bounds;
         this.nodes = new QuadTree[4];
     }
@@ -60,6 +60,12 @@ public class QuadTree {
 
     }
 
+    /**
+     * 获取rect 所在的 index
+     *
+     * @param rectF 传入对象所在的矩形
+     * @return index 使用类别区分所在象限
+     */
     private int getIndex(RectF rectF) {
         int index = -1;
         double verticalMidpoint = bounds.left + (bounds.width() / 2);
@@ -89,6 +95,70 @@ public class QuadTree {
         }
 
         return index;
+    }
+
+    /**
+     * insert object to tree
+     *
+     * @param rectF object
+     */
+    public void insert(RectF rectF) {
+        if (nodes[0] != null) {
+            int index = getIndex(rectF);
+
+            if (index != -1) {
+                nodes[index].insert(rectF);
+
+                return;
+            }
+        }
+
+        objects.add(rectF);
+
+        if (objects.size() > MAX_OBJECTS
+                && level < MAX_OBJECTS) {
+            // don't have subNodes
+            // split node
+            if (nodes[0] == null) {
+                split();
+            }
+
+            int i = 0;
+            while (i < objects.size()) {
+
+                int index = getIndex(objects.get(i));
+
+                if (index != -1) {
+
+                    nodes[index].insert(objects.remove(i));
+
+                } else {
+
+                    // don't in subNode save to parent node.
+                    // eq: object on line
+                    i++;
+
+                }
+            }
+        }
+    }
+
+    /**
+     * return all the object collision with the object
+     *
+     * @param returnObjects return list
+     * @param rectF         object
+     * @return list of collision
+     */
+    public List<List<RectF>> retrieve(List<List<RectF>> returnObjects, RectF rectF) {
+        int index = getIndex(rectF);
+
+        if (index != -1 && nodes[0] != null) {
+            nodes[index].retrieve(returnObjects, rectF);
+        }
+
+        returnObjects.add(objects);
+        return returnObjects;
     }
 }
 
