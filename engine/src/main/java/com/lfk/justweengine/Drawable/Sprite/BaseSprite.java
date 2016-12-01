@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Drawable.Sprite;
+package com.lfk.justweengine.drawable.Sprite;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,12 +9,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.renderscript.Float2;
 
-import com.lfk.justweengine.Anim.BaseAnim;
-import com.lfk.justweengine.Anim.DoAfterAnimation;
-import com.lfk.justweengine.Engine.Engine;
-import com.lfk.justweengine.Engine.GameTexture;
-import com.lfk.justweengine.Info.UIdefaultData;
-import com.lfk.justweengine.Utils.tools.DisplayUtils;
+import com.lfk.justweengine.anim.BaseAnim;
+import com.lfk.justweengine.anim.DoAfterAnimation;
+import com.lfk.justweengine.engine.Engine;
+import com.lfk.justweengine.engine.GameTexture;
+import com.lfk.justweengine.info.UIdefaultData;
+import com.lfk.justweengine.utils.tools.DisplayUtils;
 
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -370,11 +370,11 @@ public class BaseSprite extends BaseSub {
     }
 
     public int getWidthWithScale() {
-        return s_width * (int) s_scale.x;
+        return (int) (s_width * s_scale.x);
     }
 
     public int getHeightWidthScale() {
-        return s_height * (int) s_scale.y;
+        return (int) (s_height * s_scale.y);
     }
 
     /**

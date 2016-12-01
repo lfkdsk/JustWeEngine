@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.crashHandler;
+package com.lfk.justweengine.utils.crashHandler;
 
 /**
  * AfterCrashListener 

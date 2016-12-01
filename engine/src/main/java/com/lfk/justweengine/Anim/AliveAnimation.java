@@ -1,6 +1,6 @@
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
-import com.lfk.justweengine.Engine.GameTimer;
+import com.lfk.justweengine.engine.GameTimer;
 
 /**
  * 判断生死

@@ -1,10 +1,10 @@
 
 
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
 import android.renderscript.Float2;
 
-import com.lfk.justweengine.Engine.GameTimer;
+import com.lfk.justweengine.engine.GameTimer;
 
 public class VelocityAnimation extends BaseAnim {
     private double p_angle;

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Drawable.Sprite;
+package com.lfk.justweengine.drawable.Sprite;
 
 /**
  * Created by liufengkai on 16/1/15.

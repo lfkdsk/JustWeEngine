@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.webServer;
+package com.lfk.justweengine.utils.webServer;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -9,10 +9,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 
-import com.lfk.justweengine.Utils.logger.Logger;
-import com.lfk.justweengine.Utils.webServer.Interface.OnLogResult;
-import com.lfk.justweengine.Utils.webServer.Interface.OnPermissionFile;
-import com.lfk.justweengine.Utils.webServer.Interface.OnWebResult;
+import com.lfk.justweengine.utils.logger.Logger;
+import com.lfk.justweengine.utils.webServer.Interface.OnLogResult;
+import com.lfk.justweengine.utils.webServer.Interface.OnPermissionFile;
+import com.lfk.justweengine.utils.webServer.Interface.OnWebResult;
 
 import java.io.File;
 import java.util.HashMap;

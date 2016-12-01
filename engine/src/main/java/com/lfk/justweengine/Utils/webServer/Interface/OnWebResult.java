@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.webServer.Interface;
+package com.lfk.justweengine.utils.webServer.Interface;
 
 /**
  * OnWebResult empty interface for result

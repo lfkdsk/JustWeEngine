@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.tools;
+package com.lfk.justweengine.utils.tools;
 
 import java.util.Collection;
 import java.util.regex.Pattern;

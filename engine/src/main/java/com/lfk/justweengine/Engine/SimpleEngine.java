@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Engine;
+package com.lfk.justweengine.engine;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
@@ -18,10 +18,10 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 
-import com.lfk.justweengine.Drawable.Button.BaseButton;
-import com.lfk.justweengine.Drawable.Sprite.BaseSub;
-import com.lfk.justweengine.Utils.logger.LogLevel;
-import com.lfk.justweengine.Utils.logger.Logger;
+import com.lfk.justweengine.drawable.Button.BaseButton;
+import com.lfk.justweengine.drawable.Sprite.BaseSub;
+import com.lfk.justweengine.utils.logger.LogLevel;
+import com.lfk.justweengine.utils.logger.Logger;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

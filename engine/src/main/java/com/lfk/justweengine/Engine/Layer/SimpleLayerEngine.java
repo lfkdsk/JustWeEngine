@@ -1,9 +1,9 @@
-package com.lfk.justweengine.Engine.Layer;
+package com.lfk.justweengine.engine.Layer;
 
 import android.graphics.Rect;
 import android.os.Bundle;
 
-import com.lfk.justweengine.Info.UIdefaultData;
+import com.lfk.justweengine.info.UIdefaultData;
 
 /**
  * 默认的分层引擎实现

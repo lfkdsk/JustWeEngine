@@ -1,8 +1,8 @@
-package com.lfk.justweengine.Drawable.Bone;
+package com.lfk.justweengine.drawable.Bone;
 
-import com.lfk.justweengine.Drawable.Sprite.BaseSprite;
-import com.lfk.justweengine.Drawable.Sprite.FrameType;
-import com.lfk.justweengine.Engine.Engine;
+import com.lfk.justweengine.drawable.Sprite.BaseSprite;
+import com.lfk.justweengine.drawable.Sprite.FrameType;
+import com.lfk.justweengine.engine.Engine;
 
 /**
  * 骨骼精灵

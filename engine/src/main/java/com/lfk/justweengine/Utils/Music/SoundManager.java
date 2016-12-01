@@ -1,12 +1,12 @@
-package com.lfk.justweengine.Utils.music;
+package com.lfk.justweengine.utils.music;
 
 import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-import com.lfk.justweengine.Engine.Engine;
-import com.lfk.justweengine.Info.UIdefaultData;
-import com.lfk.justweengine.Utils.logger.Logger;
+import com.lfk.justweengine.engine.Engine;
+import com.lfk.justweengine.info.UIdefaultData;
+import com.lfk.justweengine.utils.logger.Logger;
 
 import java.io.IOException;
 import java.util.HashMap;

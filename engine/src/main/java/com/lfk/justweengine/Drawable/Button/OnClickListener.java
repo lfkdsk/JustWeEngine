@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Drawable.Button;
+package com.lfk.justweengine.drawable.Button;
 
 /**
  * Created by liufengkai on 15/12/10.

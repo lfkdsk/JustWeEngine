@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.database;
+package com.lfk.justweengine.utils.database;
 
 import android.content.ContentValues;
 import android.content.Context;
