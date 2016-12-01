@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.database;
+package com.lfk.justweengine.utils.database;
 
 /**
  * Demo for DataBase

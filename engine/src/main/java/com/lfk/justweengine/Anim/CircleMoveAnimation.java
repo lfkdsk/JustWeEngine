@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
 import android.graphics.Point;
 import android.renderscript.Float2;

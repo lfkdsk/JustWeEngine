@@ -1,10 +1,10 @@
-package com.lfk.justweengine.Engine;
+package com.lfk.justweengine.engine;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.lfk.justweengine.Utils.io.GameIO;
+import com.lfk.justweengine.utils.io.GameIO;
 
 import java.io.IOException;
 import java.io.InputStream;

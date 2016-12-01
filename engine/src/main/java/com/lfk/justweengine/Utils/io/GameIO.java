@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.io;
+package com.lfk.justweengine.utils.io;
 
 import android.content.Context;
 import android.content.res.AssetManager;

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
 /**
  * 透明度动画

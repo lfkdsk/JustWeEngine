@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.music;
+package com.lfk.justweengine.utils.music;
 
 /**
  * music interface

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.music;
+package com.lfk.justweengine.utils.music;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -82,11 +82,16 @@ public class MusicPlayer implements Music, MediaPlayer.OnCompletionListener {
     @Override
     public void setLooping(boolean isLooping) {
         this.isLooping = isLooping;
+        if (player != null)
+            player.setLooping(isLooping);
     }
 
     @Override
     public void setVolume(float volume) {
         this.volume = volume;
+
+        if (player != null)
+            player.setVolume(volume, volume);
     }
 
     @Override

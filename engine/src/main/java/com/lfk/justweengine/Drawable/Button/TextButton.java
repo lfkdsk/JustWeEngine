@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Drawable.Button;
+package com.lfk.justweengine.drawable.Button;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -6,8 +6,8 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.renderscript.Float2;
 
-import com.lfk.justweengine.Engine.Engine;
-import com.lfk.justweengine.Utils.tools.DisplayUtils;
+import com.lfk.justweengine.engine.Engine;
+import com.lfk.justweengine.utils.tools.DisplayUtils;
 
 /**
  * TextButton
@@ -117,6 +117,7 @@ public class TextButton extends BaseButton {
     }
 
     public void setTextColor(int text_Color) {
+        if (b_textPaint != null) b_textPaint.setColor(text_Color);
         this.b_text_Color = text_Color;
     }
 

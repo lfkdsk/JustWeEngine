@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.quad;
+package com.lfk.justweengine.utils.quad;
 
 import android.graphics.RectF;
 

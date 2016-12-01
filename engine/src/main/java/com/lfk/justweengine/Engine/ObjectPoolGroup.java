@@ -1,6 +1,6 @@
-package com.lfk.justweengine.Engine;
+package com.lfk.justweengine.engine;
 
-import com.lfk.justweengine.Drawable.Sprite.BaseSub;
+import com.lfk.justweengine.drawable.Sprite.BaseSub;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.database;
+package com.lfk.justweengine.utils.database;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.blueTooth;
+package com.lfk.justweengine.utils.blueTooth;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

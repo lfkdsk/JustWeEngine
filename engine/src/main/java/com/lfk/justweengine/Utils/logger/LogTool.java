@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.logger;
+package com.lfk.justweengine.utils.logger;
 
 public interface LogTool {
     void d(String tag, String message);

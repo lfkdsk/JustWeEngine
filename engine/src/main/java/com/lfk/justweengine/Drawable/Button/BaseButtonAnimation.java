@@ -1,9 +1,9 @@
-package com.lfk.justweengine.Drawable.Button;
+package com.lfk.justweengine.drawable.Button;
 
 import android.graphics.Rect;
 
-import com.lfk.justweengine.Anim.AnimType;
-import com.lfk.justweengine.Anim.BaseAnim;
+import com.lfk.justweengine.anim.AnimType;
+import com.lfk.justweengine.anim.BaseAnim;
 
 /**
  * Created by liufengkai on 15/12/12.

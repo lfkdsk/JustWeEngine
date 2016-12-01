@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.script;
+package com.lfk.justweengine.utils.script;
 
 /**
  * Created by liufengkai on 16/2/8.

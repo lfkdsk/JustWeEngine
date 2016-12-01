@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.webServer.Interface;
+package com.lfk.justweengine.utils.webServer.Interface;
 
 /**
  * OnLogResult 接收Log信息和Error信息

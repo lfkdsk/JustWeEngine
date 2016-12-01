@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lfk.justweengine.Utils.blueTooth;
+package com.lfk.justweengine.utils.blueTooth;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

@@ -1,9 +1,9 @@
-package com.lfk.justweengine.Drawable.Sprite;
+package com.lfk.justweengine.drawable.Sprite;
 
 import android.graphics.RectF;
 import android.renderscript.Float2;
 
-import com.lfk.justweengine.Engine.Engine;
+import com.lfk.justweengine.engine.Engine;
 
 /**
  * 游戏中的抽象基类

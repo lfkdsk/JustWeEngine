@@ -1,7 +1,7 @@
-package com.lfk.justweengine.Drawable.Sprite;
+package com.lfk.justweengine.drawable.Sprite;
 
-import com.lfk.justweengine.Anim.BaseAnim;
-import com.lfk.justweengine.Engine.Engine;
+import com.lfk.justweengine.anim.BaseAnim;
+import com.lfk.justweengine.engine.Engine;
 
 import java.util.concurrent.ConcurrentHashMap;
 

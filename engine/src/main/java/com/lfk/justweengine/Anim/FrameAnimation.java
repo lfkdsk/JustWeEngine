@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
 /**
  * 逐帧动画

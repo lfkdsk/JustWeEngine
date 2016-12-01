@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.showLogger;
+package com.lfk.justweengine.utils.showLogger;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -6,10 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.lfk.justweengine.Info.UIdefaultData;
-import com.lfk.justweengine.Utils.logger.LogLevel;
-import com.lfk.justweengine.Utils.logger.LogParser;
-import com.lfk.justweengine.Utils.tools.DisplayUtils;
+import com.lfk.justweengine.info.UIdefaultData;
+import com.lfk.justweengine.utils.logger.LogLevel;
+import com.lfk.justweengine.utils.logger.LogParser;
+import com.lfk.justweengine.utils.tools.DisplayUtils;
 
 import java.util.HashMap;
 import java.util.Map;

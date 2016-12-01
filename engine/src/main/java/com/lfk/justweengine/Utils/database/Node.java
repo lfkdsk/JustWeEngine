@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.database;
+package com.lfk.justweengine.utils.database;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Info;
+package com.lfk.justweengine.info;
 
 import android.content.Context;
 import android.graphics.Color;

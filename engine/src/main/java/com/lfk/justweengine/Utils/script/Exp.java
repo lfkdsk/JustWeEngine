@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.script;
+package com.lfk.justweengine.utils.script;
 
 import java.util.HashMap;
 import java.util.Random;

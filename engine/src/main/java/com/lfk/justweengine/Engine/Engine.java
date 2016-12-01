@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Engine;
+package com.lfk.justweengine.engine;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;

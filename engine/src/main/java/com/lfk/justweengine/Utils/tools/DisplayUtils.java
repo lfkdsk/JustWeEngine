@@ -1,9 +1,9 @@
-package com.lfk.justweengine.Utils.tools;
+package com.lfk.justweengine.utils.tools;
 
 import android.content.Context;
 import android.util.TypedValue;
 
-import com.lfk.justweengine.Info.UIdefaultData;
+import com.lfk.justweengine.info.UIdefaultData;
 
 /**
  * Created by liufengkai on 15/11/8.

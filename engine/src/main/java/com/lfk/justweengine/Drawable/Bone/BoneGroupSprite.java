@@ -1,6 +1,6 @@
-package com.lfk.justweengine.Drawable.Bone;
+package com.lfk.justweengine.drawable.Bone;
 
-import com.lfk.justweengine.Engine.Engine;
+import com.lfk.justweengine.engine.Engine;
 
 import java.util.HashMap;
 import java.util.Map;

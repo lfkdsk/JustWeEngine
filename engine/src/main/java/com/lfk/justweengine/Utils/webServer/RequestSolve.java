@@ -1,9 +1,9 @@
-package com.lfk.justweengine.Utils.webServer;
+package com.lfk.justweengine.utils.webServer;
 
-import com.lfk.justweengine.Utils.webServer.Interface.OnPostData;
-import com.lfk.justweengine.Utils.webServer.Interface.OnWebFileResult;
-import com.lfk.justweengine.Utils.webServer.Interface.OnWebResult;
-import com.lfk.justweengine.Utils.webServer.Interface.OnWebStringResult;
+import com.lfk.justweengine.utils.webServer.Interface.OnPostData;
+import com.lfk.justweengine.utils.webServer.Interface.OnWebFileResult;
+import com.lfk.justweengine.utils.webServer.Interface.OnWebResult;
+import com.lfk.justweengine.utils.webServer.Interface.OnWebStringResult;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Engine;
+package com.lfk.justweengine.engine;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -23,6 +23,7 @@ public class GameTextPrinter {
     public GameTextPrinter(Canvas e_canvas) {
         this.e_canvas = e_canvas;
         e_paint = new Paint();
+        e_paint.setAntiAlias(true);
         e_x = e_y = 0;
         e_spaceing = 22;
     }

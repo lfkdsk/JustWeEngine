@@ -1,8 +1,8 @@
-package com.lfk.justweengine.Anim;
+package com.lfk.justweengine.anim;
 
 import android.renderscript.Float2;
 
-import com.lfk.justweengine.Info.UIdefaultData;
+import com.lfk.justweengine.info.UIdefaultData;
 
 /**
  * Created by liufengkai on 15/12/5.

@@ -1,6 +1,6 @@
-package com.lfk.justweengine.Utils.script;
+package com.lfk.justweengine.utils.script;
 
-import com.lfk.justweengine.Utils.tools.ValidatorsUtils;
+import com.lfk.justweengine.utils.tools.ValidatorsUtils;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Utils.quad;
+package com.lfk.justweengine.utils.quad;
 
 /**
  * Created by liufengkai on 16/9/18.
