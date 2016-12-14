@@ -173,22 +173,20 @@ public class BaseSprite extends BaseSub {
         // set rect
         src.set(u, v, u + s_width, v + s_height);
         // scale
-        int w = (int) (s_width * s_scale.x);
-        int h = (int) (s_height * s_scale.y);
+        int w = (int)(s_width);//* s_scale.x
+        int h = (int)(s_height);// 下面的Matrix里面已经添加了缩放系数，这里不必重复变换了，不然显示异常。
         s_dst.set(0, 0, w, h);
         // draw the frame
         s_paint.setAlpha(s_alpha);
         s_frameBitmap.eraseColor(Color.TRANSPARENT);
-
         s_frameCanvas.drawBitmap(s_texture.getBitmap(), src, s_dst, s_paint);
 
         s_matrix.reset();
-
         s_mat_scale.reset();
         s_mat_rotate.reset();
         s_mat_translation.reset();
 
-        s_mat_scale.setScale(s_scale.x, s_scale.y);
+        s_mat_scale.setScale((float)Math.sqrt(s_scale.x), (float)Math.sqrt(s_scale.y));
         s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
         s_mat_translation.setTranslate(s_position.x, s_position.y);
 
@@ -374,7 +372,6 @@ public class BaseSprite extends BaseSub {
     }
 
     public int getHeightWidthScale() {
-        return s_height * (int) s_scale.y;
     }
 
     /**
