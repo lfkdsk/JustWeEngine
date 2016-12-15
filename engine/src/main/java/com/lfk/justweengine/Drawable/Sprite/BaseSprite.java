@@ -173,22 +173,20 @@ public class BaseSprite extends BaseSub {
         // set rect
         src.set(u, v, u + s_width, v + s_height);
         // scale
-        int w = (int) (s_width * s_scale.x);
-        int h = (int) (s_height * s_scale.y);
+        int w = s_width;//* s_scale.x
+        int h = s_height;
         s_dst.set(0, 0, w, h);
         // draw the frame
         s_paint.setAlpha(s_alpha);
         s_frameBitmap.eraseColor(Color.TRANSPARENT);
-
         s_frameCanvas.drawBitmap(s_texture.getBitmap(), src, s_dst, s_paint);
 
         s_matrix.reset();
-
         s_mat_scale.reset();
         s_mat_rotate.reset();
         s_mat_translation.reset();
 
-        s_mat_scale.setScale(s_scale.x, s_scale.y);
+        s_mat_scale.setScale((float)Math.sqrt(s_scale.x), (float)Math.sqrt(s_scale.y));
         s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
         s_mat_translation.setTranslate(s_position.x, s_position.y);
 
@@ -541,8 +539,8 @@ public class BaseSprite extends BaseSub {
     public RectF getBounds() {
         // scaled
         return new RectF((int) s_position.x, (int) s_position.y,
-                (int) (s_position.x + s_width * s_scale.x),
-                (int) (s_position.y + s_height * s_scale.y));
+                (int) (s_position.x + s_width * Math.sqrt(s_scale.x)),
+                (int) (s_position.y + s_height * Math.sqrt(s_scale.y)));//这里取平方根，不然假设scale=2，算出来就变成了放大4倍。
     }
 
     /**
@@ -659,6 +657,9 @@ public class BaseSprite extends BaseSub {
             case SHOOT:
                 s_position = anim.adjustPosition(s_position);
                 s_alive = anim.adjustAlive(s_alive);
+                break;
+            case ZOOM:
+                s_scale = anim.adjustScale(s_scale);
                 break;
         }
         // listener
