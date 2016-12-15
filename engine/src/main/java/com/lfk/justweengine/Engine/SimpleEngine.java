@@ -741,8 +741,9 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
                         button.setNormal(false);
                         e_is_hit_button = true;
                         e_hit_button = button;
+                        return true;//移入判断体，否则多个按钮会无法响应
                     }
-                    return true;
+//                     return true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
