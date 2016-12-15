@@ -1,4 +1,4 @@
-package com.lfk.justweengine.Anim;
+﻿package com.lfk.justweengine.Anim;
 
 import android.renderscript.Float2;
 
@@ -16,13 +16,13 @@ public class ZoomAnimation extends BaseAnim {
     public int touchType;
     private boolean changeType;
 
-    // speed永为正值
+    // speed永为正值   
     public ZoomAnimation(float from, float to, float speed) {
         this.from = from;
         this.to = to;
         this.speed = speed;
         start = false;
-        animating = false;
+        this.animating = true;
         changeType = false;
         animType = AnimType.ZOOM;
     }
@@ -30,7 +30,6 @@ public class ZoomAnimation extends BaseAnim {
     @Override
     public Float2 adjustScale(Float2 ori) {
         if (!start) {
-            from = ori.x;
             start = true;
         }
 
@@ -40,32 +39,27 @@ public class ZoomAnimation extends BaseAnim {
             return ori;
         }
 
-        if (ori.x == to && ori.y == to) {
-            touchType = -touchType;
-            float temp = to;
-            to = from;
-            from = temp;
-            changeType = true;
-            return ori;
-        }
-
         if (from < to) { // 放大
-            if (ori.x + speed <= to) {
-                ori.x += speed;
-                ori.y += speed;
+            if (from + speed < to) {
+            	from += speed;
             } else {
-                ori.x = to;
-                ori.y = to;
+            	from = to;
             }
         } else if (from > to) { // 缩小
-            if (ori.x - speed >= to) {
-                ori.x -= speed;
-                ori.x -= speed;
+            if (from - speed > to) {
+            	from -= speed;
             } else {
-                ori.x = to;
-                ori.y = to;
+            	from = to;
             }
         }
+        
+        if (from == to) {
+            touchType = -touchType;
+            changeType = true;
+        }
+        
+        ori.x = from;
+        ori.y = from;
         return ori;
     }
 
