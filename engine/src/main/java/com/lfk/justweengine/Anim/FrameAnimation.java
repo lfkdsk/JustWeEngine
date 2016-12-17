@@ -1,5 +1,7 @@
 package com.lfk.justweengine.anim;
 
+import com.lfk.justweengine.engine.GameTimer;
+
 /**
  * 逐帧动画
  *
@@ -22,7 +24,7 @@ public class FrameAnimation extends BaseAnim {
         this.interval = 0;
         timer = new GameTimer();
     }
-    
+
     public FrameAnimation(int firstFrame, int lastFrame, int direction, int interval) {
         this.firstFrame = firstFrame;
         this.lastFrame = lastFrame;
@@ -30,7 +32,7 @@ public class FrameAnimation extends BaseAnim {
         this.animType = AnimType.FRAME;
         this.animating = true;
         this.interval = interval;
-        timer = new GameTimer();
+        this.timer = new GameTimer();
     }
 
     @Override
