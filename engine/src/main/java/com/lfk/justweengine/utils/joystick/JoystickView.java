@@ -14,7 +14,10 @@ import com.lfk.justweengine.R;
 
 
 /**
- * Created by liufengkai on 2016/12/16.
+ * Joystick
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 2016/12/16.
  */
 
 public class JoystickView extends View implements Runnable {
@@ -37,7 +40,6 @@ public class JoystickView extends View implements Runnable {
 
     private int mPosX = 0;
     private int mPosY = 0;
-    private int mLastPosX = 0, mLastPosY = 0;
     /**
      * the center of the button
      */
@@ -96,6 +98,15 @@ public class JoystickView extends View implements Runnable {
      */
     private static final int DEFAULT_WIDTH_BORDER = 3;
 
+    private static final int DEFAULT_LOOP_INTERVAL = 50; // in milliseconds
+
+    private OnMovedListener mCallback = null;
+
+    private long mLoopInterval = DEFAULT_LOOP_INTERVAL;
+
+    private boolean isRunning = false;
+
+    private Thread mThread = null;
 
     public JoystickView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -149,8 +160,13 @@ public class JoystickView extends View implements Runnable {
     ///////////////////////////////////////////////////////////////////////////
 
     private void initial() {
-        mLastPosX = mCenterX = mPosX = getWidth() / 2;
-        mLastPosY = mCenterY = mPosY = getWidth() / 2;
+        mCenterX = mPosX = getWidth() / 2;
+        mCenterY = mPosY = getWidth() / 2;
+        downPosX = 0;
+        downPosY = 0;
+        deltaX = 0;
+        deltaY = 0;
+        setRunning(false);
     }
 
 
@@ -213,33 +229,61 @@ public class JoystickView extends View implements Runnable {
     // onTouchEvent
     ///////////////////////////////////////////////////////////////////////////
 
-    long currentTime = 0;
-    boolean firstTouchOnIt = true;
+    int downPosX = 0, downPosY = 0;
+    int deltaX = 0, deltaY = 0;
+    boolean absLargeFlag = false;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // to move the button according to the finger coordinate
-
         mCurrentPointAction = event.getAction();
 
         int currentPosX = (int) (event.getX());
         int currentPosY = (int) (event.getY());
 
-        double abs = Math.sqrt((currentPosX - mCenterX) * (currentPosX - mCenterX)
-                + (currentPosY - mCenterY) * (currentPosY - mCenterY));
-
-        if (abs > mBorderRadius) {
-            currentPosX = (int) ((currentPosX - mCenterX) * mBorderRadius / abs + mCenterX);
-            currentPosY = (int) ((currentPosY - mCenterY) * mBorderRadius / abs + mCenterY);
-        }
-
-        mPosX = currentPosX;
-        mPosY = currentPosY;
-
-        mLastPosY = currentPosX;
-        mLastPosX = currentPosY;
-
         switch (mCurrentPointAction) {
+            case MotionEvent.ACTION_DOWN:
+                downPosX = currentPosX;
+                downPosY = currentPosY;
+
+                if (mThread == null) {
+                    mThread = new Thread(this);
+                    setRunning(true);
+                    mThread.start();
+                }
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+                deltaX = currentPosX - downPosX;
+                deltaY = currentPosY - downPosY;
+
+                mPosX += deltaX;
+                mPosY += deltaY;
+
+                double abs = getAbs(mPosX, mPosY);
+
+                if (absLargeFlag && abs > mBorderRadius) {
+                    mPosX = currentPosX;
+                    mPosY = currentPosY;
+                    abs = getAbs(mPosX, mPosY);
+                }
+
+                if (abs > mBorderRadius) {
+                    absLargeFlag = true;
+
+                    mPosX = (int) ((mPosX - mCenterX) * mBorderRadius / abs + mCenterX);
+                    mPosY = (int) ((mPosY - mCenterY) * mBorderRadius / abs + mCenterY);
+
+                    downPosX = mPosX;
+                    downPosY = mPosY;
+                    break;
+                } else {
+                    absLargeFlag = false;
+                }
+
+                downPosX = currentPosX;
+                downPosY = currentPosY;
+                break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
                 initial();
@@ -250,6 +294,33 @@ public class JoystickView extends View implements Runnable {
         invalidate();
 
         return true;
+    }
+
+    private double getAbs(int posX, int posY) {
+        return Math.sqrt((posX - mCenterX) * (posX - mCenterX)
+                + (posY - mCenterY) * (posY - mCenterY));
+    }
+
+    /**
+     * Process the angle following the 360° counter-clock protractor rules.
+     *
+     * @return the angle of the button
+     */
+    private int getAngle() {
+        int angle = (int) Math.toDegrees(Math.atan2(mCenterY - mPosY, mPosX - mCenterX));
+        return angle < 0 ? angle + 360 : angle; // make it as a regular counter-clock protractor
+    }
+
+
+    /**
+     * Process the strength as a percentage of the distance between the center and the border.
+     *
+     * @return the strength of the button
+     */
+    private int getStrength() {
+        return (int) (100 * Math.sqrt((mPosX - mCenterX)
+                * (mPosX - mCenterX) + (mPosY - mCenterY)
+                * (mPosY - mCenterY)) / mBorderRadius);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -282,8 +353,40 @@ public class JoystickView extends View implements Runnable {
         isCircleWithBackground = circleWithBackground;
     }
 
+    public OnMovedListener getCallback() {
+        return mCallback;
+    }
+
+    public void setCallback(OnMovedListener callback) {
+        mCallback = callback;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
+
+    private Runnable runnable = new Runnable() {
+        public void run() {
+            if (mCallback != null)
+                mCallback.onMoved(getAngle(), getStrength());
+        }
+    };
+
     @Override
     public void run() {
+        while (isRunning) {
 
+            post(runnable);
+
+            try {
+                Thread.sleep(mLoopInterval);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
     }
 }
