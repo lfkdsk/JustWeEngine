@@ -97,5 +97,6 @@ public abstract class BaseButton extends GameTextPrinter {
         return b_baseAnim;
     }
 
-    public void setNormal(boolean b_normal){}
+    public void setNormal(boolean b_normal) {
+    }
 }

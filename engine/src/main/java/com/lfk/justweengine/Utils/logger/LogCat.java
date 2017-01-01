@@ -62,7 +62,7 @@ public class LogCat {
 
         if (!TextUtils.isEmpty(tag)) {
             commandLine.add(tag.trim() + ":" + levStr);
-           // Log.d("ddd", "filter: " + commandLine.get(commandLine.size()-1));
+            // Log.d("ddd", "filter: " + commandLine.get(commandLine.size()-1));
             commandLine.add("*:S");
         } else {
             commandLine.add("*:" + levStr);
@@ -87,7 +87,7 @@ public class LogCat {
             exec = Runtime.getRuntime().exec(commandLine.toArray(new String[this.commandLine.size()]));
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             commandLine = new ArrayList<>(DEFAULT_COMMAND);
         }
         return exec;

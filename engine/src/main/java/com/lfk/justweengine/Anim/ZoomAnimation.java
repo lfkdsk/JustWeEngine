@@ -42,23 +42,23 @@ public class ZoomAnimation extends BaseAnim {
 
         if (from < to) { // 放大
             if (from + speed < to) {
-            	from += speed;
+                from += speed;
             } else {
-            	from = to;
+                from = to;
             }
         } else if (from > to) { // 缩小
             if (from - speed > to) {
-            	from -= speed;
+                from -= speed;
             } else {
-            	from = to;
+                from = to;
             }
         }
-        
+
         if (from == to) {
             touchType = -touchType;
             changeType = true;
         }
-        
+
         ori.x = from;
         ori.y = from;
         return ori;

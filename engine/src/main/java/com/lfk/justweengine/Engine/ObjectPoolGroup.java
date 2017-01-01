@@ -15,6 +15,7 @@ public class ObjectPoolGroup {
     private final ObjectPool.publicObjectFactory factory;
     // default max size
     private final int maxSize;
+
     /**
      * 初始化对象池
      *

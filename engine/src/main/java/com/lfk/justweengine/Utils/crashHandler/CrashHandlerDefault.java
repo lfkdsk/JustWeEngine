@@ -11,7 +11,7 @@ public class CrashHandlerDefault {
     public static final String Log_Default_Path =
             Environment.getExternalStorageDirectory() + "/CrashLog";
 
-    public static void init(){
+    public static void init() {
         File file = new File(CrashHandlerDefault.Log_Default_Path);
         if (!file.exists()) {
             file.mkdirs();

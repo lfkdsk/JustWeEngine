@@ -186,7 +186,7 @@ public class BaseSprite extends BaseSub {
         s_mat_rotate.reset();
         s_mat_translation.reset();
 
-        s_mat_scale.setScale((float)Math.sqrt(s_scale.x), (float)Math.sqrt(s_scale.y));
+        s_mat_scale.setScale((float) Math.sqrt(s_scale.x), (float) Math.sqrt(s_scale.y));
         s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
         s_mat_translation.setTranslate(s_position.x, s_position.y);
 

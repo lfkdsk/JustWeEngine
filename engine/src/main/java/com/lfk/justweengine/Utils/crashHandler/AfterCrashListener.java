@@ -1,7 +1,7 @@
 package com.lfk.justweengine.utils.crashHandler;
 
 /**
- * AfterCrashListener 
+ * AfterCrashListener
  * save info after crash
  *
  * @author liufengkai

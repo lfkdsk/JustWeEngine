@@ -11,7 +11,7 @@ public class Function {
     private long startIndex;
     // 函数结束位置
     private long endIndex;
-    
+
     public Function(long startIndex, long endIndex) {
         this.startIndex = startIndex;
         this.endIndex = endIndex;

@@ -29,7 +29,7 @@ public class RequestSolve extends Thread {
     // url in link
     private String url;
     private HashMap<String, String> params;
-//    private String urlName = "";
+    //    private String urlName = "";
     private int type;
 
     public RequestSolve(Socket s) {

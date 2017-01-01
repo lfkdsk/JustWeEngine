@@ -109,8 +109,8 @@ public class WebServer {
         webServerRule.put(rule, new OnPermissionFile() {
             @Override
             public File OnPermissionFile(String name) {
-                Logger.e(WebServerDefault.WebServerFiles  + rule + name);
-                return new File(WebServerDefault.WebServerFiles  + rule + name);
+                Logger.e(WebServerDefault.WebServerFiles + rule + name);
+                return new File(WebServerDefault.WebServerFiles + rule + name);
             }
         });
     }
