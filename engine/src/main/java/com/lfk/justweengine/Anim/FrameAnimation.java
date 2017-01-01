@@ -12,7 +12,8 @@ public class FrameAnimation extends BaseAnim {
     private int firstFrame;
     private int lastFrame;
     private int direction;
-    private int interval;//帧动画切换时间间隔，单位ms
+    private int interval;
+    // 帧动画切换时间间隔，单位ms
     private GameTimer timer;
 
     public FrameAnimation(int firstFrame, int lastFrame, int direction) {
