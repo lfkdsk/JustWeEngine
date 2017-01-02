@@ -1,6 +1,11 @@
 # JustWeEngine - Android Game FrameWork  
 ![logo](art/logo.png)  
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903) [![](https://jitpack.io/v/lfkdsk/JustWeEngine.svg)](https://jitpack.io/#lfkdsk/JustWeEngine)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903) 
+[![](https://jitpack.io/v/lfkdsk/JustWeEngine.svg)](https://jitpack.io/#lfkdsk/JustWeEngine)
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/lfkdsk/JustWeEngine/releases/tag/v1.13)
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/lfkdsk/JustWeEngine)
+  
+  
 An easy open source Android Native Game FrameWork.  
 
 ## Engine Flow Chart  
@@ -84,7 +89,7 @@ Please send your feedback as long as there occurs any inconvenience or problem. 
 
 ## License
 
-    Copyright 2015 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
+    Copyright 2017 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
