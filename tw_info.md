@@ -29,7 +29,7 @@ An easy open source Android Native Game FrameWork.
   ``` groovy
   
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeEngine:v1.05beta'
+	        compile 'com.github.lfkdsk:JustWeEngine:v1.13'
 	  }
 		
   ```
