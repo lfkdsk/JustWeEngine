@@ -1,4 +1,4 @@
-package com.lfk.justweengine.engine.Layer;
+package com.lfk.justweengine.engine.layer;
 
 import android.graphics.Rect;
 import android.os.Bundle;

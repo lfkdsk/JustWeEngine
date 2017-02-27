@@ -1,7 +1,7 @@
-package com.lfk.justweengine.drawable.Bone;
+package com.lfk.justweengine.drawable.bone;
 
-import com.lfk.justweengine.drawable.Sprite.BaseSprite;
-import com.lfk.justweengine.drawable.Sprite.FrameType;
+import com.lfk.justweengine.drawable.sprite.BaseSprite;
+import com.lfk.justweengine.drawable.sprite.FrameType;
 import com.lfk.justweengine.engine.Engine;
 
 /**

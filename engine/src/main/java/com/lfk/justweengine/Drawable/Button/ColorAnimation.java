@@ -1,4 +1,4 @@
-package com.lfk.justweengine.drawable.Button;
+package com.lfk.justweengine.drawable.button;
 
 import com.lfk.justweengine.anim.AnimType;
 

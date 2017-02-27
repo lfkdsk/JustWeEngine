@@ -1,4 +1,4 @@
-package com.lfk.justweengine.drawable.Bone;
+package com.lfk.justweengine.drawable.bone;
 
 import com.lfk.justweengine.engine.Engine;
 

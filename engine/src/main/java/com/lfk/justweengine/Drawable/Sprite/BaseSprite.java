@@ -1,4 +1,4 @@
-package com.lfk.justweengine.drawable.Sprite;
+package com.lfk.justweengine.drawable.sprite;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

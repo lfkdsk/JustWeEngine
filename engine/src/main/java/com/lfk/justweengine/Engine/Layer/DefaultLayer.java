@@ -1,12 +1,12 @@
-package com.lfk.justweengine.engine.Layer;
+package com.lfk.justweengine.engine.layer;
 
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.lfk.justweengine.drawable.Bone.BoneGroupSprite;
-import com.lfk.justweengine.drawable.Sprite.BaseSub;
+import com.lfk.justweengine.drawable.bone.BoneGroupSprite;
+import com.lfk.justweengine.drawable.sprite.BaseSub;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 

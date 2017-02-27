@@ -18,8 +18,8 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 
-import com.lfk.justweengine.drawable.Button.BaseButton;
-import com.lfk.justweengine.drawable.Sprite.BaseSub;
+import com.lfk.justweengine.drawable.button.BaseButton;
+import com.lfk.justweengine.drawable.sprite.BaseSub;
 import com.lfk.justweengine.utils.logger.LogLevel;
 import com.lfk.justweengine.utils.logger.Logger;
 

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.drawable.Button;
+package com.lfk.justweengine.drawable.button;
 
 import android.graphics.Rect;
 

@@ -1,4 +1,4 @@
-package com.lfk.justweengine.drawable.Sprite;
+package com.lfk.justweengine.drawable.sprite;
 
 import android.graphics.RectF;
 import android.renderscript.Float2;
