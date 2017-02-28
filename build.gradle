@@ -18,19 +18,19 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
 task releaseJar(type: Copy) {
-    from( 'build/intermediates/bundles/debug')
+    from( 'build/bundles/release')
     into( 'build/libs')
     include('classes.jar')
-    rename('calsses.jar', 'JustWeEngine' + '.jar')
+    rename('classes.jar', 'engine_' + version + '.jar')
 }
 
 task releaseLib(type: Copy, dependsOn: releaseJar) {
     into "../../release"
     from 'libs'
     from 'build/libs'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
