@@ -5,7 +5,9 @@ import android.graphics.PixelFormat;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 
 import com.lfk.justweengine.drawable.Sprite.BaseSub;
 import com.lfk.justweengine.engine.Engine;
@@ -20,6 +22,8 @@ import com.lfk.justweengine.utils.logger.Logger;
  */
 public abstract class LayerEngine extends Engine {
     protected Screen layerEngineScreen;
+
+    protected FrameLayout layerEngineScreenLayout;
 
     public abstract void init();
 
@@ -67,6 +71,12 @@ public abstract class LayerEngine extends Engine {
                 touch(event);
             }
         });
+
+        layerEngineScreenLayout = new FrameLayout(this);
+        layerEngineScreenLayout.addView(layerEngineScreen, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        ));
     }
 
     @Override
@@ -78,11 +88,10 @@ public abstract class LayerEngine extends Engine {
         this.Engine();
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        setContentView(layerEngineScreen);
+        setContentView(layerEngineScreenLayout);
         layerEngineScreen.createScreen();
 
         Logger.d("engine onCreate end");
-
     }
 
     /**

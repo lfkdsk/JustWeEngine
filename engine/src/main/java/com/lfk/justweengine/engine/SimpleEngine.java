@@ -16,7 +16,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 
 import com.lfk.justweengine.drawable.Button.BaseButton;
 import com.lfk.justweengine.drawable.Sprite.BaseSub;
@@ -36,6 +38,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public abstract class SimpleEngine extends Engine implements Runnable, View.OnTouchListener {
     private SurfaceView e_surfaceView;
+    private FrameLayout e_surfaceViewLayout;
     private Canvas e_canvas;
     // 主循环
     private Thread e_thread;
@@ -143,8 +146,15 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
         // init surfaceView
         e_surfaceView = new SurfaceView(this);
 
+        e_surfaceViewLayout = new FrameLayout(this);
+
+        e_surfaceViewLayout.addView(e_surfaceView, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        ));
+
         // set content view
-        setContentView(e_surfaceView);
+        setContentView(e_surfaceViewLayout);
 
         // touch listener
         e_surfaceView.setOnTouchListener(this);
