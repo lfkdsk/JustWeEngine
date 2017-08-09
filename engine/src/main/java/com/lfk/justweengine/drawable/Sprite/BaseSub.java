@@ -13,11 +13,11 @@ import com.lfk.justweengine.engine.Engine;
  */
 public abstract class BaseSub {
     // 传入的engine
-    protected Engine s_engine;
+    protected Engine binderEngine;
 
-    public Float2 s_position;
+    public Float2 objectPosition;
 
-    public String s_name;
+    public String objectName;
 
     public abstract boolean getAlive();
 

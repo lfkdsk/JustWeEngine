@@ -89,8 +89,8 @@ public class BoneGroupSprite {
         }
 
         public BoneBuilder addBone(String name, BoneSprite sprite) {
-            sprite.s_position.x += config.positionX;
-            sprite.s_position.y += config.positionY;
+            sprite.objectPosition.x += config.positionX;
+            sprite.objectPosition.y += config.positionY;
             this.boneSprites.put(name, sprite);
             this.currentNum++;
             return this;

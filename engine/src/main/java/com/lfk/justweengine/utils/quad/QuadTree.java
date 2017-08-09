@@ -57,7 +57,6 @@ public class QuadTree {
         nodes[1] = new QuadTree(level + 1, new RectF(x, y, subWidth, subHeight));
         nodes[2] = new QuadTree(level + 1, new RectF(x, y + subHeight, subWidth, subHeight));
         nodes[3] = new QuadTree(level + 1, new RectF(x + subWidth, y + subHeight, subWidth, subHeight));
-
     }
 
     /**

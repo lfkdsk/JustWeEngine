@@ -109,7 +109,7 @@ public class ObjectPoolGroup {
      * @param <T>     泛型
      */
     public <T extends BaseSub> void free(T baseSub) {
-        getObjectPool(baseSub.s_name).free(baseSub);
+        getObjectPool(baseSub.objectName).free(baseSub);
     }
 
     public void clear() {

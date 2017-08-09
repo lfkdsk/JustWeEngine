@@ -92,7 +92,7 @@ public class BaseSprite extends BaseSub {
                 frameType = FrameType.COMMON;
                 break;
         }
-        this.s_engine = engine;
+        this.binderEngine = engine;
         this.s_width = w;
         this.s_height = h;
         init();
@@ -107,7 +107,7 @@ public class BaseSprite extends BaseSub {
      * @param columns
      */
     public BaseSprite(Engine engine, int w, int h, int columns) {
-        this.s_engine = engine;
+        this.binderEngine = engine;
         this.s_width = w;
         this.s_height = h;
         this.s_columns = columns;
@@ -118,9 +118,9 @@ public class BaseSprite extends BaseSub {
     private void init() {
         s_alpha = 255;
         s_canvas = null;
-        s_texture = new GameTexture(s_engine);
+        s_texture = new GameTexture(binderEngine);
         s_paint = new Paint();
-        s_position = new Float2(0, 0);
+        objectPosition = new Float2(0, 0);
         s_frame = 0;
         animMap = new ConcurrentHashMap<>();
         animList = new CopyOnWriteArrayList<>();
@@ -188,7 +188,7 @@ public class BaseSprite extends BaseSub {
 
         s_mat_scale.setScale((float) Math.sqrt(s_scale.x), (float) Math.sqrt(s_scale.y));
         s_mat_rotate.setRotate((float) Math.toDegrees(s_rotation));
-        s_mat_translation.setTranslate(s_position.x, s_position.y);
+        s_mat_translation.setTranslate(objectPosition.x, objectPosition.y);
 
         s_matrix.postConcat(s_mat_scale);
         s_matrix.postConcat(s_mat_rotate);
@@ -202,7 +202,7 @@ public class BaseSprite extends BaseSub {
      */
     @Override
     public void draw() {
-        s_canvas = s_engine.getCanvas();
+        s_canvas = binderEngine.getCanvas();
         switch (frameType) {
             case FIXED:
             case SIMPLE:
@@ -220,7 +220,7 @@ public class BaseSprite extends BaseSub {
      * 绘制debug模式下的轮廓线
      */
     public void debugDraw() {
-        s_engine.debugDraw(getBounds());
+        binderEngine.debugDraw(getBounds());
     }
 
 
@@ -231,8 +231,8 @@ public class BaseSprite extends BaseSub {
         }
 
         if (!s_frame_rect.isEmpty()) {
-            int x = (int) s_position.x;
-            int y = (int) s_position.y;
+            int x = (int) objectPosition.x;
+            int y = (int) objectPosition.y;
             int w = (int) (s_width * s_scale.x);
             int h = (int) (s_height * s_scale.y);
             s_dst.set(x, y, x + w, y + h);
@@ -289,8 +289,8 @@ public class BaseSprite extends BaseSub {
      * @param y
      */
     public void setPosition(float x, float y) {
-        s_position.x = x;
-        s_position.y = y;
+        objectPosition.x = x;
+        objectPosition.y = y;
     }
 
     /**
@@ -300,8 +300,8 @@ public class BaseSprite extends BaseSub {
      * @param y
      */
     public void setDipPosition(int x, int y) {
-        s_position.x = DisplayUtils.dip2px(x);
-        s_position.y = DisplayUtils.dip2px(y);
+        objectPosition.x = DisplayUtils.dip2px(x);
+        objectPosition.y = DisplayUtils.dip2px(y);
     }
 
     /**
@@ -310,7 +310,7 @@ public class BaseSprite extends BaseSub {
      * @return
      */
     public Float2 getPosition() {
-        return s_position;
+        return objectPosition;
     }
 
     /**
@@ -538,9 +538,9 @@ public class BaseSprite extends BaseSub {
      */
     public RectF getBounds() {
         // scaled
-        return new RectF((int) s_position.x, (int) s_position.y,
-                (int) (s_position.x + s_width * Math.sqrt(s_scale.x)),
-                (int) (s_position.y + s_height * Math.sqrt(s_scale.y)));//这里取平方根，不然假设scale=2，算出来就变成了放大4倍。
+        return new RectF((int) objectPosition.x, (int) objectPosition.y,
+                (int) (objectPosition.x + s_width * Math.sqrt(s_scale.x)),
+                (int) (objectPosition.y + s_height * Math.sqrt(s_scale.y)));//这里取平方根，不然假设scale=2，算出来就变成了放大4倍。
     }
 
     /**
@@ -563,11 +563,11 @@ public class BaseSprite extends BaseSub {
      * @return
      */
     public String getName() {
-        return s_name;
+        return objectName;
     }
 
     public void setName(String s_name) {
-        this.s_name = s_name;
+        this.objectName = s_name;
     }
 
     /**
@@ -649,13 +649,13 @@ public class BaseSprite extends BaseSub {
                 s_rotation = anim.adjustRotation(s_rotation);
                 break;
             case POSITION:
-                s_position = anim.adjustPosition(s_position);
+                objectPosition = anim.adjustPosition(objectPosition);
                 break;
             case ALIVE:
                 s_alive = anim.adjustAlive(s_alive);
                 break;
             case SHOOT:
-                s_position = anim.adjustPosition(s_position);
+                objectPosition = anim.adjustPosition(objectPosition);
                 s_alive = anim.adjustAlive(s_alive);
                 break;
             case ZOOM:

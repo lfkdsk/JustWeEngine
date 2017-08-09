@@ -37,14 +37,40 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *         Created by liufengkai on 15/11/26.
  */
 public abstract class SimpleEngine extends Engine implements Runnable, View.OnTouchListener {
-    private SurfaceView e_surfaceView;
-    private FrameLayout e_surfaceViewLayout;
-    private Canvas e_canvas;
-    // 主循环
-    private Thread e_thread;
-    // 循环控制
-    private boolean e_running, e_paused;
-    private int e_pauseCount;
+
+    /**
+     * Bind SurfaceView
+     */
+    private SurfaceView engineSurfaceView;
+
+    /**
+     * SurfaceView's ParentView
+     * We can attach some view on it.
+     */
+    private FrameLayout surfaceParentLayout;
+
+    /**
+     * Engine's Canvas
+     * We draw objs on this canvas.
+     */
+    private Canvas engineCanvas;
+
+    /**
+     * Main Game Thread
+     */
+    private Thread gameThread;
+
+    /**
+     * Flag to control Engine flow.
+     */
+    private boolean isEngineRunning, isEnginePaused;
+
+    /**
+     * accumulate paused count
+     */
+    private int enginePauseCount;
+
+
     private Paint e_paintDraw, e_paintFont;
     private int e_numPoints;
     private long e_preferredFrameRate, e_sleepTime;
@@ -86,13 +112,13 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
     }
 
     private void Engine() {
-        e_surfaceView = null;
-        e_canvas = null;
-        e_thread = null;
-        e_running = false;
-        e_paused = false;
+        engineSurfaceView = null;
+        engineCanvas = null;
+        gameThread = null;
+        isEngineRunning = false;
+        isEnginePaused = false;
         e_paintDraw = null;
-        e_pauseCount = 0;
+        enginePauseCount = 0;
         e_paintFont = null;
         e_numPoints = 0;
         e_preferredFrameRate = 40;
@@ -144,20 +170,20 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
         init();
 
         // init surfaceView
-        e_surfaceView = new SurfaceView(this);
+        engineSurfaceView = new SurfaceView(this);
 
-        e_surfaceViewLayout = new FrameLayout(this);
+        surfaceParentLayout = new FrameLayout(this);
 
-        e_surfaceViewLayout.addView(e_surfaceView, new FrameLayout.LayoutParams(
+        surfaceParentLayout.addView(engineSurfaceView, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
         ));
 
         // set content view
-        setContentView(e_surfaceViewLayout);
+        setContentView(surfaceParentLayout);
 
         // touch listener
-        e_surfaceView.setOnTouchListener(this);
+        engineSurfaceView.setOnTouchListener(this);
 
         // init touch mode
 //        if (e_touchModesAble) {
@@ -178,9 +204,9 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
         load();
 
         // init thread
-        e_running = true;
-        e_thread = new Thread(this);
-        e_thread.start();
+        isEngineRunning = true;
+        gameThread = new Thread(this);
+        gameThread.start();
 
         Logger.d("engine onCreate end");
     }
@@ -192,7 +218,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
     protected void onResume() {
         super.onResume();
         Logger.d("engine onResume");
-        e_paused = false;
+        isEnginePaused = false;
         // need add...
     }
 
@@ -203,8 +229,8 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
     protected void onPause() {
         super.onPause();
         Logger.d("engine onPause");
-        e_paused = true;
-        e_pauseCount++;
+        isEnginePaused = true;
+        enginePauseCount++;
         // need add...
     }
 
@@ -244,8 +270,8 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
         long startTime;
         long timeDiff;
 
-        while (e_running) {
-            if (e_paused) continue;
+        while (isEngineRunning) {
+            if (isEnginePaused) continue;
 
             frameCount++;
             startTime = frameTimer.getElapsed();
@@ -298,7 +324,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
 
             // lock canvas
             if (beginDrawing()) {
-                e_canvas.drawColor(e_backgroundColor);
+                engineCanvas.drawColor(e_backgroundColor);
 
                 for (String o : e_button_group.keySet()) {
                     BaseButton button = e_button_group.get(o);
@@ -322,10 +348,10 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
                 }
 
                 if (e_isFrameOpen && isOpenDebug) {
-                    int x = e_canvas.getWidth() - 150;
-                    e_canvas.drawText("engine", x, 20, e_paintFont);
-                    e_canvas.drawText(toString(frameRate) + "fps", x, 40, e_paintFont);
-                    e_canvas.drawText("pauses:" + toString(e_pauseCount), x, 60, e_paintFont);
+                    int x = engineCanvas.getWidth() - 150;
+                    engineCanvas.drawText("engine", x, 20, e_paintFont);
+                    engineCanvas.drawText(toString(frameRate) + "fps", x, 40, e_paintFont);
+                    engineCanvas.drawText("pauses:" + toString(enginePauseCount), x, 60, e_paintFont);
                 }
 
                 // unlock the canvas
@@ -379,10 +405,10 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
      * @return
      */
     private boolean beginDrawing() {
-        if (!e_surfaceView.getHolder().getSurface().isValid()) {
+        if (!engineSurfaceView.getHolder().getSurface().isValid()) {
             return false;
         }
-        e_canvas = e_surfaceView.getHolder().lockCanvas();
+        engineCanvas = engineSurfaceView.getHolder().lockCanvas();
         return true;
     }
 
@@ -390,7 +416,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
      * end draw
      */
     private void endDrawing() {
-        e_surfaceView.getHolder().unlockCanvasAndPost(e_canvas);
+        engineSurfaceView.getHolder().unlockCanvasAndPost(engineCanvas);
     }
 
     /**
@@ -470,7 +496,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
      * @param y
      */
     public void drawText(String text, int x, int y) {
-        e_canvas.drawText(text, x, y, e_paintFont);
+        engineCanvas.drawText(text, x, y, e_paintFont);
     }
 
     /**
@@ -481,14 +507,14 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
      * @return surface
      */
     public SurfaceView getSurfaceView() {
-        return e_surfaceView;
+        return engineSurfaceView;
     }
 
     /**
      * @return canvas
      */
     public Canvas getCanvas() {
-        return e_canvas;
+        return engineCanvas;
     }
 
     /**
@@ -802,7 +828,7 @@ public abstract class SimpleEngine extends Engine implements Runnable, View.OnTo
         if (isOpenDebug()) {
             e_paintDraw.setColor(Color.RED);
             e_paintDraw.setStyle(Paint.Style.STROKE);
-            e_canvas.drawRect(bound, e_paintDraw);
+            engineCanvas.drawRect(bound, e_paintDraw);
         }
     }
 
