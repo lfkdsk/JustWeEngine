@@ -2,7 +2,7 @@
 ![logo](art/logo.png)  
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-JustWeEngine-green.svg?style=true)](https://android-arsenal.com/details/1/2903) 
 [![](https://jitpack.io/v/lfkdsk/JustWeEngine.svg)](https://jitpack.io/#lfkdsk/JustWeEngine)
-[![](https://img.shields.io/badge/downloads-1k%20last%20version-blue.svg)](https://github.com/lfkdsk/JustWeEngine/releases/tag/v1.13)
+[![](https://img.shields.io/badge/downloads-5k%20last%20version-blue.svg)](https://github.com/lfkdsk/JustWeEngine/releases/tag/v1.13)
 [![GitHub release](https://img.shields.io/badge/JustWeEngine-v1.13-green.svg)](https://github.com/lfkdsk/JustWeEngine/releases/tag/v1.13)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/lfkdsk/JustWeEngine)
   
