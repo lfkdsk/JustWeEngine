@@ -11,7 +11,7 @@ An easy open source Android Native Game FrameWork.
 
 ## Engine Flow Chart  
 ![engine](art/engine.jpg)  
-## How To Use?  
+## guide how to use?   
 * Import Engine's module as Library.  
 * Import engine.jar in your project from "/jar".    
 * With Gradle:  
